@@ -1,0 +1,353 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc} % For UTF-8 encoding
+\usepackage{amsmath, amssymb} % For mathematical symbols
+\usepackage{graphicx} % For including images
+\usepackage{hyperref} % For clickable links
+\usepackage{geometry} % For page margins
+\usepackage{booktabs} % For nice tables
+\usepackage{lipsum} % For dummy text
+\usepackage{longtable}
+\setlength{\parindent}{0em}
+% Page layout
+\geometry{margin=1in}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={LaTeX Template},
+    pdfpagemode=FullScreen,
+}
+
+% ######################## Title  Page ####################################
+\title{Recurrent Deep Learning Models and its applications}
+\author{Ngai Ho Wang}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+% ######################## Title  Page ####################################
+
+
+
+
+% ######################## table of content ###############################
+\tableofcontents % Generate a table of contents                        
+% ######################## table of content ###############################
+
+\newpage
+
+% ######################## Project goals ######################################
+\section{Project goals}
+The goal of this paper is to analyze, implement, and compare the performance of RNN, LSTM, GRU and own model in selected NLP tasks. This paper aims to propose an enhanced RNN-based model for NLP tasks and make the recommendation for future development.
+% ######################## Project goals ######################################
+
+
+% ######################## Objectives ######################################
+\section{Objectives}
+\begin{enumerate}
+    % 1. Literature Review
+    \item Literature Review
+    \begin{itemize}
+        \item Conduct a comprehensive review of existing paper on RNN, LSTM, and GRU, focusing on their architecture.
+        \item Review the NLP task.
+    \end{itemize}
+
+    % 2. Model implementation
+    \item Model implementation
+    \begin{itemize}
+        \item Implement RNN, LSTM, GRU and own model by PyTorch for chosen NLP tasks.
+    \end{itemize}
+
+    % 3. Performance Comparison
+    \item Performance Comparison
+    \begin{itemize}
+        \item Evaluate the performance by using appropriate metrics (e.g., accuracy, precision, recall, F1 score, BLEU, ROUGE).
+    \end{itemize}
+
+    % 4. Propose an advanced model
+    \item Propose an advanced model
+    \begin{itemize}
+        \item Develop an advanced model, aiming to enhance the performance on selected NLP tasks. 
+    \end{itemize}
+\end{enumerate}
+% ######################## Objectives ######################################
+
+% ######################## Expected outcomes ######################################
+\section{Expected outcomes}
+\begin{enumerate}
+    % 1. Model performance metrics
+    \item Model performance metrics
+    \begin{itemize}
+        \item A detailed comparison of performance metrics across RNN, LSTM, GRU and own model. 
+    \end{itemize}
+
+    % 2. Practical insights
+    \item Practical insights
+    \begin{itemize}
+        \item Practical recommendations for future work in the area of RNN applications in NLP, based on the findings of this paper. 
+    \end{itemize}
+\end{enumerate}
+% ######################## Expected outcomes ######################################
+
+% ######################## Research plan ######################################
+\section{Research plan}
+\begin{enumerate}
+    % 1. Literature review
+    \item Literature review
+    \begin{itemize}
+        \item Review existing work on RNN, LSTM, GRU and their more sophisticated variants. 
+    \end{itemize}
+
+    % 2. Model development
+    \item Model development
+    \begin{itemize}
+        \item Select NLP tasks. (e.g., text classification, summarization).
+        \item Implement baseline models (RNN, LSTM, GRU) using PyTroch.
+    \end{itemize}
+
+    % 3. Performance Evaluation
+    \item Performance Evaluation
+    \begin{itemize}
+        \item Evaluate and compare the performance of the implemented model using appropriate metrics. 
+    \end{itemize}
+
+    % 4. Model Enhancement
+    \item Model Enhancement
+    \begin{itemize}
+        \item Design and implement an advanced model based on findings from the previous phases.
+    \end{itemize}
+
+    % 5. Final analysis and reporting
+    \item Final analysis and reporting
+    \begin{itemize}
+        \item Analyze the results of the advanced model against baseline models. 
+    \end{itemize}
+\end{enumerate}
+% ######################## Research plan ######################################
+
+% ######################## Experimental design ######################################
+\section{Experimental design}
+\begin{enumerate}
+    % 1. Dataset selection
+    \item Dataset selection
+    \begin{itemize}
+        \item Select suitable NLP dataset.
+    \end{itemize}
+    
+    % 2. Model configuration
+    \item Model configuration
+    \begin{itemize}
+        \item Define architecture specifications for each model, including number of layers, number of hidden units, activation function, dropout rates.
+    \end{itemize}
+\end{enumerate}
+% ######################## Experimental design ######################################
+
+
+\newpage
+% ######################## Introduction ######################################
+\section{Introduction}
+
+With the rise of the Generative Artificial Intelligence, the development of AI has already made remarkable strides in processing sequential data. In understanding and producing sequential data. It has applications ranging from Natural Language Processing (NLP) to music composition to video generation. Especially NLP, has emerged as a pivotal field in artificial intelligence, enable machines to understand, interpret and generate in human readable format. Siri, Alexa and bixby have shown the possibility. Everyone can communicate with those machines and they with make the reasonable response to user.\\[2ex]
+Recurrent Neural Networks (RNNs) have been a foundational architecture in this domain, the architecture of RNNs is design for sequential data. It able to retain the information through hidden states. Unfortunately, early RNNs had limitation in training of networks over long sequence. vanishing and exploding gradient problems significantly affect the training process of RNN (Bengio, Simard, \& Frasconi, 1994). Eliminating many practical applications of RNNs. After that, Hochreiter and Schmidhuber (1997) introduced Long Short-Term Memory (LSTM) networks and are responsible for the breakthrough in how to solve these challenges. Specificized gating mechanisms were introduced in LSTMs to regulate the flow of the information, minimize the vanishing gradient problem and learn the long-term dependencies. This advanced made RNNs much more performant on tasks like a language modeling, machine translation and speech recognition tasks.\\[2ex]
+Further improvements were achieved with Gated Recurrent Units (GRUs) by Cho et al. (2014) which diminished the LSTM architecture's complexity, but still provided the same performance. GRUs performed comparably but used fewer parameters, making it computationally and more tractably trainable.
+% ######################## Introduction ######################################
+
+\newpage
+% ######################## Literature Review ######################################
+\section{Literature Review}
+\textbf{Backpropagation Through Time}
+
+BPTT is one of the most important algorithms used for training RNNs. Dating back to the original effort to expand the typical backpropagation algorithm, BPTT has been formulated to handle the difficulties of temporal sequences that are inherent in sequential data (Werbos, 1990). This algorithm allows RNNs in learning sequence dependent data by unfold the network over time steps and then updating weights matrix through the gradient of loss function with respect to the variable (Rumelhart, Hinton, \& Williams, 1986).
+\newline
+\textbf{Conceptual Framework of BPTT}
+
+BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period (Werbos, 1990).
+
+This unfolds the RNN to construct a traditional Feedforward Neural Network where we can apply backpropagation through time. Below is the conceptual idea of BPTT in RNN.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{./Pic/pic1.png} % Replace "example-image" with your image file
+    \caption{Unfolded RNN}
+    % \label{fig:sdfsdf}
+\end{figure}
+
+
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $U$          & Weight matrix for input to hidden state       & $input\ size\times hidden\ unites$\\
+    $W$          & Weight matrix for hidden to hidden state      & $hidden\ units\times hidden\ unites$\\
+    $V$          & Weight matrix for hidden state to output state& $hidden\ units\times number\ of\ class$\\
+    $x_t$        & Input vector at time t                        & $input\ size\times 1$\\
+    $h_t$        & Hidden state output at time t                 & $hidden\ units\times 1$\\
+    $b_h$        & Bias term for hidden state                    & $hidden\ units\times 1$\\
+    $b_y$        & Bias term for output state                    & $number\ of\ class\times 1$\\
+    $\hat{o}_y$  & Output at time t                              & $number\ of\ class\times 1$\\
+    $\hat{y}_t$  & Output at time t                              & $hidden\ units\times 1$\\
+    $\mathcal{L}$& Loss at time t                                & $scalar$\\
+    \hline
+    \caption{Unfolded RNN}
+\end{longtable}
+
+% Forward pass
+\noindent \textbf{Forward Pass}\\
+During the forward pass, the RNN processes the input sequence sequentially, computing hidden states and output at each timestep:
+\begin{equation}
+    h_t = f(U^Tx_{t}+W^Th_{t-1}+b_h)
+\end{equation}
+\begin{equation}
+    \hat{y}_t = f(V^Th_t+b_y)
+\end{equation}
+% \begin{equation}
+%     \hat{y}_t = f(\hat{o}_t)
+% \end{equation}
+\newline  % Computing the loss function
+\noindent \textbf{Computing the loss function}\\
+Assuming the loss is computed only at the final timestep t:
+\begin{equation}
+    \mathcal{L}_t = L(y_t, \hat{y}_t)
+\end{equation}
+In order to do backpropagation through time to tune the parameters in RNN, we need to calculate the partial derivative of loss function $\mathcal{L}$ with respect to the differently parameters.\\
+\newline  % Backward pass using the chain rule
+\noindent \textbf{Backward pass using the chain rule}\\
+Using the chain rule for computing the gradient.\\
+Partial derivative of loss function $\mathcal{L}$ with respect to $W$ (hidden to hidden state) at time 2. 
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial{W}} = \sum_{i=1}^{2}\dfrac{\partial L_i}{\partial W}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial L_i}{\partial W} = \dfrac{\partial L_i}{\partial \hat{y}_i} \cdot \dfrac{\partial \hat{y}_i}{\partial h_i} \cdot \dfrac{\partial h_i}{\partial W}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial W} = \dfrac{\partial\mathcal{L}_1}{\partial\hat{y}_1}\cdot\dfrac{\partial\hat{y}_1}{\partial\hat{h}_1}\cdot\dfrac{\partial h_1}{\partial W}+\dfrac{\mathcal{L}_2}{\partial\hat{y}_2}\cdot\dfrac{\partial\hat{y}_2}{\partial\hat{h}_2}\cdot\dfrac{\partial h_2}{\partial h_1}\cdot\dfrac{\partial h_1}{\partial W}
+\end{equation}
+
+Partial derivative of loss function $\mathcal{L}$ with respect to $U$ (input to hidden state) at time 2.\\
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial{U}} = \sum_{i=1}^{2}\dfrac{\partial L_i}{\partial U}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial L_i}{\partial U} = \dfrac{\partial L_i}{\partial \hat{y}_i} \cdot \dfrac{\partial \hat{y}_i}{\partial h_i} \cdot \dfrac{\partial h_i}{\partial U}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial U} = \dfrac{\partial\mathcal{L}_1}{\partial\hat{y}_1}\cdot\dfrac{\partial\hat{y}_1}{\partial\hat{h}_1}\cdot\dfrac{\partial h_1}{\partial U}+\dfrac{\mathcal{L}_2}{\partial\hat{y}_2}\cdot\dfrac{\partial\hat{y}_2}{\partial\hat{h}_2}\cdot\dfrac{\partial h_2}{\partial h_1}\cdot\dfrac{\partial h_1}{\partial U}
+\end{equation}
+
+Partial derivative of loss function $\mathcal{L}$ with respect to $V$ (hidden to output state) at time 2.\\
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial{V}} = \sum_{i=1}^{2}\dfrac{\partial L_i}{\partial V}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial L_i}{\partial V} = \dfrac{\partial L_i}{\partial \hat{y}_i} \cdot \dfrac{\partial \hat{y}_i}{\partial h_i} \cdot \dfrac{\partial h_i}{\partial V}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial V} = \dfrac{\partial\mathcal{L}_1}{\partial\hat{y}_1}\cdot\dfrac{\partial\hat{y}_1}{\partial\hat{h}_1}\cdot\dfrac{\partial h_1}{\partial V}+\dfrac{\mathcal{L}_2}{\partial\hat{y}_2}\cdot\dfrac{\partial\hat{y}_2}{\partial\hat{h}_2}\cdot\dfrac{\partial h_2}{\partial h_1}\cdot\dfrac{\partial h_1}{\partial V}
+\end{equation}
+
+Partial derivative of loss function $\mathcal{L}$ with respect to $b_h$ (bias term in hidden state) at time 2.\\
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial{b_h}} = \sum_{i=1}^{2}\dfrac{\partial L_i}{\partial b_h}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial L_i}{\partial b_h} = \dfrac{\partial L_i}{\partial \hat{y}_i} \cdot \dfrac{\partial \hat{y}_i}{\partial h_i} \cdot \dfrac{\partial h_i}{\partial b_h}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial b_h} = \dfrac{\partial\mathcal{L}_1}{\partial\hat{y}_1}\cdot\dfrac{\partial\hat{y}_1}{\partial\hat{h}_1}\cdot\dfrac{\partial h_1}{\partial b_h}+\dfrac{\mathcal{L}_2}{\partial\hat{y}_2}\cdot\dfrac{\partial\hat{y}_2}{\partial\hat{h}_2}\cdot\dfrac{\partial h_2}{\partial h_1}\cdot\dfrac{\partial h_1}{\partial b_h}
+\end{equation}
+
+Partial derivative of loss function $\mathcal{L}$ with respect to $b_y$ (bias term in output state) at time 2.
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial{b_y}} = \sum_{i=1}^{2}\dfrac{\partial L_i}{\partial b_y}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial L_i}{\partial b_y} = \dfrac{\partial L_i}{\partial \hat{y}_i} \cdot \dfrac{\partial \hat{y}_i}{\partial h_i} \cdot \dfrac{\partial h_i}{\partial b_y}
+\end{equation}
+\begin{equation}
+    \dfrac{\partial\mathcal{L}_2}{\partial b_y} = \dfrac{\partial\mathcal{L}_1}{\partial\hat{y}_1}\cdot\dfrac{\partial\hat{y}_1}{\partial\hat{h}_1}\cdot\dfrac{\partial h_1}{\partial b_y}+\dfrac{\mathcal{L}_2}{\partial\hat{y}_2}\cdot\dfrac{\partial\hat{y}_2}{\partial\hat{h}_2}\cdot\dfrac{\partial h_2}{\partial h_1}\cdot\dfrac{\partial h_1}{\partial b_y}
+\end{equation}
+
+\textbf{parameters updates}
+\begin{equation}
+    W \leftarrow W - \alpha\dfrac{\partial\mathcal{L}}{\partial W}
+\end{equation}
+\begin{equation}
+    U \leftarrow U - \alpha\dfrac{\partial\mathcal{L}}{\partial U}
+\end{equation}
+\begin{equation}
+    V \leftarrow V - \alpha\dfrac{\partial\mathcal{L}}{\partial V}
+\end{equation}
+\begin{equation}
+    b_h \leftarrow b_h - \alpha\dfrac{\partial\mathcal{L}}{\partial b_h}
+\end{equation}
+\begin{equation}
+    b_y \leftarrow b_y - \alpha\dfrac{\partial\mathcal{L}}{\partial b_y}
+\end{equation}
+
+\textbf{Pseudocode of BPTT} (Wikipedia, 2023)
+\begin{center}
+    \begin{tabular}{c}
+        $Back_Propagation_Through_Time(a, y)   % a[t] is the input at time t. y[t] is the output
+        Unfold the network to contain k instances of f
+        do until stopping criterion is met:
+        x := the zero-magnitude vector % x is the current context
+        % for t from 0 to n − k do      % t is time. n is the length of the training sequence
+        % Set the network inputs to x, a[t], a[t+1], ..., a[t+k−1]
+        % p := forward-propagate the inputs over the whole unfolded network
+        % e := y[t+k] − p;           % error = target − prediction
+        Back-propagate the error, e, back across the whole unfolded network
+        Sum the weight changes in the k instances of f together.
+        Update all the weights in f and g.
+        x := f(x, a[t]);$           % compute the context for the next time-step
+ 
+    \end{tabular}
+\end{center}
+% ######################## Literature Review ######################################
+
+
+
+
+\section{Inserting Images}
+To insert an image, use the `graphicx` package. For example:
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{./Pic/pic1.png} % Replace "example-image" with your image file
+    \caption{An example image.}
+    \label{fig:example}
+\end{figure}
+
+\section{Tables}
+You can create tables using the `tabular` environment or `booktabs` for professional-quality tables. For example:
+
+\begin{table}[h!]
+\centering
+\caption{Example Table}
+\begin{tabular}{@{}llr@{}}
+\toprule
+\textbf{Item} & \textbf{Description} & \textbf{Quantity} \\ \midrule
+Apples        & Fresh red apples     & 10                \\
+Oranges       & Juicy oranges        & 5                 \\
+Bananas       & Ripe bananas         & 7                 \\ \bottomrule
+\end{tabular}
+\label{tab:example}
+\end{table}
+
+\section{Hyperlinks}
+To add a hyperlink, use the `hyperref` package. For example:
+\href{https://www.latex-project.org/}{Visit the LaTeX project website}.
+
+\section{Conclusions}
+This is the conclusion section. Summarize your findings or leave final remarks.
+
+\newpage
+\appendix
+\section{Appendix}
+This is the appendix section, where you can include supplementary materials.
+
+\end{document}
