@@ -163,11 +163,11 @@ Further improvements were achieved with Gated Recurrent Units (GRUs) by Cho et a
 % ######################## Literature Review ######################################
 \section{Literature Review}
 \textbf{Backpropagation Through Time}
-
+\\[1ex]
 BPTT is one of the most important algorithms used for training RNNs. Dating back to the original effort to expand the typical backpropagation algorithm, BPTT has been formulated to handle the difficulties of temporal sequences that are inherent in sequential data (Werbos, 1990). This algorithm allows RNNs in learning sequence dependent data by unfold the network over time steps and then updating weights matrix through the gradient of loss function with respect to the variable (Rumelhart, Hinton, \& Williams, 1986).
-\newline
+\\[2ex]
 \textbf{Conceptual Framework of BPTT}
-
+\\[1ex]
 BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period (Werbos, 1990).
 
 This unfolds the RNN to construct a traditional Feedforward Neural Network where we can apply backpropagation through time. Below is the conceptual idea of BPTT in RNN.
@@ -198,7 +198,8 @@ This unfolds the RNN to construct a traditional Feedforward Neural Network where
 \end{longtable}
 
 % Forward pass
-\noindent \textbf{Forward Pass}\\
+\noindent \textbf{Forward Pass}
+\\[1ex]
 During the forward pass, the RNN processes the input sequence sequentially, computing hidden states and output at each timestep:
 \begin{equation}
     h_t = f(U^Tx_{t}+W^Th_{t-1}+b_h)
@@ -210,14 +211,16 @@ During the forward pass, the RNN processes the input sequence sequentially, comp
 %     \hat{y}_t = f(\hat{o}_t)
 % \end{equation}
 \newline  % Computing the loss function
-\noindent \textbf{Computing the loss function}\\
+\noindent \textbf{Computing the loss function}
+\\[1ex]
 Assuming the loss is computed only at the final timestep t:
 \begin{equation}
     \mathcal{L}_t = L(y_t, \hat{y}_t)
 \end{equation}
 In order to do backpropagation through time to tune the parameters in RNN, we need to calculate the partial derivative of loss function $\mathcal{L}$ with respect to the differently parameters.\\
 \newline  % Backward pass using the chain rule
-\noindent \textbf{Backward pass using the chain rule}\\
+\noindent \textbf{Backward pass using the chain rule}
+\\[1ex]
 Using the chain rule for computing the gradient.\\
 Partial derivative of loss function $\mathcal{L}$ with respect to $W$ (hidden to hidden state) at time 2. 
 \begin{equation}
@@ -331,7 +334,8 @@ Partial derivative of loss function $\mathcal{L}$ with respect to $b_y$ (bias te
 
 \newpage
 % Actication function
-\textbf{Activation function}\\
+\textbf{Activation function}
+\\[1ex]
 Activation functions, particularly the sigmoid function, are fundamental components of recurrent neural networks (RNNs). They transform input data into output data. A key property of these functions is their differentiability. Differentiability is crucial for the backpropagation through time (BPTT) algorithm, enabling the application of the chain rule during training. 
 \begin{equation}
     Sigmoid(x) = \frac{ 1 }{ 1+e^{-x} }
@@ -352,7 +356,8 @@ $Domain(Sigmoid'(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid'(x))=[0,0.5]$
 
 % Hyperbolic tangent activation function
 \newpage
-\textbf{Hyperbolic tangent activation function}\\
+\textbf{Hyperbolic tangent activation function}
+\\[1ex]
 The main role of the hyperbolic tangent (tanh) activation function is to normalize candidate values and convert the cell state to a hidden state when performing cell state updates. It limits the output between [-1,1] because it has a stable gradient, which is important for discovering long-range dependencies.
 \newline
 \begin{equation}
@@ -372,9 +377,166 @@ Below is the Hyperbolic tangent activation function and its derivative.\\
 $Domain(tanh(x))=\mathbb{R},\hspace{1em} Codomain(tanh(x))=[-1,1]$\\
 $Domain(tanh'(x))=\mathbb{R},\hspace{1em} Codomain(tanh'(x))=[0,1]$
 
+% Gradient vanishing and gradient exploring
 \newpage
-\textbf{Gradient vanishing and gradient exploring}\\
+\textbf{Gradient vanishing and gradient exploring}
+\\[1ex]
 When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient explored (Bengio et al. 1994). 
+\\[2ex]
+% Vanishing Gradients
+\textbf{Vanishing Gradients}
+\\[1ex]
+Generally, sigmoid activation function is used commonly in RNNs, has a maximum derivative of 0.25. When doing BPTT in long time steps, this multiplication results in exponentially diminishing gradients as the sequence length increases. Consequently, the shallow neural receive very small gradient updates, making it difficult to adjust the parameters effectively. This leads to the model struggling to learn long time dependencies. 
+\\[2ex]
+% Exploding Gradients
+\textbf{Exploding Gradients}
+\\[1ex]
+When we are doing the feedforward and get super large value computed by loss function. Then when updating the parameters. The updates to the weights will also be large. Resulting in higher loss and larger gradients in the next iterations. This will lead to exploding gradients.
+
+\newpage
+% Long short-term memory (LSTM)
+\textbf{Long short-term memory (LSTM)}
+\\[2ex]
+Long short-term memory proposed by Hochreiter \& Schmidhuber (1997). LSTM is designed for handling long time step problems. The architecture of LSTM can prevent vanishing gradient and exploring gradient. The main difference between LSTM and RNN is the number of gates. LSTM introduced input, forget and output gates. This allows LSTM to manage the flow of information more effectively, retaining important information over longer sequences.
+\\[2ex]
+Architecture
+\\[1ex]
+LSTMs introduce a memory cell that can maintain information over long time steps the cell is controlled by three gates, input gate, output gate, and forget gate. Each cell of LSTMs inside has 3 sigmoid and 1 tanh layer. Below graph unfolds the LSTM hence we can analyze different gates.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/lstm1.png} % Replace "example-image" with your image file
+\end{figure}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/lstm2.png} % Replace "example-image" with your image file
+\end{figure}
+\\
+% Forget gate
+Forget gate:
+\\[1ex]
+The forget gate is a component of the LSTM, designed to manage the flow of information within the cell state. The function of forget gate is to determine which information should be retained in memory cell (Hochreiter, S., \& Schmidhuber, J., 1997).
+\begin{equation}
+    f_t = \sigma( W_f \cdot [ h_{t-1} , x_t ] + b_f ) 
+\end{equation}
+% Input gate
+Input gate: 
+\\[1ex]
+The input gate controls how much new information from the current time step is allowed to enter the cell (Hochreiter, S., \& Schmidhuber, J., 1997). For the $\widetilde{C}_t$, the purpose is to suggest updates for the cell state. 
+\begin{equation}
+    i_t = \sigma( W_i \cdot [ h_{t-1} , x_t ] + b_c ) 
+\end{equation}
+\begin{equation}
+    \widetilde{C}_t = tanh( W_c \cdot [ h_{t-1} , x_t ] + b_c )
+\end{equation}
+% Cell state update
+Cell State Update:
+\\[1ex]
+The forget gate will drop the meaningless information and add some potential information.
+\begin{equation}
+    C_t = f_t * C_{t-1} + i_t * \widetilde{C_t}
+\end{equation}
+% Output gate
+Output gate:
+\\[1ex]
+The output gate is able to control how much or what information from the cell state should be passed to the next layer or used in predictions. 
+\begin{equation}
+    o_t = \sigma( W_o \cdot [ h_{t-1} , x_t ] + b_o )
+\end{equation}
+% Hidden state update
+Hidden State Update:
+\\[1ex]
+The hidden state is influenced by output value and current cell state. 
+\begin{equation}
+    h_t = o_t * tanh(C_t)
+\end{equation}
+\\[1ex]
+n = number of features in the input vector $x_t$.\\
+m = number of units in LSTM.\\
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $x_t$               & Input vector at time t                        & $n \times 1$\\
+    $h_t$               & Hidden state output at time t                 & $m \times 1$\\
+    $C_t$               & Cell state at time t                          & $m \times 1$\\
+    $f_t$               & Forget gate output at time t                  & $m \times 1$\\
+    $i_t$               & Input gate output at time t                   & $m \times 1$\\
+    $o_t$               & Output gate output at time t                  & $m \times 1$\\
+    $\widetilde{C_t}$   & Candidate memory cell at time t               & $m \times 1$\\
+    $W_f$               & Weight matrix for the forget gate             & $m \times (m+n)$\\
+    $W_i$               & Weight matrix for the input gate              & $m \times (m+n)$\\
+    $W_C$               & Weight matrix for the candidate memory cell   & $m \times (m+n)$\\
+    $W_o$               & Weight matrix for the output gate             & $m \times (m+n)$\\
+    $b_f$               & Bias vector for the forget gate               & $m \times 1$\\
+    $b_i$               & Bias vector for the input gate                & $m \times 1$\\
+    $b_C$               & Bias vector for the candidate memory cell     & $m \times 1$\\
+    $b_o$               & Bias vector for the output gate               & $m \times 1$\\
+    \hline
+    \caption{Unfolded RNN}
+\end{longtable}
+
+Number of parameters:\\
+\begin{enumerate}
+    % 1. Weights matrix for the input
+    \item Weights matrix for the input
+    \begin{itemize}
+        \item Forget gate: $n \times m$
+        \item Input gate: $n \times m$
+        \item Cell gate: $n \times m$
+        \item Output gate: $n \times m$
+    \end{itemize}
+
+    % 2. Weight matrix for the hidden state
+    \item Weight matrix for the hidden state
+    \begin{itemize}
+        \item Hidden state for forget gate: $m \times m$
+        \item Hidden state for input gate: $m \times m$
+        \item Hidden state for cell gate: $m \times m$
+        \item Hidden state for output gate: $m \times m$
+    \end{itemize}
+
+    % 3. Bias term
+    \item Bias term
+    \begin{itemize}
+        \item Bias for forget gate: $1 \times m$
+        \item Bias for input gate: $1 \times m$
+        \item Bias for cell gate: $1 \times m$
+        \item Bias for output gate: $1 \times m$
+    \end{itemize}
+\end{enumerate}
+Total parameters: $4 \times ( n + m + 1 ) \times m$
+
+\newpage
+% Gated Recurrent Unit (GRU)
+\textbf{Gated Recurrent Unit (GRU)}
+\\[1ex]
+The gated recurrent unit (GRU) was proposed by Cho et al.(2014) to make each recurrent unit to adaptively capture dependencies of different time scales. The GRU has 2 gate, update gate and reset gate. 
+\\[2ex]
+Update gate:
+\\[1ex]
+The update gate determines how much of the past information should be retained in the current hidden state. 
+\begin{equation}
+    z_t = \sigma(W_z \cdot [ h_{t-1} , x_t ] + b_z )
+\end{equation}
+% Reset gate
+Reset gate:
+\\[1ex]
+The reset gate is similar with the update gate, but the candidate hidden state is influenced by the reset gate. 
+\begin{equation}
+    r_t = \sigma( W_r \cdot [ h_{t-1} , x_t ] + b_r )
+\end{equation}
+Candidate hidden state:
+\\[1ex]
+The candidate hidden state combined with previous hidden state and current input to form the potential new information that can be added to the current hidden state.
+\begin{equation}
+    \widetilde{h_t} = tanh ( W_h \cdot [ r_t * h_{t-1} , x_t ] + b_h )
+\end{equation}
+Final hidden state
+\\[1ex]
+The final hidden state of the GRU at time t is a linear interpolation between the previous final hidden state and the candidate hidden state. 
+\begin{equation}
+    h_t = ( 1 - z_t ) * h_{t-1} + z_t * \widetilde{ h_t }
+\end{equation}
 % ######################## Literature Review ######################################
 
 
