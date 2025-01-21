@@ -7,6 +7,8 @@
 \usepackage{booktabs} % For nice tables
 \usepackage{lipsum} % For dummy text
 \usepackage{longtable}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \setlength{\parindent}{0em}
 % Page layout
 \geometry{margin=1in}
@@ -176,7 +178,7 @@ This unfolds the RNN to construct a traditional Feedforward Neural Network where
     % \label{fig:sdfsdf}
 \end{figure}
 
-
+\newpage
 \begin{longtable}{|c|c|c|}
     \hline
     \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
@@ -289,30 +291,97 @@ Partial derivative of loss function $\mathcal{L}$ with respect to $b_y$ (bias te
     b_y \leftarrow b_y - \alpha\dfrac{\partial\mathcal{L}}{\partial b_y}
 \end{equation}
 
+\newpage
 \textbf{Pseudocode of BPTT} (Wikipedia, 2023)
-\begin{center}
-    \begin{tabular}{c}
-        $Back_Propagation_Through_Time(a, y)   % a[t] is the input at time t. y[t] is the output
-        Unfold the network to contain k instances of f
-        do until stopping criterion is met:
-        x := the zero-magnitude vector % x is the current context
-        % for t from 0 to n − k do      % t is time. n is the length of the training sequence
-        % Set the network inputs to x, a[t], a[t+1], ..., a[t+k−1]
-        % p := forward-propagate the inputs over the whole unfolded network
-        % e := y[t+k] − p;           % error = target − prediction
-        Back-propagate the error, e, back across the whole unfolded network
-        Sum the weight changes in the k instances of f together.
-        Update all the weights in f and g.
-        x := f(x, a[t]);$           % compute the context for the next time-step
- 
-    \end{tabular}
-\end{center}
+\begin{algorithm}[H]
+    \caption{Backpropagation Through Time (BPTT)}
+    \begin{algorithmic}[1]
+    \STATE \textbf{Input:} 
+    \STATE \hspace{1em} Sequence of input data $\{x_1, x_2, \dots, x_T\}$
+    \STATE \hspace{1em} Sequence of target outputs $\{y_1, y_2, \dots, y_T\}$
+    \STATE \hspace{1em} Learning rate $\eta$
+    \STATE \hspace{1em} Number of time steps to unroll $N$
+    \STATE \textbf{Initialize:} Model parameters $\theta$, hidden state $h_0 = 0$
+    
+    \STATE \textbf{Forward Pass:}
+    \FOR{$t = 1$ to $T$}
+        \STATE Compute hidden state: $h_t = f(h_{t-1}, x_t; \theta)$
+        \STATE Compute output: $\hat{y}_t = g(h_t; \theta)$
+        \STATE Compute loss for time step $t$: $L_t = \mathcal{L}(\hat{y}_t, y_t)$
+    \ENDFOR
+    
+    \STATE \textbf{Backward Pass (BPTT):}
+    \STATE Set total loss: $L = \sum_{t=1}^{T} L_t$
+    \FOR{$t = T$ down to $1$}
+        \STATE Compute gradient of loss with respect to output: $\frac{\partial L_t}{\partial \hat{y}_t}$
+        \STATE Backpropagate through output layer to obtain: $\frac{\partial L_t}{\partial h_t}$
+        \STATE Accumulate gradients for parameters: $\frac{\partial L}{\partial \theta}$
+        \FOR{$k = 1$ to $N$}
+            \STATE Backpropagate through time for $N$ steps:
+            \STATE Compute gradient contribution from step $t-k$: $\frac{\partial L_t}{\partial h_{t-k}}$
+        \ENDFOR
+    \ENDFOR
+    
+    \STATE \textbf{Update Parameters:}
+    \STATE $\theta = \theta - \eta \cdot \frac{\partial L}{\partial \theta}$
+    
+    \STATE \textbf{Output:} Updated parameters $\theta$
+    \end{algorithmic}
+\end{algorithm}
+
+\newpage
+% Actication function
+\textbf{Activation function}\\
+Activation functions, particularly the sigmoid function, are fundamental components of recurrent neural networks (RNNs). They transform input data into output data. A key property of these functions is their differentiability. Differentiability is crucial for the backpropagation through time (BPTT) algorithm, enabling the application of the chain rule during training. 
+\begin{equation}
+    Sigmoid(x) = \frac{ 1 }{ 1+e^{-x} }
+\end{equation}
+\begin{equation}
+    Sigmoid'(x) = Sigmoid(x)(1-Sigmoid(x))
+\end{equation}
+Below is the sigmoid function and its derivative.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{./Pic/sigmoid.png} % Replace "example-image" with your image file
+    % \caption{An example image.}
+    \label{fig:sigmoid}
+\end{figure}
+\newline
+$Domain(Sigmoid(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid(x))=(0,1)$\\
+$Domain(Sigmoid'(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid'(x))=[0,0.5]$
+
+% Hyperbolic tangent activation function
+\newpage
+\textbf{Hyperbolic tangent activation function}\\
+The main role of the hyperbolic tangent (tanh) activation function is to normalize candidate values and convert the cell state to a hidden state when performing cell state updates. It limits the output between [-1,1] because it has a stable gradient, which is important for discovering long-range dependencies.
+\newline
+\begin{equation}
+    tanh(x) = \frac{ e^{x} - e^{-x} }{e^{x} + e^{-x}}
+\end{equation}
+\begin{equation}
+    tanh'(x) = 1 - tanh^{2}(x)
+\end{equation}
+Below is the Hyperbolic tangent activation function and its derivative.\\
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{./Pic/tanh.png} % Replace "example-image" with your image file
+    % \caption{An example image.}
+    \label{fig:tanh}
+\end{figure}
+\newline
+$Domain(tanh(x))=\mathbb{R},\hspace{1em} Codomain(tanh(x))=[-1,1]$\\
+$Domain(tanh'(x))=\mathbb{R},\hspace{1em} Codomain(tanh'(x))=[0,1]$
+
+\newpage
+\textbf{Gradient vanishing and gradient exploring}\\
+When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient explored (Bengio et al. 1994). 
 % ######################## Literature Review ######################################
 
 
 
 
 \section{Inserting Images}
+asdfpiojaseopritjf
 To insert an image, use the `graphicx` package. For example:
 
 \begin{figure}[!htb]

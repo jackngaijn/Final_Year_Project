@@ -5,8 +5,8 @@
 \contentsline {section}{\numberline {5}Experimental design}{3}{section.5}%
 \contentsline {section}{\numberline {6}Introduction}{4}{section.6}%
 \contentsline {section}{\numberline {7}Literature Review}{5}{section.7}%
-\contentsline {section}{\numberline {8}Inserting Images}{8}{section.8}%
-\contentsline {section}{\numberline {9}Tables}{8}{section.9}%
-\contentsline {section}{\numberline {10}Hyperlinks}{8}{section.10}%
-\contentsline {section}{\numberline {11}Conclusions}{8}{section.11}%
-\contentsline {section}{\numberline {A}Appendix}{9}{appendix.A}%
+\contentsline {section}{\numberline {8}Inserting Images}{11}{section.8}%
+\contentsline {section}{\numberline {9}Tables}{11}{section.9}%
+\contentsline {section}{\numberline {10}Hyperlinks}{12}{section.10}%
+\contentsline {section}{\numberline {11}Conclusions}{12}{section.11}%
+\contentsline {section}{\numberline {A}Appendix}{13}{appendix.A}%
