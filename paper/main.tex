@@ -537,6 +537,37 @@ The final hidden state of the GRU at time t is a linear interpolation between th
 \begin{equation}
     h_t = ( 1 - z_t ) * h_{t-1} + z_t * \widetilde{ h_t }
 \end{equation}
+
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $x_t$               & Input vector at time t                        & $n \times 1$\\
+    $h_t$               & Hidden state output at time t                 & $m \times 1$\\
+    $r_t$               & Reset gate output at time t                   & $m \times 1$\\
+    $z_t$               & Update gate output at time t                  & $m \times 1$\\
+    $W_z$               & Weight matrix for the update gate             & $m \times (m+n)$\\
+    $W_r$               & Weight matrix for the candidate memory cell   & $m \times (m+n)$\\
+    $W_h$               & Weight matrix for the output gate             & $m \times (m+n)$\\
+    $b_z$               & Bias vector for the input gate                & $m \times 1$\\
+    $b_r$               & Bias vector for the candidate memory cell     & $m \times 1$\\
+    $b_h$               & Bias vector for the output gate               & $m \times 1$\\
+    \hline
+\end{longtable}
+
+\newpage
+% Hidden markov model
+\textbf{Hidden Markov Model}
+\\[1ex]
+For the NLP tasks, there may have some unobservable data, for example the implicit sentiment, user intent, emotional state. Rabiner (1989, 1993) proposes the hidden Markov model (HMM), the assumption is the existence of the latent process follows a Markov chain from which observations X are generated. In other word, there would exists an unobserved state sequence $Z = \{z_1, z_2 \cdots , z_T\}$ in observed sequence $X = \{x_1, x_2, \cdots, x_T\}$. Where the hidden states, $z_t$ belonging to state-space $Q = \{q_1, q_2, \cdots, q_M \}$ follow a Markov chain goverened by: 
+\begin{itemize}
+    \item A state-transition probability matrix $A = [a_{ij}] \in \mathbb{R}^{M \times M}$ where $a_{ij} = p(z_{t+1} = q_j | z_t = q_i)$ 
+\end{itemize}
+\begin{itemize}
+    \item Initial state matrix $\pi = [\pi_i] \in \mathbb{R}_{1 \times M}$ with $\pi_i = p(z_1 = q_i)$
+\end{itemize}
+% \\[1ex]
+
 % ######################## Literature Review ######################################
 
 
