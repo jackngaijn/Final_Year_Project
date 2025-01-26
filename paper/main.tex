@@ -9,6 +9,9 @@
 \usepackage{longtable}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage[style=apa, sorting=nyt, backend=biber]{biblatex} % Use biber as the backend
+\addbibresource{references.bib}
+
 \setlength{\parindent}{0em}
 % Page layout
 \geometry{margin=1in}
@@ -155,8 +158,8 @@ The goal of this paper is to analyze, implement, and compare the performance of 
 \section{Introduction}
 
 With the rise of the Generative Artificial Intelligence, the development of AI has already made remarkable strides in processing sequential data. In understanding and producing sequential data. It has applications ranging from Natural Language Processing (NLP) to music composition to video generation. Especially NLP, has emerged as a pivotal field in artificial intelligence, enable machines to understand, interpret and generate in human readable format. Siri, Alexa and bixby have shown the possibility. Everyone can communicate with those machines and they with make the reasonable response to user.\\[2ex]
-Recurrent Neural Networks (RNNs) have been a foundational architecture in this domain, the architecture of RNNs is design for sequential data. It able to retain the information through hidden states. Unfortunately, early RNNs had limitation in training of networks over long sequence. vanishing and exploding gradient problems significantly affect the training process of RNN (Bengio, Simard, \& Frasconi, 1994). Eliminating many practical applications of RNNs. After that, Hochreiter and Schmidhuber (1997) introduced Long Short-Term Memory (LSTM) networks and are responsible for the breakthrough in how to solve these challenges. Specificized gating mechanisms were introduced in LSTMs to regulate the flow of the information, minimize the vanishing gradient problem and learn the long-term dependencies. This advanced made RNNs much more performant on tasks like a language modeling, machine translation and speech recognition tasks.\\[2ex]
-Further improvements were achieved with Gated Recurrent Units (GRUs) by Cho et al. (2014) which diminished the LSTM architecture's complexity, but still provided the same performance. GRUs performed comparably but used fewer parameters, making it computationally and more tractably trainable.
+Recurrent Neural Networks (RNNs) have been a foundational architecture in this domain, the architecture of RNNs is design for sequential data. It able to retain the information through hidden states. Unfortunately, early RNNs had limitation in training of networks over long sequence. vanishing and exploding gradient problems significantly affect the training process of RNN \parencite{bengio1994learning}. Eliminating many practical applications of RNNs. After that, \parencite{hochreiter1997lstm} introduced Long Short-Term Memory (LSTM) networks and are responsible for the breakthrough in how to solve these challenges. Specificized gating mechanisms were introduced in LSTMs to regulate the flow of the information, minimize the vanishing gradient problem and learn the long-term dependencies. This advanced made RNNs much more performant on tasks like a language modeling, machine translation and speech recognition tasks.\\[2ex]
+Further improvements were achieved with Gated Recurrent Units (GRUs) by \parencite{cho2014properties} which diminished the LSTM architecture's complexity, but still provided the same performance. GRUs performed comparably but used fewer parameters, making it computationally and more tractably trainable.
 % ######################## Introduction ######################################
 
 \newpage
@@ -164,11 +167,11 @@ Further improvements were achieved with Gated Recurrent Units (GRUs) by Cho et a
 \section{Literature Review}
 \textbf{Backpropagation Through Time}
 \\[1ex]
-BPTT is one of the most important algorithms used for training RNNs. Dating back to the original effort to expand the typical backpropagation algorithm, BPTT has been formulated to handle the difficulties of temporal sequences that are inherent in sequential data (Werbos, 1990). This algorithm allows RNNs in learning sequence dependent data by unfold the network over time steps and then updating weights matrix through the gradient of loss function with respect to the variable (Rumelhart, Hinton, \& Williams, 1986).
+BPTT is one of the most important algorithms used for training RNNs. Dating back to the original effort to expand the typical backpropagation algorithm, BPTT has been formulated to handle the difficulties of temporal sequences that are inherent in sequential data \parencite{werbos1990bptt}. This algorithm allows RNNs in learning sequence dependent data by unfold the network over time steps and then updating weights matrix through the gradient of loss function with respect to the variable \parencite{rumelhart1986backpropagation}.
 \\[2ex]
 \textbf{Conceptual Framework of BPTT}
 \\[1ex]
-BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period (Werbos, 1990).
+BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period \parencite{werbos1990bptt}.
 
 This unfolds the RNN to construct a traditional Feedforward Neural Network where we can apply backpropagation through time. Below is the conceptual idea of BPTT in RNN.
 \begin{figure}[h!]
@@ -295,7 +298,7 @@ Partial derivative of loss function $\mathcal{L}$ with respect to $b_y$ (bias te
 \end{equation}
 
 \newpage
-\textbf{Pseudocode of BPTT} (Wikipedia, 2023)
+\textbf{Pseudocode of BPTT} \parencite{wikipedia2023bptt}
 \begin{algorithm}[H]
     \caption{Backpropagation Through Time (BPTT)}
     \begin{algorithmic}[1]
@@ -381,7 +384,7 @@ $Domain(tanh'(x))=\mathbb{R},\hspace{1em} Codomain(tanh'(x))=[0,1]$
 \newpage
 \textbf{Gradient vanishing and gradient exploring}
 \\[1ex]
-When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient explored (Bengio et al. 1994). 
+When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient explored \parencite{bengio1994learning}. 
 \\[2ex]
 % Vanishing Gradients
 \textbf{Vanishing Gradients}
@@ -397,7 +400,7 @@ When we are doing the feedforward and get super large value computed by loss fun
 % Long short-term memory (LSTM)
 \textbf{Long short-term memory (LSTM)}
 \\[2ex]
-Long short-term memory proposed by Hochreiter \& Schmidhuber (1997). LSTM is designed for handling long time step problems. The architecture of LSTM can prevent vanishing gradient and exploring gradient. The main difference between LSTM and RNN is the number of gates. LSTM introduced input, forget and output gates. This allows LSTM to manage the flow of information more effectively, retaining important information over longer sequences.
+Long short-term memory proposed by \parencite{hochreiter1997lstm}. LSTM is designed for handling long time step problems. The architecture of LSTM can prevent vanishing gradient and exploring gradient. The main difference between LSTM and RNN is the number of gates. LSTM introduced input, forget and output gates. This allows LSTM to manage the flow of information more effectively, retaining important information over longer sequences.
 \\[2ex]
 Architecture
 \\[1ex]
@@ -414,14 +417,14 @@ LSTMs introduce a memory cell that can maintain information over long time steps
 % Forget gate
 Forget gate:
 \\[1ex]
-The forget gate is a component of the LSTM, designed to manage the flow of information within the cell state. The function of forget gate is to determine which information should be retained in memory cell (Hochreiter, S., \& Schmidhuber, J., 1997).
+The forget gate is a component of the LSTM, designed to manage the flow of information within the cell state. The function of forget gate is to determine which information should be retained in memory cell \parencite{hochreiter1997lstm}.
 \begin{equation}
     f_t = \sigma( W_f \cdot [ h_{t-1} , x_t ] + b_f ) 
 \end{equation}
 % Input gate
 Input gate: 
 \\[1ex]
-The input gate controls how much new information from the current time step is allowed to enter the cell (Hochreiter, S., \& Schmidhuber, J., 1997). For the $\widetilde{C}_t$, the purpose is to suggest updates for the cell state. 
+The input gate controls how much new information from the current time step is allowed to enter the cell \parencite{hochreiter1997lstm}. For the $\widetilde{C}_t$, the purpose is to suggest updates for the cell state. 
 \begin{equation}
     i_t = \sigma( W_i \cdot [ h_{t-1} , x_t ] + b_c ) 
 \end{equation}
@@ -510,7 +513,7 @@ Total parameters: $4 \times ( n + m + 1 ) \times m$
 % Gated Recurrent Unit (GRU)
 \textbf{Gated Recurrent Unit (GRU)}
 \\[1ex]
-The gated recurrent unit (GRU) was proposed by Cho et al.(2014) to make each recurrent unit to adaptively capture dependencies of different time scales. The GRU has 2 gate, update gate and reset gate. 
+The gated recurrent unit (GRU) was proposed by \parencite{cho2014properties} to make each recurrent unit to adaptively capture dependencies of different time scales. The GRU has 2 gate, update gate and reset gate. 
 \\[2ex]
 Update gate:
 \\[1ex]
@@ -559,17 +562,52 @@ The final hidden state of the GRU at time t is a linear interpolation between th
 % Hidden markov model
 \textbf{Hidden Markov Model}
 \\[1ex]
-For the NLP tasks, there may have some unobservable data, for example the implicit sentiment, user intent, emotional state. Rabiner (1989, 1993) proposes the hidden Markov model (HMM), the assumption is the existence of the latent process follows a Markov chain from which observations X are generated. In other word, there would exists an unobserved state sequence $Z = \{z_1, z_2 \cdots , z_T\}$ in observed sequence $X = \{x_1, x_2, \cdots, x_T\}$. Where the hidden states, $z_t$ belonging to state-space $Q = \{q_1, q_2, \cdots, q_M \}$ follow a Markov chain goverened by: 
+For the NLP tasks, there may have some unobservable data, for example the implicit sentiment, user intent, emotional state. \parencite{rabiner1993fundamentals} proposes the hidden Markov model (HMM), the assumption is the existence of the latent process follows a Markov chain from which observations X are generated. In other word, there would exists an unobserved state sequence $Z = \{z_1, z_2 \cdots , z_T\}$ in observed sequence $X = \{x_1, x_2, \cdots, x_T\}$. Where the hidden states, $z_t$ belonging to state-space $Q = \{q_1, q_2, \cdots, q_M \}$ follow a Markov chain goverened by: 
 \begin{itemize}
     \item A state-transition probability matrix $A = [a_{ij}] \in \mathbb{R}^{M \times M}$ where $a_{ij} = p(z_{t+1} = q_j | z_t = q_i)$ 
 \end{itemize}
 \begin{itemize}
     \item Initial state matrix $\pi = [\pi_i] \in \mathbb{R}_{1 \times M}$ with $\pi_i = p(z_1 = q_i)$
 \end{itemize}
-% \\[1ex]
+Furthermore, for the hidden state $z_t$, correspoinding to the observe data $x_t$ is release by emission process $B = [b_j(x)]$ where $b_j(x) = p(x|z=q_i)$. We can assume $b_j(x)$ is follows the Gaussian mixture model (GMM).
+\begin{equation}
+    p(x_t|z=q_j) = \sum_{l=1}^{k}c_{jl}\mathcal{N}(x_t|\mu_{jl}, \Sigma_{jl})
+\end{equation}
+where $\sum_{l=1}^{k}c_{jl} = 1$, $\forall j = \{1,\cdots, M\}$, k is the number of Gaussian mixture components and $\mathcal{N}(x_t|\mu_{jl}, \Sigma_{jl})$ denotes a Gaussian probability density with mean $\mu_{jl}$ and covariance $\Sigma_{jl}$ for state $j$ and mixture component $l$. The number of hidden states ($M$) and mixture component ($k$) are the two hyperparameters of the model which have to be provided apriori.
+\\[1ex]
+Therefore, the joint probability probability density function of the observation $X$ can be expressed as:
+\begin{equation}
+    p(X) = p(z_1) \prod^{t=1}_{T-1} p(z_{t+1}|z_{t}) \prod_{t=1}^{T} p(x_t|z_t)
+\end{equation}
+The optimal parameters $[A, B, \pi]$, which maximize the likelihood of the observation sequence $X$ (Equation 39), are determined using the Baum-Welch algorithm, an expectation-maximization method \parencite{rabiner1993fundamentals}. Additionally, the probability of the system in a specific hidden state $z_t$ corresponding to the observation $x_t$ is calculated using the Viterbi algorithm.
+\newpage
 
+\textbf{Word representation}
+\\[1ex]
+In RNN, the due to the architecture, the model can only handle vector, it is important that convert the word into machine readable format. By translating words into vectors, these representations capture semantic meanings, relationships and contexts. \parencite{mikolov2013efficient} proposed 2 model architectures for leaning distributed representations of words.
+\\[1ex]
+\textbf{Continuous Bag of Words model}
+CBOW operates by taking context words around a target word, it is flexible to adjust the window size which mean that we can control how many words around our target word. Hence aggregating their embeddings and passing to hidden layer to produce a probability distribution. Capture the semantic meanings and the relationship more effectively. 
+\begin{equation}
+    Q = N \times D + D \times log_2(V)
+\end{equation}
+\\[1ex]
+\textbf{Continuous Skip gram model}
+\\[1ex]
+The continuous skip gram model operates in opposite direction compare with CBOW. The model takes the surrounding word to predict the target word. In other word, treat the current word as an input to a log-linear classifier with continuous projection layer, and predict the probability distribution of surrounding words.
+\begin{equation}
+    Q = C \times (D + D \times log_2(V))
+\end{equation}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/word_representation.png} % Replace "example-image" with your image file
+\end{figure}
+\newpage
 % ######################## Literature Review ######################################
 
+% ######################## Reference ######################################
+\printbibliography
+% ######################## Reference ######################################
 
 
 
