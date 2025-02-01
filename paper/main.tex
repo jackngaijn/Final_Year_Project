@@ -561,8 +561,31 @@ The final hidden state of the GRU at time t is a linear interpolation between th
 
 % Deep recurrent neural networks (DRNNs)
 \textbf{Deep Recurrent Neural Networks (DRNNs)}
-
-
+\\[1ex]
+Deep architecture networks with multiple layers that can hierarchically learn complex representations \parencite{bengio2009learning}. By extending of this concept, stacking recurrent layers to form Deep Recurrent Neural Networks aligns with this principle. A number of research papers have been prove that the performance of DRNNs is out-performance then conventional RNNs. \parencite{le2010deep, delalleau2011shallow, pascanu2013on}
+\\[1ex]
+The architecture of DRNNs are similar with conventional RNNs. We simply stack the recurrent layers vertically. For the first layer, this layer receives the input and combines it with its previous hidden state $h_{t-1}$ (Equation 38). The second layer receive the hidden state of the first layer and treat as the input of the layer 2 (Equation 39). We can extend this concept to $L$ layers (Equation 40).
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../Pic/drnn.png} % Replace "example-image" with your image file
+\end{figure}
+\\[1ex]
+\begin{equation}
+    h^{(1)}_t = f(W^{(1)}_{xh} x_{t} + W^{(1)}_{hh} h^{(1)}_{t-1} + b^{(1)}_h)
+\end{equation}
+\begin{equation}
+    h^{(2)}_t = f(W^{(2)}_{xh} h^{(1)}_{t} + W^{(2)}_{hh} h^{(2)}_{t-1} + b^{(2)}_h)
+\end{equation}
+\begin{equation}
+    h^{(L)}_t = f(W^{(L)}_{xh} h^{(L-1)}_{t} + W^{(L)}_{hh} h^{(L)}_{t-1} + b^{(L)}_h)
+\end{equation}
+\begin{equation}
+    o_t = W_{hy}h^{(L)}_{t} + b_y
+\end{equation}
+\begin{equation}
+    y_t = g(o_t)
+\end{equation}
+Where $x_t$ is the input at time $t$. $h^{(l)}_{t}$ is the hidden state for the $l$ layer at time t. $W^{(l)}_{xh}, W^{(l)}_{hh}$ are the weight matrices for the input to hidden and hidden to hidden connections in layer $l$, respectively. $W_{hy}$ is weight matrix for the output layer. $b^{(l)}_h$ is the bias vector for the $l$ layer, $b_y$ is the bias vector for output layer. $g(\cdot)$ and $f(\cdot)$ are an activation function. 
 
 \newpage
 % Hidden markov model

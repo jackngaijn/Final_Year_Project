@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.30)  1 FEB 2025 13:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.30)  1 FEB 2025 20:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -770,32 +770,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 481--482
 
  []
 
-[13] [14] [15] [16]
-Overfull \hbox (3.16977pt too wide) in paragraph at lines 587--589
+[13] [14] [15]
+<../Pic/drnn.png, id=259, 608.2725pt x 689.57625pt>
+File: ../Pic/drnn.png Graphic file (type png)
+<use ../Pic/drnn.png>
+Package pdftex.def Info: ../Pic/drnn.png  used on input line 570.
+(pdftex.def)             Requested size: 226.48395pt x 256.74908pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--573
+
+ []
+
+[16 <../Pic/drnn.png>]
+Overfull \hbox (3.16977pt too wide) in paragraph at lines 610--612
 \OT1/cmr/m/n/12 quence $\OML/cmm/m/it/12 X$ \OT1/cmr/m/n/12 (Equa-tion 39), are de-ter-mined us-ing the Baum-Welch al-go-rithm, an expectation-
  []
 
 [17]
-<../Pic/word_representation.png, id=269, 469.755pt x 281.853pt>
+<../Pic/word_representation.png, id=285, 469.755pt x 281.853pt>
 File: ../Pic/word_representation.png Graphic file (type png)
 <use ../Pic/word_representation.png>
-Package pdftex.def Info: ../Pic/word_representation.png  used on input line 609.
+Package pdftex.def Info: ../Pic/word_representation.png  used on input line 632.
 (pdftex.def)             Requested size: 452.9679pt x 271.78pt.
  [18 <../Pic/word_representation.png>]
 File: ../Pic/pic1.png Graphic file (type png)
 <use ../Pic/pic1.png>
-Package pdftex.def Info: ../Pic/pic1.png  used on input line 631.
+Package pdftex.def Info: ../Pic/pic1.png  used on input line 654.
 (pdftex.def)             Requested size: 452.9679pt x 268.68968pt.
- [19
-pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.656 \section
-              {Conclusions}] [20
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[19] [20
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.659 \newpage
+l.682 \newpage
+              
+pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.682 \newpage
               ] [21] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -808,18 +823,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19235 strings out of 474116
- 337202 string characters out of 5743681
+ 19275 strings out of 474116
+ 338397 string characters out of 5743681
  1950187 words of memory out of 5000000
- 41239 multiletter control sequences out of 15000+600000
+ 41270 multiletter control sequences out of 15000+600000
  567209 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,8n,93p,1025b,5050s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (21 pages, 538770 bytes).
+Output written on main.pdf (21 pages, 630895 bytes).
 PDF statistics:
- 405 PDF objects out of 1000 (max. 8388607)
- 336 compressed objects within 4 object streams
- 134 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 426 PDF objects out of 1000 (max. 8388607)
+ 355 compressed objects within 4 object streams
+ 143 named destinations out of 1000 (max. 500000)
+ 132 words of extra memory for PDF output out of 10000 (max. 10000000)
 

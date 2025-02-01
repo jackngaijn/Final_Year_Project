@@ -19,6 +19,39 @@
 
 \refsection{0}
   \datalist[entry]{nyt/apasortcite//global/global}
+    \entry{bengio2009learning}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{fullhash}{419350ebbeb4eba5351469f378dee007}
+      \strng{bibnamehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{authorbibnamehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{authornamehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{authorfullhash}{419350ebbeb4eba5351469f378dee007}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Found. Trends Mach. Learn.}
+      \field{number}{1}
+      \field{title}{Learning Deep Architectures for AI}
+      \field{volume}{2}
+      \field{year}{2009}
+      \field{pages}{1\bibrangedash 127}
+      \range{pages}{127}
+      \verb{doi}
+      \verb 10.1561/2200000006
+      \endverb
+    \endentry
     \entry{bengio1994learning}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
@@ -116,6 +149,38 @@
       \verb 10.48550/arxiv.1409.1259
       \endverb
     \endentry
+    \entry{delalleau2011shallow}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=5365c3f4c12ed9d7c26f04d8b1c961ec}{%
+           family={Delalleau},
+           familyi={D\bibinitperiod},
+           given={O},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{fullhash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{bibnamehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{authorbibnamehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{authornamehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{authorfullhash}{8ca81e7b011a56246657d748b32c3e51}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{In NIPS}
+      \field{title}{Shallow vs. deep sum-product networks}
+      \field{year}{2011}
+    \endentry
     \entry{hochreiter1997lstm}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=67eed9a763828f8510ead534591a2d63}{%
@@ -153,6 +218,45 @@
       \range{pages}{46}
       \verb{doi}
       \verb 10.1162/neco.1997.9.8.1735
+      \endverb
+    \endentry
+    \entry{le2010deep}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a42515dd1503635976d698f264b00eb8}{%
+           family={Le\bibnamedelima Roux},
+           familyi={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={N},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{fullhash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{bibnamehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{authorbibnamehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{authornamehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{authorfullhash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{FouNeural Computation}
+      \field{number}{8}
+      \field{title}{Deep Belief Networks Are Compact Universal Approximators}
+      \field{volume}{22}
+      \field{year}{2010}
+      \field{pages}{2192\bibrangedash 2207}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1162/neco.2010.08-09-1081
       \endverb
     \endentry
     \entry{mikolov2013efficient}{article}{}
@@ -200,6 +304,47 @@
       \field{year}{2013}
       \verb{doi}
       \verb 10.48550/arxiv.1301.3781
+      \endverb
+    \endentry
+    \entry{pascanu2013on}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=13497d969a947b154e00e8cee51099c7}{%
+           family={Pascanu},
+           familyi={P\bibinitperiod},
+           given={R},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1f94fc5a7d0163f645128ffeea35b0e7}{%
+           family={Montufar},
+           familyi={M\bibinitperiod},
+           given={G},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{57e2992777f3aee65ac97bb9267a7e45}
+      \strng{fullhash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \strng{bibnamehash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \strng{authorbibnamehash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \strng{authornamehash}{57e2992777f3aee65ac97bb9267a7e45}
+      \strng{authorfullhash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{In NIPS}
+      \field{title}{On the number of response regions of deep feed forward networks with piece-wise linear activations}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.48550/arxiv.1312.6098
       \endverb
     \endentry
     \entry{rabiner1993fundamentals}{book}{}
@@ -339,6 +484,39 @@
     \endentry
   \enddatalist
   \datalist[entry]{nyt/global//global/global}
+    \entry{bengio2009learning}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{fullhash}{419350ebbeb4eba5351469f378dee007}
+      \strng{bibnamehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{authorbibnamehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{authornamehash}{419350ebbeb4eba5351469f378dee007}
+      \strng{authorfullhash}{419350ebbeb4eba5351469f378dee007}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Found. Trends Mach. Learn.}
+      \field{number}{1}
+      \field{title}{Learning Deep Architectures for AI}
+      \field{volume}{2}
+      \field{year}{2009}
+      \field{pages}{1\bibrangedash 127}
+      \range{pages}{127}
+      \verb{doi}
+      \verb 10.1561/2200000006
+      \endverb
+    \endentry
     \entry{bengio1994learning}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
@@ -436,6 +614,38 @@
       \verb 10.48550/arxiv.1409.1259
       \endverb
     \endentry
+    \entry{delalleau2011shallow}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=5365c3f4c12ed9d7c26f04d8b1c961ec}{%
+           family={Delalleau},
+           familyi={D\bibinitperiod},
+           given={O},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{fullhash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{bibnamehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{authorbibnamehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{authornamehash}{8ca81e7b011a56246657d748b32c3e51}
+      \strng{authorfullhash}{8ca81e7b011a56246657d748b32c3e51}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{In NIPS}
+      \field{title}{Shallow vs. deep sum-product networks}
+      \field{year}{2011}
+    \endentry
     \entry{hochreiter1997lstm}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=67eed9a763828f8510ead534591a2d63}{%
@@ -473,6 +683,45 @@
       \range{pages}{46}
       \verb{doi}
       \verb 10.1162/neco.1997.9.8.1735
+      \endverb
+    \endentry
+    \entry{le2010deep}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a42515dd1503635976d698f264b00eb8}{%
+           family={Le\bibnamedelima Roux},
+           familyi={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={N},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{fullhash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{bibnamehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{authorbibnamehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{authornamehash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \strng{authorfullhash}{a86419db72c7fe7051fa76c61aa6fd51}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{FouNeural Computation}
+      \field{number}{8}
+      \field{title}{Deep Belief Networks Are Compact Universal Approximators}
+      \field{volume}{22}
+      \field{year}{2010}
+      \field{pages}{2192\bibrangedash 2207}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1162/neco.2010.08-09-1081
       \endverb
     \endentry
     \entry{mikolov2013efficient}{article}{}
@@ -520,6 +769,47 @@
       \field{year}{2013}
       \verb{doi}
       \verb 10.48550/arxiv.1301.3781
+      \endverb
+    \endentry
+    \entry{pascanu2013on}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=13497d969a947b154e00e8cee51099c7}{%
+           family={Pascanu},
+           familyi={P\bibinitperiod},
+           given={R},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1f94fc5a7d0163f645128ffeea35b0e7}{%
+           family={Montufar},
+           familyi={M\bibinitperiod},
+           given={G},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419350ebbeb4eba5351469f378dee007}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Y},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{57e2992777f3aee65ac97bb9267a7e45}
+      \strng{fullhash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \strng{bibnamehash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \strng{authorbibnamehash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \strng{authornamehash}{57e2992777f3aee65ac97bb9267a7e45}
+      \strng{authorfullhash}{6216fb336d9cbace6de596b7ab35b0d2}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{In NIPS}
+      \field{title}{On the number of response regions of deep feed forward networks with piece-wise linear activations}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.48550/arxiv.1312.6098
       \endverb
     \endentry
     \entry{rabiner1993fundamentals}{book}{}
