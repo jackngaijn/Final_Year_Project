@@ -291,8 +291,7 @@ $Domain(tanh'(x))=\mathbb{R},\hspace{1em} Codomain(tanh'(x))=[0,1]$
 
 % Gradient vanishing and gradient exploring
 \newpage
-\textbf{Gradient vanishing and gradient exploring}
-\\[1ex]
+\subsubsection{Gradient vanishing and gradient exploring}
 When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient explored \parencite{bengio1994learning}. 
 \\[2ex]
 % Vanishing Gradients
@@ -306,6 +305,322 @@ Generally, sigmoid activation function is used commonly in RNNs, has a maximum d
 When we are doing the feedforward and get super large value computed by loss function. Then when updating the parameters. The updates to the weights will also be large. Resulting in higher loss and larger gradients in the next iterations. This will lead to exploding gradients.
 \\[1ex]
 We have introduce the backpropagation through time. This is the method to update the parameters in RNNs. When calculating, for example, the partial derivative of loss function with respect to W. Assume the time $t$ go to infinity large. We will get this term. $ \prod_{j=i+1}^{t} \dfrac{\partial h_j}{\partial h_{j-1}} $, and it will lead to exponential problem. if $ \dfrac{\partial h_j}{\partial h_{j-1}} > 1 $. Then the product of all term will increase exponentially, then exploding gradients occur. On the contrary, if $\dfrac{\partial h_j}{\partial h_{j-1}} < 1$. Then the result will decrease exponentially, then vanishing gradients occur.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/exponential_growth.png} % Replace "example-image" with your image file
+\end{figure}
+
+
+\newpage
+% Long short-term memory (LSTM)
+\subsubsection{Long short-term memory (LSTM)}
+Long short-term memory proposed by \parencite{hochreiter1997lstm}. LSTM is designed for handling long time step problems. The architecture of LSTM can prevent vanishing gradient and exploring gradient. The main difference between LSTM and RNN is the number of gates. LSTM introduced input, forget and output gates. This allows LSTM to manage the flow of information more effectively, retaining important information over longer sequences.
+\\[2ex]
+Architecture
+\\[1ex]
+LSTMs introduce a memory cell that can maintain information over long time steps the cell is controlled by three gates, input gate, output gate, and forget gate. Each cell of LSTMs inside has 3 sigmoid and 1 tanh layer. Below graph unfolds the LSTM hence we can analyze different gates.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/lstm1.png} % Replace "example-image" with your image file
+\end{figure}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/lstm2.png} % Replace "example-image" with your image file
+\end{figure}
+\\
+% Forget gate
+Forget gate:
+\\[1ex]
+The forget gate is a component of the LSTM, designed to manage the flow of information within the cell state. The function of forget gate is to determine which information should be retained in memory cell \parencite{hochreiter1997lstm}.
+\begin{equation}
+    f_t = \sigma( W_f \cdot [ h_{t-1} , x_t ] + b_f ) 
+\end{equation}
+% Input gate
+Input gate: 
+\\[1ex]
+The input gate controls how much new information from the current time step is allowed to enter the cell \parencite{hochreiter1997lstm}. For the $\widetilde{C}_t$, the purpose is to suggest updates for the cell state. 
+\begin{equation}
+    i_t = \sigma( W_i \cdot [ h_{t-1} , x_t ] + b_c ) 
+\end{equation}
+\begin{equation}
+    \widetilde{C}_t = tanh( W_c \cdot [ h_{t-1} , x_t ] + b_c )
+\end{equation}
+% Cell state update
+Cell State Update:
+\\[1ex]
+The forget gate will drop the meaningless information and add some potential information.
+\begin{equation}
+    C_t = f_t * C_{t-1} + i_t * \widetilde{C_t}
+\end{equation}
+% Output gate
+Output gate:
+\\[1ex]
+The output gate is able to control how much or what information from the cell state should be passed to the next layer or used in predictions. 
+\begin{equation}
+    o_t = \sigma( W_o \cdot [ h_{t-1} , x_t ] + b_o )
+\end{equation}
+% Hidden state update
+Hidden State Update:
+\\[1ex]
+The hidden state is influenced by output value and current cell state. 
+\begin{equation}
+    h_t = o_t * tanh(C_t)
+\end{equation}
+\\[1ex]
+n = number of features in the input vector $x_t$.\\
+m = number of units in LSTM.\\
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $x_t$               & Input vector at time t                        & $n \times 1$\\
+    $h_t$               & Hidden state output at time t                 & $m \times 1$\\
+    $C_t$               & Cell state at time t                          & $m \times 1$\\
+    $f_t$               & Forget gate output at time t                  & $m \times 1$\\
+    $i_t$               & Input gate output at time t                   & $m \times 1$\\
+    $o_t$               & Output gate output at time t                  & $m \times 1$\\
+    $\widetilde{C_t}$   & Candidate memory cell at time t               & $m \times 1$\\
+    $W_f$               & Weight matrix for the forget gate             & $m \times (m+n)$\\
+    $W_i$               & Weight matrix for the input gate              & $m \times (m+n)$\\
+    $W_C$               & Weight matrix for the candidate memory cell   & $m \times (m+n)$\\
+    $W_o$               & Weight matrix for the output gate             & $m \times (m+n)$\\
+    $b_f$               & Bias vector for the forget gate               & $m \times 1$\\
+    $b_i$               & Bias vector for the input gate                & $m \times 1$\\
+    $b_C$               & Bias vector for the candidate memory cell     & $m \times 1$\\
+    $b_o$               & Bias vector for the output gate               & $m \times 1$\\
+    \hline
+    \caption{Unfolded RNN}
+\end{longtable}
+
+Number of parameters:\\
+\begin{enumerate}
+    % 1. Weights matrix for the input
+    \item Weights matrix for the input
+    \begin{itemize}
+        \item Forget gate: $n \times m$
+        \item Input gate: $n \times m$
+        \item Cell gate: $n \times m$
+        \item Output gate: $n \times m$
+    \end{itemize}
+
+    % 2. Weight matrix for the hidden state
+    \item Weight matrix for the hidden state
+    \begin{itemize}
+        \item Hidden state for forget gate: $m \times m$
+        \item Hidden state for input gate: $m \times m$
+        \item Hidden state for cell gate: $m \times m$
+        \item Hidden state for output gate: $m \times m$
+    \end{itemize}
+
+    % 3. Bias term
+    \item Bias term
+    \begin{itemize}
+        \item Bias for forget gate: $1 \times m$
+        \item Bias for input gate: $1 \times m$
+        \item Bias for cell gate: $1 \times m$
+        \item Bias for output gate: $1 \times m$
+    \end{itemize}
+\end{enumerate}
+Total parameters: $4 \times ( n + m + 1 ) \times m$
+
+
+\newpage
+% Gated Recurrent Unit (GRU)
+\subsubsection{Gated Recurrent Unit (GRU)}
+The gated recurrent unit (GRU) was proposed by \parencite{cho2014properties} to make each recurrent unit to adaptively capture dependencies of different time scales. The GRU has 2 gates, update gate and reset gate. 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{../Pic/gru.png} % Replace "example-image" with your image file
+\end{figure}
+Update gate:
+\\[1ex]
+The update gate determines how much of the past information should be retained in the current hidden state. 
+\begin{equation}
+    z_t = \sigma(W_z \cdot [ h_{t-1} , x_t ] + b_z )
+\end{equation}
+% Reset gate
+Reset gate:
+\\[1ex]
+The reset gate is similar with the update gate, but the candidate hidden state is influenced by the reset gate. 
+\begin{equation}
+    r_t = \sigma( W_r \cdot [ h_{t-1} , x_t ] + b_r )
+\end{equation}
+Candidate hidden state:
+\\[1ex]
+The candidate hidden state combined with previous hidden state and current input to form the potential new information that can be added to the current hidden state.
+\begin{equation}
+    \widetilde{h_t} = tanh ( W_h \cdot [ r_t * h_{t-1} , x_t ] + b_h )
+\end{equation}
+Final hidden state
+\\[1ex]
+The final hidden state of the GRU at time t is a linear interpolation between the previous final hidden state and the candidate hidden state. 
+\begin{equation}
+    h_t = ( 1 - z_t ) * h_{t-1} + z_t * \widetilde{ h_t }
+\end{equation}
+
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $x_t$               & Input vector at time t                        & $n \times 1$\\
+    $h_t$               & Hidden state output at time t                 & $m \times 1$\\
+    $r_t$               & Reset gate output at time t                   & $m \times 1$\\
+    $z_t$               & Update gate output at time t                  & $m \times 1$\\
+    $W_z$               & Weight matrix for the update gate             & $m \times (m+n)$\\
+    $W_r$               & Weight matrix for the candidate memory cell   & $m \times (m+n)$\\
+    $W_h$               & Weight matrix for the output gate             & $m \times (m+n)$\\
+    $b_z$               & Bias vector for the input gate                & $m \times 1$\\
+    $b_r$               & Bias vector for the candidate memory cell     & $m \times 1$\\
+    $b_h$               & Bias vector for the output gate               & $m \times 1$\\
+    \hline
+\end{longtable}
+
+Number of parameters:\\
+\begin{enumerate}
+    % 1. Weights matrix for the input
+    \item Weights matrix for the input
+    \begin{itemize}
+        \item Update gate: $n \times m$
+        \item Reset gate: $n \times m$
+        \item Candidate hidden state: $n \times m$
+    \end{itemize}
+
+    % 2. Weight matrix for the hidden state
+    \item Weight matrix for the hidden state
+    \begin{itemize}
+        \item Hidden state for update gate: $m \times m$
+        \item Hidden state for reset gate: $m \times m$
+        \item Hidden state candidate hidden state: $m \times m$
+    \end{itemize}
+
+    % 3. Bias term
+    \item Bias term
+    \begin{itemize}
+        \item Bias for update: $1 \times m$
+        \item Bias for reset: $1 \times m$
+        \item Bias for candidate hidden state: $1 \times m$
+    \end{itemize}
+\end{enumerate}
+Total parameters: $3 \times ( n + m + 1 ) \times m$
+\newpage
+
+
+% Deep recurrent neural networks (DRNNs)
+\subsubsection{Deep recurrent neural networks (DRNNs)}
+Deep architecture networks with multiple layers that can hierarchically learn complex representations \parencite{bengio2009learning}. By extending of this concept, stacking recurrent layers to form Deep Recurrent Neural Networks aligns with this principle. A number of research papers have been prove that the performance of DRNNs is out-performance then conventional RNNs. \parencite{le2010deep, delalleau2011shallow, pascanu2013on}
+\\[1ex]
+The architecture of DRNNs are similar with conventional RNNs. We simply stack the recurrent layers vertically. For the first layer, this layer receives the input and combines it with its previous hidden state $h_{t-1}$ (Equation 38). The second layer receive the hidden state of the first layer and treat as the input of the layer 2 (Equation 39). We can extend this concept to $L$ layers (Equation 40).
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../Pic/drnn.png} % Replace "example-image" with your image file
+\end{figure}
+\\[1ex]
+\begin{equation}
+    h^{(1)}_t = f(W^{(1)}_{xh} x_{t} + W^{(1)}_{hh} h^{(1)}_{t-1} + b^{(1)}_h)
+\end{equation}
+\begin{equation}
+    h^{(2)}_t = f(W^{(2)}_{xh} h^{(1)}_{t} + W^{(2)}_{hh} h^{(2)}_{t-1} + b^{(2)}_h)
+\end{equation}
+\begin{equation}
+    h^{(L)}_t = f(W^{(L)}_{xh} h^{(L-1)}_{t} + W^{(L)}_{hh} h^{(L)}_{t-1} + b^{(L)}_h)
+\end{equation}
+\begin{equation}
+    o_t = W_{hy}h^{(L)}_{t} + b_y
+\end{equation}
+\begin{equation}
+    y_t = g(o_t)
+\end{equation}
+Where $x_t$ is the input at time $t$. $h^{(l)}_{t}$ is the hidden state for the $l$ layer at time t. $W^{(l)}_{xh}, W^{(l)}_{hh}$ are the weight matrices for the input to hidden and hidden to hidden connections in layer $l$, respectively. $W_{hy}$ is weight matrix for the output layer. $b^{(l)}_h$ is the bias vector for the $l$ layer (except output layer), $b_y$ is the bias vector for output layer. $g(\cdot)$ and $f(\cdot)$ are an activation function. 
+
+\newpage
+\subsubsection{Hidden Markov Model}
+Before reviewing Hidden Markov Model (HMM), it is essential to understand what Markov models is, or Markov chains. Markov chains are fundamental models in probability theory and statistic, and it is a stochastic process describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. This property known as the Markov property. In rigorous terms, let the state space be defined as:
+Let the state space be defined as:
+\begin{equation}
+    S = \{ s_1, s_2, \dots, s_N \}.
+\end{equation}
+\begin{equation}
+    P(s_{t+1} \mid s_t, s_{t-1}, s_{t-2}, \cdots, s_{1}) = P(s_{t+1} \mid s_t)
+\end{equation}
+The state transition probability is denoted by:
+\begin{equation}
+    P_{ij} = P(s_{t+1} = s_j \mid s_t = s_i).
+\end{equation}
+
+Given an initial state \( s_1 \) with probability \( P(s_1) \), the joint probability of a state sequence \( \{s_1, s_2, \dots, s_T\} \) can be written as:
+\begin{equation}
+    P(s_1, s_2, \dots, s_T) = P(s_1) \cdot P(s_2 \mid s_1) \cdot P(s_3 \mid s_2) \cdots P(s_T \mid s_{T-1})
+\end{equation}
+We can simplfy the joint probability of a state sequence as equestion 47.
+\begin{equation}
+    P(s_1, s_2, \dots, s_T) = P(s_1) \prod_{t=1}^{T-1} P(s_{t+1} \mid s_{t})
+\end{equation}
+
+In the context of Natural Language Processing (NLP), early language models utilized the Markov assumption by approximating the probability of a word sequence. For example, for a bigram model, the probability of a sentence \( w_1, w_2, \dots, w_T \) is given by:
+$$
+P(w_1, w_2, \dots, w_T) \approx \prod_{t=1}^{T} P(w_t \mid w_{t-1}),
+$$
+where each word is assumed to depend only on its immediate predecessor. Although this simplification makes computation manageable, it does not account for deeper syntactic or semantic structures inherent in language.
+
+\newpage
+
+Literature Review on Markov Chains
+
+Markov chains are fundamental models in probability theory that describe systems evolving in discrete time where the future behaviour of the process depends solely on its current state—a property known as the **Markov property**. In rigorous terms, let \((\mathcal{X}, \mathcal{F})\) be a measurable space and let \(\{X_n\}_{n\ge0}\) be a sequence of random variables taking values in \(\mathcal{X}\). The process is said to be a *Markov chain* if, for every \(n\ge0\) and for every \(A\in\mathcal{F}\),
+\[
+P\bigl(X_{n+1}\in A \mid X_n, X_{n-1}, \dots, X_0\bigr) = P\bigl(X_{n+1}\in A \mid X_n\bigr).
+\]
+This memoryless property implies that the current state \(X_n\) fully encapsulates all the probabilistic information necessary for predicting the future evolution of the process.
+
+Stationarity and Convergence
+
+A probability distribution \(\pi\) on \(\mathcal{X}\) is called *stationary* (or invariant) for the Markov chain if it satisfies
+\[
+\pi(A) = \int_{\mathcal{X}}P(x,A)\,\pi(dx) \quad \text{for all } A\in\mathcal{F},
+\]
+where \(P(x,A)\) denotes the one-step transition probability. Under appropriate conditions—most notably, **\(\varphi\)-irreducibility** and **aperiodicity**—it can be rigorously shown that the distribution of the chain converges to \(\pi\) in total variation distance. Specifically, for \(\pi\)-almost every initial state \(x\),
+\[
+\lim_{n\to\infty} \|P^n(x,\cdot)-\pi(\cdot)\|_{\text{TV}} = 0,
+\]
+where the total variation distance between two probability measures \(\mu\) and \(\nu\) is defined as
+\[
+\|\mu-\nu\|_{\text{TV}} = \sup_{A\in\mathcal{F}}|\mu(A)-\nu(A)|.
+\]
+Such convergence results are established in depth in Roberts and Rosenthal (2004) and form the theoretical backbone for many modern computational methods.
+
+Small Sets, Drift Conditions, and Geometric Ergodicity
+
+For Markov chains on general (and possibly uncountable) state spaces, it is crucial to establish conditions that guarantee not only convergence but also quantitative rates of convergence. One such condition involves the concept of a **small set**. A subset \(C\subseteq \mathcal{X}\) is called small if there exist a positive integer \(n_0\), a constant \(\epsilon>0\), and a probability measure \(\nu\) on \(\mathcal{X}\) such that
+\[
+P^{n_0}(x,A) \ge \epsilon\,\nu(A), \quad \text{for all } x\in C \text{ and all } A\in\mathcal{F}.
+\]
+This minorisation condition is instrumental in establishing uniform convergence bounds.
+
+Complementary to the small set condition is a **drift condition**. A drift (or Lyapunov) function \(V:\mathcal{X}\to[1,\infty)\) is used to quantify the tendency of the chain to return to a particular subset \(C\). The chain is said to satisfy a drift condition if there exist constants \(\lambda < 1\) and \(b < \infty\) such that
+\[
+P V(x) \le \lambda\, V(x) + b\,1_C(x) \quad \text{for all } x\in\mathcal{X},
+\]
+where \(P V(x) = \int_{\mathcal{X}} V(y)P(x,dy)\) and \(1_C\) is the indicator function of \(C\). When a Markov chain satisfies both a minorisation condition and an appropriate drift condition, it is often **geometrically ergodic**; that is, there exist a function \(M(x)\) and a constant \(\rho\in(0,1)\) such that
+\[
+\|P^n(x,\cdot)-\pi(\cdot)\|_{\text{TV}} \le M(x)\,\rho^n, \quad \text{for all } n\ge0.
+\]
+Such quantitative convergence rates are crucial for both theoretical investigations and practical applications (see Roberts and Rosenthal, 2004; Meyn and Tweedie, 1993).
+
+Coupling, Regeneration, and Quantitative Bounds
+
+A powerful method for analyzing the convergence of Markov chains is the use of **coupling techniques**. In this approach, one constructs a joint process \((X_n, Y_n)\) on \(\mathcal{X}\times\mathcal{X}\) such that:
+- The marginal dynamics of \(X_n\) and \(Y_n\) each follow the prescribed transition kernel \(P\).
+- The coupling is designed so that the probability \(P(X_n\neq Y_n)\) decreases over time.
+
+A key consequence of coupling is the following inequality:
+\[
+\|P^n(x,\cdot)-\pi(\cdot)\|_{\text{TV}} \le P(X_n \neq Y_n).
+\]
+By constructing couplings that "meet" (or "couple") quickly, one may deduce explicit bounds on the rate of convergence in total variation. Similar ideas underpin **regeneration techniques**, which partition the Markov chain into independent, identically distributed tours. Regeneration points allow the application of classical renewal theory to derive central limit theorems (CLTs) for additive functionals of the chain. For example, if \(h:\mathcal{X}\to\mathbb{R}\) is a function with \(\pi(|h|^2)<\infty\), then under appropriate conditions
+\[
+\frac{1}{\sqrt{n}}\sum_{i=0}^{n-1}\!\Bigl(h(X_i)-\pi(h)\Bigr) \xrightarrow{d} \mathcal{N}(0,\sigma^2),
+\]
+with the asymptotic variance \(\sigma^2\) often expressible in terms of the chain’s autocovariance structure.
 
 % ######################## Background and Literature Review #########################
 

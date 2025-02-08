@@ -4,3 +4,8 @@
 \contentsline {subsection}{\numberline {2.2}Literature Review}{4}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Backpropagation Through Time}{4}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Activation Function}{8}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Gradient vanishing and gradient exploring}{10}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Long short-term memory (LSTM)}{11}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Gated Recurrent Unit (GRU)}{14}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Deep recurrent neural networks (DRNNs)}{16}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Hidden Markov Model}{17}{subsubsection.2.2.7}%
