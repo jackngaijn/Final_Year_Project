@@ -300,6 +300,70 @@
       \verb 10.48550/arxiv.1312.6098
       \endverb
     \endentry
+    \entry{rabiner1989atutorial}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
+           family={Rabiner},
+           familyi={R\bibinitperiod},
+           given={L.\bibnamedelimi R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{fullhash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{bibnamehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{authorbibnamehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{authornamehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{authorfullhash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE}
+      \field{title}{A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition}
+      \field{volume}{2}
+      \field{year}{1989}
+      \field{pages}{257\bibrangedash 286}
+      \range{pages}{30}
+    \endentry
+    \entry{roberts2004general}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=dc27a561af7f950a929814f516529c27}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={G.\bibnamedelimi O.},
+           giveni={G\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=96b5578ca090d45ec4e5ac4eeec104b3}{%
+           family={Rosenthal},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{fullhash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{bibnamehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{authorbibnamehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{authornamehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{authorfullhash}{0293279852e8e9ca73d57833dd283d2b}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Probability Surveys}
+      \field{title}{General state space Markov chains and MCMC algorithms}
+      \field{volume}{1}
+      \field{year}{2004}
+      \field{pages}{20\bibrangedash 71}
+      \range{pages}{52}
+    \endentry
     \entry{rumelhart1986backpropagation}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=0cb32ce01543d39fae18094391a330bc}{%
@@ -683,6 +747,70 @@
       \verb{doi}
       \verb 10.48550/arxiv.1312.6098
       \endverb
+    \endentry
+    \entry{rabiner1989atutorial}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
+           family={Rabiner},
+           familyi={R\bibinitperiod},
+           given={L.\bibnamedelimi R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{fullhash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{bibnamehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{authorbibnamehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{authornamehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \strng{authorfullhash}{e8d997fb2a06a1d60cbe4a4376c323a2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE}
+      \field{title}{A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition}
+      \field{volume}{2}
+      \field{year}{1989}
+      \field{pages}{257\bibrangedash 286}
+      \range{pages}{30}
+    \endentry
+    \entry{roberts2004general}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=dc27a561af7f950a929814f516529c27}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={G.\bibnamedelimi O.},
+           giveni={G\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=96b5578ca090d45ec4e5ac4eeec104b3}{%
+           family={Rosenthal},
+           familyi={R\bibinitperiod},
+           given={J.\bibnamedelimi S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{fullhash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{bibnamehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{authorbibnamehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{authornamehash}{0293279852e8e9ca73d57833dd283d2b}
+      \strng{authorfullhash}{0293279852e8e9ca73d57833dd283d2b}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Probability Surveys}
+      \field{title}{General state space Markov chains and MCMC algorithms}
+      \field{volume}{1}
+      \field{year}{2004}
+      \field{pages}{20\bibrangedash 71}
+      \range{pages}{52}
     \endentry
     \entry{rumelhart1986backpropagation}{article}{}
       \name{author}{3}{}{%

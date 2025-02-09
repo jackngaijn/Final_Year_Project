@@ -3075,6 +3075,8 @@
     <bcf:citekey order="14" intorder="1">le2010deep</bcf:citekey>
     <bcf:citekey order="14" intorder="2">delalleau2011shallow</bcf:citekey>
     <bcf:citekey order="14" intorder="3">pascanu2013on</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">roberts2004general</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">rabiner1989atutorial</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
