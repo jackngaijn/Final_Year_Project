@@ -3076,7 +3076,12 @@
     <bcf:citekey order="14" intorder="2">delalleau2011shallow</bcf:citekey>
     <bcf:citekey order="14" intorder="3">pascanu2013on</bcf:citekey>
     <bcf:citekey order="15" intorder="1">roberts2004general</bcf:citekey>
+    <bcf:citekey order="15" intorder="2">rabiner1986anintroduction</bcf:citekey>
     <bcf:citekey order="16" intorder="1">rabiner1989atutorial</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">rabiner1993fundamentals</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">sengupta2023hybrid</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">rabiner1993fundamentals</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">mikolov2013efficient</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
@@ -3113,6 +3118,15 @@
                 type="entry"
                 sortingtemplatename="nyt"
                 sortingnamekeytemplatename="apasortcite"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+  <bcf:datalist section="0"
+                name="nyt/global//global/global"
+                type="entry"
+                sortingtemplatename="nyt"
+                sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"
                 labelalphanametemplatename="global">

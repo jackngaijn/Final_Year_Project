@@ -259,6 +259,53 @@
       \verb 10.1162/neco.2010.08-09-1081
       \endverb
     \endentry
+    \entry{mikolov2013efficient}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=aad1670563ca8c98620c7ade50aff92e}{%
+           family={Mikolov},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bbd76d99dff4497fda6976a4f0146e4f}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=be16c021e27e7ff613243832aa9333e3}{%
+           family={Corrado},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d344df02661ad14c26e86c5871d77951}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{dfc3e85f264bec478346d16319808cc5}
+      \strng{fullhash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \strng{bibnamehash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \strng{authorbibnamehash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \strng{authornamehash}{dfc3e85f264bec478346d16319808cc5}
+      \strng{authorfullhash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint}
+      \field{title}{Efficient Estimation of Word Representations in Vector Space}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.48550/arxiv.1301.3781
+      \endverb
+    \endentry
     \entry{pascanu2013on}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=13497d969a947b154e00e8cee51099c7}{%
@@ -300,14 +347,52 @@
       \verb 10.48550/arxiv.1312.6098
       \endverb
     \endentry
+    \entry{rabiner1986anintroduction}{article}{}
+      \name{author}{2}{}{%
+        {{un=1,uniquepart=given,hash=33e22f6bc9c087b12ae5ceda19cf93ad}{%
+           family={Rabiner},
+           familyi={R\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=1}}%
+        {{un=1,uniquepart=given,hash=15f1466127bb6f5bad9ae4554dcc8683}{%
+           family={Juang},
+           familyi={J\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=1}}%
+      }
+      \strng{namehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{fullhash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{bibnamehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{authorbibnamehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{authornamehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{authorfullhash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE ASSP Magazine}
+      \field{number}{3}
+      \field{title}{An introduction to hidden Markov models}
+      \field{volume}{1}
+      \field{year}{1986}
+      \field{pages}{4\bibrangedash 16}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/MASSP.1986.1165342
+      \endverb
+    \endentry
     \entry{rabiner1989atutorial}{article}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
+        {{un=1,uniquepart=given,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
            family={Rabiner},
            familyi={R\bibinitperiod},
            given={L.\bibnamedelimi R.},
            giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
       }
       \strng{namehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
       \strng{fullhash}{e8d997fb2a06a1d60cbe4a4376c323a2}
@@ -319,15 +404,51 @@
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the IEEE}
+      \field{number}{2}
       \field{title}{A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition}
-      \field{volume}{2}
+      \field{volume}{77}
       \field{year}{1989}
       \field{pages}{257\bibrangedash 286}
       \range{pages}{30}
+      \verb{doi}
+      \verb 10.1109/5.18626
+      \endverb
+    \endentry
+    \entry{rabiner1993fundamentals}{book}{}
+      \name{author}{2}{}{%
+        {{un=1,uniquepart=given,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
+           family={Rabiner},
+           familyi={R\bibinitperiod},
+           given={L.\bibnamedelimi R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=1}}%
+        {{un=1,uniquepart=given,hash=467a25cd8968bfca11b7e407b2afcf33}{%
+           family={Juang},
+           familyi={J\bibinitperiod},
+           given={B.\bibnamedelimi H.},
+           giveni={B\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=1}}%
+      }
+      \list{publisher}{1}{%
+        {PTR Prentice Hall}%
+      }
+      \strng{namehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{fullhash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{bibnamehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{authorbibnamehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{authornamehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{authorfullhash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fundamentals of Speech Recognition}
+      \field{year}{1993}
     \endentry
     \entry{roberts2004general}{article}{}
       \name{author}{2}{}{%
@@ -363,6 +484,9 @@
       \field{year}{2004}
       \field{pages}{20\bibrangedash 71}
       \range{pages}{52}
+      \verb{doi}
+      \verb 10.1214/154957804100000024
+      \endverb
     \endentry
     \entry{rumelhart1986backpropagation}{article}{}
       \name{author}{3}{}{%
@@ -407,6 +531,47 @@
       \range{pages}{4}
       \verb{doi}
       \verb 10.1038/323533a0
+      \endverb
+    \endentry
+    \entry{sengupta2023hybrid}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=a9cdc3e0cd698065789b23c3bb0e6161}{%
+           family={Sengupta},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7308ed786f4f0e133a08199872f5b395}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b882d68a38caad0eeee7725003f8a6b4}{%
+           family={Guler},
+           familyi={G\bibinitperiod},
+           given={S.\bibnamedelimi I.},
+           giveni={S\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a4df0efd1f65c0dd7df045a52059b547}
+      \strng{fullhash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \strng{bibnamehash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \strng{authorbibnamehash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \strng{authornamehash}{a4df0efd1f65c0dd7df045a52059b547}
+      \strng{authorfullhash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint}
+      \field{title}{Hybrid Hidden Markov LSTM for Short-Term Traffic Flow Prediction}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/arxiv.2307.04954
       \endverb
     \endentry
     \entry{werbos1990bptt}{article}{}
@@ -707,6 +872,53 @@
       \verb 10.1162/neco.2010.08-09-1081
       \endverb
     \endentry
+    \entry{mikolov2013efficient}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=aad1670563ca8c98620c7ade50aff92e}{%
+           family={Mikolov},
+           familyi={M\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bbd76d99dff4497fda6976a4f0146e4f}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=be16c021e27e7ff613243832aa9333e3}{%
+           family={Corrado},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d344df02661ad14c26e86c5871d77951}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{dfc3e85f264bec478346d16319808cc5}
+      \strng{fullhash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \strng{bibnamehash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \strng{authorbibnamehash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \strng{authornamehash}{dfc3e85f264bec478346d16319808cc5}
+      \strng{authorfullhash}{15fe70edff8067d3d5fa2851182cdf5b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint}
+      \field{title}{Efficient Estimation of Word Representations in Vector Space}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.48550/arxiv.1301.3781
+      \endverb
+    \endentry
     \entry{pascanu2013on}{article}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=13497d969a947b154e00e8cee51099c7}{%
@@ -748,14 +960,52 @@
       \verb 10.48550/arxiv.1312.6098
       \endverb
     \endentry
+    \entry{rabiner1986anintroduction}{article}{}
+      \name{author}{2}{}{%
+        {{un=1,uniquepart=given,hash=33e22f6bc9c087b12ae5ceda19cf93ad}{%
+           family={Rabiner},
+           familyi={R\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=1}}%
+        {{un=1,uniquepart=given,hash=15f1466127bb6f5bad9ae4554dcc8683}{%
+           family={Juang},
+           familyi={J\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod},
+           givenun=1}}%
+      }
+      \strng{namehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{fullhash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{bibnamehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{authorbibnamehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{authornamehash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \strng{authorfullhash}{8b36bd44aefcefb1d28f65b1195112e1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE ASSP Magazine}
+      \field{number}{3}
+      \field{title}{An introduction to hidden Markov models}
+      \field{volume}{1}
+      \field{year}{1986}
+      \field{pages}{4\bibrangedash 16}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/MASSP.1986.1165342
+      \endverb
+    \endentry
     \entry{rabiner1989atutorial}{article}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
+        {{un=1,uniquepart=given,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
            family={Rabiner},
            familyi={R\bibinitperiod},
            given={L.\bibnamedelimi R.},
            giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
       }
       \strng{namehash}{e8d997fb2a06a1d60cbe4a4376c323a2}
       \strng{fullhash}{e8d997fb2a06a1d60cbe4a4376c323a2}
@@ -767,15 +1017,51 @@
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
-      \true{uniqueprimaryauthor}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the IEEE}
+      \field{number}{2}
       \field{title}{A Tutorial on Hidden Markov Models and Selected Applications in Speech Recognition}
-      \field{volume}{2}
+      \field{volume}{77}
       \field{year}{1989}
       \field{pages}{257\bibrangedash 286}
       \range{pages}{30}
+      \verb{doi}
+      \verb 10.1109/5.18626
+      \endverb
+    \endentry
+    \entry{rabiner1993fundamentals}{book}{}
+      \name{author}{2}{}{%
+        {{un=1,uniquepart=given,hash=e8d997fb2a06a1d60cbe4a4376c323a2}{%
+           family={Rabiner},
+           familyi={R\bibinitperiod},
+           given={L.\bibnamedelimi R.},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=1}}%
+        {{un=1,uniquepart=given,hash=467a25cd8968bfca11b7e407b2afcf33}{%
+           family={Juang},
+           familyi={J\bibinitperiod},
+           given={B.\bibnamedelimi H.},
+           giveni={B\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=1}}%
+      }
+      \list{publisher}{1}{%
+        {PTR Prentice Hall}%
+      }
+      \strng{namehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{fullhash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{bibnamehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{authorbibnamehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{authornamehash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \strng{authorfullhash}{6f7a50ca94765dfbc74bc9e75f4844b1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fundamentals of Speech Recognition}
+      \field{year}{1993}
     \endentry
     \entry{roberts2004general}{article}{}
       \name{author}{2}{}{%
@@ -811,6 +1097,9 @@
       \field{year}{2004}
       \field{pages}{20\bibrangedash 71}
       \range{pages}{52}
+      \verb{doi}
+      \verb 10.1214/154957804100000024
+      \endverb
     \endentry
     \entry{rumelhart1986backpropagation}{article}{}
       \name{author}{3}{}{%
@@ -855,6 +1144,47 @@
       \range{pages}{4}
       \verb{doi}
       \verb 10.1038/323533a0
+      \endverb
+    \endentry
+    \entry{sengupta2023hybrid}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=a9cdc3e0cd698065789b23c3bb0e6161}{%
+           family={Sengupta},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7308ed786f4f0e133a08199872f5b395}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b882d68a38caad0eeee7725003f8a6b4}{%
+           family={Guler},
+           familyi={G\bibinitperiod},
+           given={S.\bibnamedelimi I.},
+           giveni={S\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a4df0efd1f65c0dd7df045a52059b547}
+      \strng{fullhash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \strng{bibnamehash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \strng{authorbibnamehash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \strng{authornamehash}{a4df0efd1f65c0dd7df045a52059b547}
+      \strng{authorfullhash}{d74a099d5b2df3b722b2d8cd4ece4deb}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint}
+      \field{title}{Hybrid Hidden Markov LSTM for Short-Term Traffic Flow Prediction}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/arxiv.2307.04954
       \endverb
     \endentry
     \entry{werbos1990bptt}{article}{}
