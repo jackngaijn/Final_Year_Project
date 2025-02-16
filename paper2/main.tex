@@ -695,7 +695,64 @@ The primary goal of this report is to deeply review on RNN and how it can apply 
 
 % ######################## Research Plan / Methodology ######################################
 
+To achieve the project goals and objectives, the research will follow a structured approach combining theoretical understanding with empirical evaluation:
 
+1. **Literature Review:**
+   - **Background Study:**  
+     Conduct a detailed review of seminal and recent works on RNNs, LSTMs, GRUs, and RNN encoder-decoder architectures in NLP. Key references include:
+     - Hochreiter \& Schmidhuber (1997) on LSTM.
+     - Cho et al. (2014) and Chung et al. (2014) on GRU.
+     - Recent surveys on the application of RNNs in NLP.
+   - **Problem Context:**  
+     Understand current best practices, challenges (e.g., vanishing/exploding gradients, sequence length handling), and evaluation standards in NLP.
+
+2. **Data Collection and Preprocessing:**
+   - **Dataset Selection:**  
+     Choose a benchmark NLP dataset appropriate to the target task (e.g., language modeling, text classification, or machine translation).
+   - **Preprocessing Steps:**  
+     Perform text normalization, tokenization, vocabulary building, and sequence padding. Optional steps may include initializing word embeddings (either pre-trained or learned from scratch).
+
+3. **Model Development and Experimental Implementation:**
+   - **Model Architecture Design:**  
+     Implement the different RNN-based models:
+     - **Vanilla RNN:**  
+       Define the recurrence as  
+       \[
+       h_t = \sigma(W_{hx} x_t + W_{hh} h_{t-1} + b_h), \quad y_t = f(W_{yh} h_t + b_y),
+       \]
+       where \(x_t\) is the input vector at time \(t\), \(h_t\) is the hidden state, and \(y_t\) is the output.
+     - **LSTM:**  
+       Set up the LSTM cell with input, forget, and output gates to control information flow.
+     - **GRU:**  
+       Implement the GRU cell, which uses update and reset gates as a simplified alternative.
+     - **RNN Encoder-Decoder:**  
+       Develop an encoder to summarize the input sequence and a decoder to generate the target sequence.
+   - **Framework and Tools:**  
+     Develop the models using PyTorch or TensorFlow. Leverage available libraries for reproducibility and efficiency.
+
+4. **Training, Hyperparameter Tuning, and Evaluation:**
+   - **Training Protocol:**  
+     Use similar training configurations (e.g., optimizer choice, learning rate schedule, batch size) for all models to ensure a fair comparison.
+   - **Hyperparameter Optimization:**  
+     Conduct grid search or Bayesian optimization for parameters such as hidden unit size, dropout rates, and learning rates.
+   - **Evaluation Metrics:**  
+     Define metrics based on the nature of the task (e.g., classification accuracy, F1 score, perplexity). Monitor convergence behavior and computational resource usage.
+   - **Cross-Validation and Benchmarking:**  
+     Use cross-validation and hold-out test sets to ensure robustness of performance assessments.
+
+5. **Result Analysis and Reporting:**
+   - **Comparative Analysis:**  
+     Analyze and interpret the performance differences among the RNN, LSTM, GRU, and RNN encoder-decoder models. Assess the trade-offs in terms of processing speed, accuracy, and stability.
+   - **Discussion of Findings:**  
+     Provide a discussion relative to theoretical expectations (e.g., how and why LSTMs may outperform vanilla RNNs in handling long-term dependencies).
+   - **Documentation:**  
+     Compile the findings into a detailed technical report, including visualizations of loss curves, performance metrics over training epochs, and error analysis.
+
+6. **Dissemination:**
+   - **Presentation and Peer Review:**  
+     Present the results at seminars and workshops to receive feedback.
+   - **Final Reporting:**  
+     Prepare a final research report and, if applicable, a manuscript for publication in a relevant conference or journal.
 
 
 
