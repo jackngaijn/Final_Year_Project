@@ -10,3 +10,7 @@
 \contentsline {subsubsection}{\numberline {2.2.6}Deep recurrent neural networks (DRNNs)}{16}{subsubsection.2.2.6}%
 \contentsline {subsubsection}{\numberline {2.2.7}Hidden Markov Model}{17}{subsubsection.2.2.7}%
 \contentsline {subsubsection}{\numberline {2.2.8}Word representation}{20}{subsubsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.3}Project Goals and Objectives}{21}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Project Goals}{21}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Objectives}{21}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Research Plan / Methodology}{22}{subsection.2.4}%
