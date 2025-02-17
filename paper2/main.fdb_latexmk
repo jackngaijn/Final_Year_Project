@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1739096629.51961 "main.bcf" "main.bbl" "main" 1739717904.18535 0
-  "main.bcf" 1739717904.10392 134149 738335d9416b16c58b8f1c66006714d8 "pdflatex"
-  "references.bib" 1739097108.69774 4933 fdafe73829a09d01355e6fc27cc57fa6 ""
+["biber main"] 1739719070.82361 "main.bcf" "main.bbl" "main" 1739721148.91351 0
+  "main.bcf" 1739721148.83398 134231 1add7c846981c1925396de053ab13333 "pdflatex"
+  "references.bib" 1739719055.94924 5537 8e5daa1137a43e4e82cad8ef2c280c79 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1739717902.4689 "/Users/jack/FYP/paper2/main.tex" "main.pdf" "main" 1739717904.18566 0
+["pdflatex"] 1739721147.22596 "/Users/jack/FYP/paper2/main.tex" "main.pdf" "main" 1739721148.9138 0
   "../Pic/drnn.png" 1738504812.31877 162499 da4aef552dde2eda990492585ee2b82e ""
   "../Pic/exponential_growth.png" 1739037100.20845 92537 aa0b85e3d95da0aabee2ae3322886447 ""
   "../Pic/gru.png" 1739037100.20958 78251 a59b557fc01f4ead56f2392b749096f9 ""
@@ -16,7 +16,7 @@
   "../Pic/sigmoid.png" 1737471853.28225 32660 b126ee814eaa402ca6ae4fff0fad1eff ""
   "../Pic/tanh.png" 1737471853.28288 33618 4e1216e52580b1c43810514dda676632 ""
   "../Pic/word_representation.png" 1737898306.83419 112438 cfe0a9a053ce1a82c7b8e8f1c666de96 ""
-  "/Users/jack/FYP/paper2/main.tex" 1739717900.7458 45501 f2e5576f23471248fe48bcea911b41b0 ""
+  "/Users/jack/FYP/paper2/main.tex" 1739721143.59072 46250 2cefe644a6031ff729b91642969d3e8c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -140,12 +140,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1735559772.28632 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1735559764 8221433 1b995ee7db319a09dc443f05856d6189 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1739717904.10096 8353 943a7bb4b17c1e77921d991cb4339208 "pdflatex"
-  "main.bbl" 1739097108.6892 49490 9820aeb5b4d6b53a3e80530d6e95df29 "biber main"
-  "main.out" 1739717904.10305 3193 8259a80a4272634d11d03f6ff2511b22 "pdflatex"
-  "main.run.xml" 1739717904.10542 2427 d1bfcd6d722f5bf4e724fdcb22d9bbf2 "pdflatex"
-  "main.tex" 1739717900.7458 45501 f2e5576f23471248fe48bcea911b41b0 ""
-  "main.toc" 1739717904.10568 1560 96480764f6006549200cc6f84b311b2d "pdflatex"
+  "main.aux" 1739721148.83149 9599 45657e4445682f93a95bfd5f1835623c "pdflatex"
+  "main.bbl" 1739719073.27804 55324 10f21a56d22777569ac0c389ad3d6209 "biber main"
+  "main.out" 1739721148.83312 4757 c3ab90731e5492ec3195bbc25f5f9a69 "pdflatex"
+  "main.run.xml" 1739721148.83494 2427 d1bfcd6d722f5bf4e724fdcb22d9bbf2 "pdflatex"
+  "main.tex" 1739721143.59072 46250 2cefe644a6031ff729b91642969d3e8c ""
+  "main.toc" 1739721148.83501 2247 b70e5f0aea859060b49fe6c1cbcea0d3 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"

@@ -41,7 +41,7 @@
 \tableofcontents % Generate a table of contents                        
 % ######################## table of content ###############################
 
-\newpage
+
 % ######################## Introduction ####################################
 \section{Introduction}
 
@@ -55,15 +55,13 @@ Since the craze of AI has been revived by generative AI, natural language proces
     \item Analyze their performance, strengths, and inherent limitations.
 \end{itemize}
 % ######################## Introduction ####################################
-\newpage
+
 % ######################## Background and Literature Review #########################
 % Background and Literature Review 
 \section{Background and Literature Review}
 % Evolution of Deep Learning and Recurrent Neural Networks 
 \subsection{Evolution of Deep Learning and Recurrent Neural Networks}
 In the past few decades, thank to the rapidly development of technology, the computing resource has a incredible increase. Thus, substantially deep learning architecture have improved, from simple architectures, which only able to capture simple information from data to sophisticated models that are able to learn complex, abstract representations. This was before the early neural networks like perceptrons and multilayer perceptrons (MLPs) laid the footwork of neural computation that first came in the picture, but were burdened by the lack of ability to model sequential dependencies. This however imposed a limit on the feed forward paradigm, which prompted the development of recurrent neural networks (RNNs) that extend the old stalactite of feed forward paradigm with cyclic connections. Through these connection, RNNs are capable to keep a hidden state that represents information over time steps thereby effectively capture temporal dynamics. RNNs have been a decisive step in the evolution of deep learning, as they are able to do tasks that require memory of previous events, including problems of natural language processing and time series modeling. Despite that, early RNNs models suffered from serious problems for example,  vanishing gradients and exploding gradients, which prevented these RNN models from learning long ranged dependencies. This stimulated the building of more refined architectures intended to side step these obstacles.
-
-\newpage
 
 % Literature Review
 \subsection{Literature Review}
@@ -82,7 +80,6 @@ This unfolds the RNN to construct a traditional Feedforward Neural Network where
     \caption{Unfolded RNN}
 \end{figure}
 
-\newpage
 \begin{longtable}{|c|c|c|}
     \hline
     \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
@@ -241,7 +238,6 @@ Where
     \end{algorithmic}
 \end{algorithm}
 
-\newpage
 % Actication function
 \subsubsection{Activation Function}
 Activation functions, particularly the sigmoid function, are fundamental components of recurrent neural networks (RNNs). They transform input data into output data. A key property of these functions is their differentiability. Differentiability is crucial for the backpropagation through time (BPTT) algorithm, enabling the application of the chain rule during training. \\[1ex]
@@ -267,7 +263,6 @@ $Domain(Sigmoid(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid(x))=(0,1)$\\
 $Domain(Sigmoid'(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid'(x))=[0,0.5]$
 
 % Hyperbolic tangent activation function
-\newpage
 \textbf{Hyperbolic tangent activation function}
 \\[1ex]
 The main role of the hyperbolic tangent (tanh) activation function is to normalize candidate values and convert the cell state to a hidden state when performing cell state updates. It limits the output between [-1,1] because it has a stable gradient, which is important for discovering long-range dependencies.
@@ -290,9 +285,8 @@ $Domain(tanh(x))=\mathbb{R},\hspace{1em} Codomain(tanh(x))=[-1,1]$\\
 $Domain(tanh'(x))=\mathbb{R},\hspace{1em} Codomain(tanh'(x))=[0,1]$
 
 % Gradient vanishing and gradient exploring
-\newpage
 \subsubsection{Gradient vanishing and gradient exploring}
-When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient explored \parencite{bengio1994learning}. 
+When training the RNN, BPTT was used to update the weight matrix. As the number of time steps increase, the problem of gradient instability of often encountered, and this problem is gradient vanishing and gradient exploring \parencite{bengio1994learning}. 
 \\[2ex]
 % Vanishing Gradients
 \textbf{Vanishing Gradients}
@@ -311,7 +305,6 @@ We have introduce the backpropagation through time. This is the method to update
 \end{figure}
 
 
-\newpage
 % Long short-term memory (LSTM)
 \subsubsection{Long short-term memory (LSTM)}
 Long short-term memory proposed by \parencite{hochreiter1997lstm}. LSTM is designed for handling long time step problems. The architecture of LSTM can prevent vanishing gradient and exploring gradient. The main difference between LSTM and RNN is the number of gates. LSTM introduced input, forget and output gates. This allows LSTM to manage the flow of information more effectively, retaining important information over longer sequences.
@@ -424,7 +417,6 @@ Number of parameters:\\
 Total parameters: $4 \times ( n + m + 1 ) \times m$
 
 
-\newpage
 % Gated Recurrent Unit (GRU)
 \subsubsection{Gated Recurrent Unit (GRU)}
 The gated recurrent unit (GRU) was proposed by \parencite{cho2014properties} to make each recurrent unit to adaptively capture dependencies of different time scales. The GRU has 2 gates, update gate and reset gate. 
@@ -502,7 +494,6 @@ Number of parameters:\\
     \end{itemize}
 \end{enumerate}
 Total parameters: $3 \times ( n + m + 1 ) \times m$
-\newpage
 
 
 % Deep recurrent neural networks (DRNNs)
@@ -532,7 +523,6 @@ The architecture of DRNNs are similar with conventional RNNs. We simply stack th
 \end{equation}
 Where $x_t$ is the input at time $t$. $h^{(l)}_{t}$ is the hidden state for the $l$ layer at time t. $W^{(l)}_{xh}, W^{(l)}_{hh}$ are the weight matrices for the input to hidden and hidden to hidden connections in layer $l$, respectively. $W_{hy}$ is weight matrix for the output layer. $b^{(l)}_h$ is the bias vector for the $l$ layer (except output layer), $b_y$ is the bias vector for output layer. $g(\cdot)$ and $f(\cdot)$ are an activation function. 
 
-\newpage
 \subsubsection{Hidden Markov Model}
 Before reviewing Hidden Markov Model (HMM), it is essential to understand what Markov models is, or Markov chains. Markov chains are fundamental models in probability theory and statistic, and it is a stochastic process describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. This property known as the Markov property \parencite{roberts2004general, rabiner1986anintroduction}. In rigorous terms. Let the state space be defined as:
 \begin{equation}
@@ -567,7 +557,7 @@ If Markov chain is irreducible and aperiodic, the stationary distribution define
     \pi_j = \sum_{i=1}^{n} \pi_i P_{ij}
 \end{equation}
 
-\newpage
+
 
 % Hidden markov model 
 \textbf{Hidden markov model}
@@ -636,13 +626,14 @@ Therefore, the joint probability probability density function of the observation
 \end{equation}
 The optimal parameters $[A, B, \pi]$, which maximize the likelihood of the observation sequence $X$ (Equation 39), are determined using the Baum-Welch algorithm, an expectation-maximization method \parencite{rabiner1993fundamentals}. Additionally, the probability of the system in a specific hidden state $z_t$ corresponding to the observation $x_t$ is calculated using the Viterbi algorithm.
 
-\newpage
+
 
 % Word representation 
 \subsubsection{Word representation}
 In RNN, the due to the architecture, the model can only handle vector, it is important that convert the word into machine readable format. By translating words into vectors, these representations capture semantic meanings, relationships and contexts. \parencite{mikolov2013efficient} proposed 2 model architectures for leaning distributed representations of words.
 \\[1ex]
 \textbf{Continuous Bag of Words model}
+\\[1ex]
 CBOW operates by taking context words around a target word, it is flexible to adjust the window size which mean that we can control how many words around our target word. Hence aggregating their embeddings and passing to hidden layer to produce a probability distribution. Capture the semantic meanings and the relationship more effectively. 
 \begin{equation}
     Q = N \times D + D \times log_2(V)
@@ -659,14 +650,14 @@ The continuous skip gram model operates in opposite direction compare with CBOW.
     \includegraphics[width=1\textwidth]{../Pic/word_representation.png} % Replace "example-image" with your image file
 \end{figure}
 
-\newpage
+
 % ######################## Background and Literature Review #########################
 
 % ######################## Project Goals and Objectives ######################################
-\subsection{Project Goals and Objectives}
+\section{Project Goals and Objectives}
 
 % Project Goals
-\subsubsection{Project Goals}
+\subsection{Project Goals}
 The primary goal of this report is to deeply review on RNN and how it can apply in natural language processing (NLP) tasks. And by comparing the performance of different models. this report aims to provide a detailed comparative analysis of the following RNN-based models:
 \begin{itemize}
     \item Vanilla RNN
@@ -675,23 +666,29 @@ The primary goal of this report is to deeply review on RNN and how it can apply 
 \end{itemize}
 
 % Objectives
-\subsubsection{Objectives}
-\begin{enumerate}
-    \item Implement Existing RNN Architectures\\
-    Develop models using state-of-the-art deep learning framework, PyTorch, to implement each of the above RNNs model. This includes setting up the network layers, loss functions, and appropriate optimization methods.
-    \item Apply the Models on a Benchmark NLP Dataset\\
-    Utilize a selected NLP dataset to train and evaluate the performance of each RNN-based model. The dataset will be preprocessed (e.g., tokenization, padding, embedding initialization) to suit sequential data modeling.
-    \item Compare Model Performances\\
-    Compare different RNN-based models on metrics relevant to the target NLP taskquantitatively and qualitatively. Accuracy, F1, training time scores be used.
-    \item Analyze the Impact of Architectural Differences
-    Identify and discuss the strengths and limitations of each model architecture through both experimental results and theoretical insights. For example, compare how LSTM and GRU architectures mitigate vanishing gradients and exploding gradients using gating mechanisms relative to a vanilla RNN.
-\end{enumerate}
+\subsection{Objectives}
+\subsubsection{Implement Existing RNN Architectures}
+Develop models using state-of-the-art deep learning framework, PyTorch, to implement each of the above RNNs model. This includes setting up the network layers, loss functions, and appropriate optimization methods.
+\subsubsection{Apply the Models on a Benchmark NLP Dataset}
+Utilize a selected NLP dataset to train and evaluate the performance of each RNN-based model. The dataset will be preprocessed (e.g., tokenization, padding, embedding initialization) to suit sequential data modeling.
+\subsubsection{Compare Model Performances}
+Compare different RNN-based models on metrics relevant to the target NLP taskquantitatively and qualitatively. Accuracy, F1, training time scores be used.
+\subsubsection{Analyze the Impact of Architectural Differences}
+Identify and discuss the strengths and limitations of each model architecture through both experimental results and theoretical insights. For example, compare how LSTM and GRU architectures mitigate vanishing gradients and exploding gradients using gating mechanisms relative to a vanilla RNN.
 
-\newpage
+
 % ######################## Project Goals and Objectives ######################################
 
 % ######################## Research Plan / Methodology ######################################
-\subsection{Research Plan / Methodology}
+\section{Research Plan / Methodology}
+To achieve the project goals and objectives, this report will follow the step as below:
+\subsection{Literature Review}
+Since this report require some knowledge related on RNN and NLP. So it is necessary to review the foundemental of those area. Different architecture of RNNs-based model for instance, vanilla RNN, LSTM, GRU. And understand the limitation of RNN, vanishing/exploding gradients. Also, it is essential to understand natural language processing (NLP).  
+\subsection{Data Collection and Preprocessing}
+In this report, ACL-IMDB \parencite{maas-EtAl:2011:ACL-HLT2011} was experiment. This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. This dataset provide a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. I preporcess the dataset by text cleaning and tokenization.
+\subsection{Model Architecture}
+
+
 
 % ######################## Research Plan / Methodology ######################################
 

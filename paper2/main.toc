@@ -1,16 +1,23 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
-\contentsline {section}{\numberline {2}Background and Literature Review}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Evolution of Deep Learning and Recurrent Neural Networks}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Literature Review}{4}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Backpropagation Through Time}{4}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Activation Function}{8}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Gradient vanishing and gradient exploring}{10}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}Long short-term memory (LSTM)}{11}{subsubsection.2.2.4}%
-\contentsline {subsubsection}{\numberline {2.2.5}Gated Recurrent Unit (GRU)}{14}{subsubsection.2.2.5}%
-\contentsline {subsubsection}{\numberline {2.2.6}Deep recurrent neural networks (DRNNs)}{16}{subsubsection.2.2.6}%
-\contentsline {subsubsection}{\numberline {2.2.7}Hidden Markov Model}{17}{subsubsection.2.2.7}%
-\contentsline {subsubsection}{\numberline {2.2.8}Word representation}{20}{subsubsection.2.2.8}%
-\contentsline {subsection}{\numberline {2.3}Project Goals and Objectives}{21}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Project Goals}{21}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Objectives}{21}{subsubsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.4}Research Plan / Methodology}{22}{subsection.2.4}%
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {2}Background and Literature Review}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Evolution of Deep Learning and Recurrent Neural Networks}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Literature Review}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Backpropagation Through Time}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Activation Function}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Gradient vanishing and gradient exploring}{8}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Long short-term memory (LSTM)}{9}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Gated Recurrent Unit (GRU)}{11}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Deep recurrent neural networks (DRNNs)}{13}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Hidden Markov Model}{14}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Word representation}{16}{subsubsection.2.2.8}%
+\contentsline {section}{\numberline {3}Project Goals and Objectives}{17}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Project Goals}{17}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Objectives}{18}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Implement Existing RNN Architectures}{18}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Apply the Models on a Benchmark NLP Dataset}{18}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Compare Model Performances}{18}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Analyze the Impact of Architectural Differences}{18}{subsubsection.3.2.4}%
+\contentsline {section}{\numberline {4}Research Plan / Methodology}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Literature Review}{18}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Data Collection and Preprocessing}{19}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Model Architecture}{19}{subsection.4.3}%
