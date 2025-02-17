@@ -1,22 +1,22 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[33] biber-darwin:340> INFO - === Sun Feb 16, 2025, 23:17:53
-[41] Biber.pm:419> INFO - Reading 'main.bcf'
-[93] Biber.pm:979> INFO - Found 17 citekeys in bib section 0
-[103] Biber.pm:4419> INFO - Processing section 0
-[107] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
-[108] bibtex.pm:1713> INFO - LaTeX decoding ...
-[116] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[179] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[179] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[179] Biber.pm:4239> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[179] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[197] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[197] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[197] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[207] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[217] bbl.pm:763> INFO - Output to main.bbl
-[218] Biber.pm:131> WARN - legacy month field 'June' in entry 'maas-EtAl:2011:ACL-HLT2011' is not an integer - this will probably not sort properly.
-[218] Biber.pm:131> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[218] Biber.pm:133> INFO - WARNINGS: 2
+[96] biber-MSWIN64:340> INFO - === 
+[133] Biber.pm:419> INFO - Reading 'main.bcf'
+[244] Biber.pm:979> INFO - Found 17 citekeys in bib section 0
+[260] Biber.pm:4419> INFO - Processing section 0
+[270] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
+[320] bibtex.pm:1713> INFO - LaTeX decoding ...
+[337] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[435] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[436] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[436] Biber.pm:4239> INFO - Sorting list 'nyt/apasortcite//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[436] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[461] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[461] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[461] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[461] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[476] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[493] bbl.pm:763> INFO - Output to main.bbl
+[493] Biber.pm:131> WARN - legacy month field 'June' in entry 'maas-EtAl:2011:ACL-HLT2011' is not an integer - this will probably not sort properly.
+[493] Biber.pm:131> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[493] Biber.pm:133> INFO - WARNINGS: 2
