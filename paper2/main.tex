@@ -687,14 +687,22 @@ Since this report require some knowledge related on RNN and NLP. So it is necess
 \subsection{Data Collection and Preprocessing}
 In this report, ACL-IMDB \parencite{maas-EtAl:2011:ACL-HLT2011} was experiment. This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. This dataset provide a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. I preporcess the dataset by text cleaning and tokenization.
 \subsection{Model Architecture}
-In this section, i will describe the model architecture, i will list out all of the model i have used and the detail information of those models. For mathematical notation, i will define all of the variables precisely and clearly. And because this project mainly focusing on natural language processing task. So that the classification model consists of an embedding layer, this is just like a look-up table to convert token to vector. First, the sequence of words $(w_1, w_2, \cdots, w_T)$ are passed through an embedding layer, which is the look-up table to convert those words in vector format. In other words, the look-up table map the word in a high-demensional space $(v_1, v_2, \cdots, v_T)$, where $v_t \in \mathbb{R}^d$. And the dimension of the vector space is depends on how we define the hidden size of the model. 
+In this section, i will describe the model architecture, i will list out all of the model i have used and the detail information of those models. For mathematical notation, i will define all of the variables precisely and clearly. And because this project mainly focusing on natural language processing task. So that the classification model consists of an embedding layer, this is just like a look-up table to convert token to vector. First, the sequence of words $(w_1, w_2, \cdots, w_T)$ are passed through an embedding layer, which is the look-up table to convert those words in vector format. In other words, the look-up table map the word in a high-demensional space $(v_1, v_2, \cdots, v_T)$, where $v_t \in \mathbb{R}^d$. And the dimension of the vector space is depends on how we define the hidden size of the model. Next, the forward of RNN based model will processes these word vectors $v_t$ in the forward directions, updating corresponding hidden states at each time step $t$. 
+\begin{equation}
+    h_t = f(W_{ih}^Tv_t+W_{hh}h_{t-1}+b_h)
+\end{equation}
+where $W_{ih}$ is input to hidden matrix, $v_t$ is the word vector at time step $t$, $W_{hh}$ is hidden to hidden matrix. $h_t$ is hidden state at time $t$. $b_h$ is biased term for hidden state. For the output at time $t$, we will pass the hidden state output to an activation function defined as below. 
+\begin{equation}
+    y_t = f(W_{ho}^Th_{t}+b_y)
+\end{equation}
+where $y_t$ is the output at time step $t$ and $W_{ho}$ is the hidden to output matrix and $b_y$ is biased term for output. And $f(\cdot)$ is an activation function.
 
 
 
 
 
 % ######################## Research Plan / Methodology ######################################
-
+\newpage
 To achieve the project goals and objectives, the research will follow a structured approach combining theoretical understanding with empirical evaluation:
 
 1. **Literature Review:**
