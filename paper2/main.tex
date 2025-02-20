@@ -10,6 +10,8 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{listings} % For python code 
+\usepackage{tikz} 
+\usetikzlibrary{positioning, arrows.meta}
 \usepackage[style=apa, sorting=nyt, backend=biber]{biblatex} % Use biber as the backend
 \addbibresource{references.bib}
 
@@ -686,39 +688,126 @@ To achieve the project goals and objectives, this report will follow the step as
 \subsection{Literature Review}
 Since this report require some knowledge related on RNN and NLP. So it is necessary to review the foundemental of those area. Different architecture of RNNs-based model for instance, vanilla RNN, LSTM, GRU. And understand the limitation of RNN, vanishing/exploding gradients. Also, it is essential to understand natural language processing (NLP).  
 \subsection{Data Collection and Preprocessing}
+\subsubsection{Data Collection}
 In this report, ACL-IMDB \parencite{maas-EtAl:2011:ACL-HLT2011} was experiment. This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. This dataset provide a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. I preporcess the dataset by text cleaning and tokenization.
+\subsubsection{Data Preprocessing}
 \begin{enumerate}
     \item Lowercasing:\\
     All text was converted to lowercase to ensure consistency and avoid treadting words like "Good" and "good" as different tokens.
-    \item Handing Abbreviations:
+    \item Handing Abbreviations:\\
     I hard code a dictionary in python, and marjority of common abbreviations were included and replaced with their full forms. For example:
     \begin{itemize}
         \item "u" -$>$ "you"
         \item "pls" -$>$ "please"
     \end{itemize}
-    \item Removing HTML Tags:
+    \item Removing HTML Tags:\\
     HTML tags were removed using regular expression 
     \begin{lstlisting}[language=Python] 
         import re
         re.sub(r'<.*?>', '', sentence) 
     \end{lstlisting}
     where variable "sentence" is movie review. 
-    \item Removing Special Characters
+    \item Removing Special Characters\\
     Non-alphanumeric characters (e.g. punctuation) were removed using the regular expression
     \begin{lstlisting}[language=Python]
         import re
         re.sub(r'[^a-zA-Z0-9\s]', '', sentence)
     \end{lstlisting}
-    \item Removing Extra Whitespace
+    \item Removing Extra Whitespace\\
     Leading and trailing whitespaces were stripped. 
-    \item Removing Step Words
-    
+    \item Removing Stop Words\\
+    Stop words (e.g., "is", "the", "and") were removed to reduce noise in the text. The NLTK library's stop word list was used. Words not in the stop word list were retained.
+    \item Tokenization\\
+    The cleaned text was split into individual tokens, I use white space and the criterion to split the word.
+\\[1ex]
+Once the text was preprocessed, a vocabulary was constructed from the dataset. The vocabulary mapping each word to a unique index. Words not found in the vocabulary are replaced with an "unknown" token. I reserved index 0 as unknown token. So that if the word can not map to correspoinding index. Then the token should be 0. This is a good way to handle Out-of-vocabulary words \parencite{mikolov2013efficient}.    
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Word} & \textbf{Index} \\ \hline
+        \texttt{<UNK>} & 0 \\ \hline
+        acting & 1 \\ \hline
+        good & 2 \\ \hline
+        movie & 3 \\ \hline
+        amazing & 4 \\ \hline
+        performance & 5 \\ \hline
+        bad & 6 \\ \hline
+        terrible & 7 \\ \hline
+        excellent & 8 \\ \hline
+    \end{tabular}
+    \caption{Word to Index Mapping Table}
+    \label{tab:word_index}
+\end{table}
 \end{enumerate}
 \subsection{Model Architecture}
-In this section, i will describe the model architecture, i will list out all of the model i have used and the detail information of those models. For mathematical notation, i will define all of the variables precisely and clearly. And because this project mainly focusing on natural language processing task. So that the classification model consists of an embedding layer, this is just like a look-up table to convert token to vector. First, the sequence of words $(w_1, w_2, \cdots, w_T)$ are passed through an embedding layer, which is the look-up table to convert those words in vector format. In other words, the look-up table map the word in a high-demensional space $(v_1, v_2, \cdots, v_T)$, where $v_t \in \mathbb{R}^d$. And the dimension of the vector space is depends on how we define the hidden size of the model. Next, the forward of RNN based model will processes these word vectors $v_t$ in the forward directions, updating corresponding hidden states at each time step $t$. 
+In this section, i will describe the model architecture, i will list out all of the model i have used and the detail information of those models. For mathematical notation, i will define all of the variables precisely and clearly. And because this project mainly focusing on natural language processing task. So that the classification model consists of an embedding layer, this is just like a look-up table to convert token to vector. First, the sequence of words $(w_1, w_2, \cdots, w_T)$ are passed through an embedding layer, which is the look-up table to convert those words in vector format. In other words, the look-up table map the word in a high-demensional space $(v_1, v_2, \cdots, v_T)$ (Table 5), where $v_t \in \mathbb{R}^d$. And the dimension of the vector space is depends on how we define the hidden size of the model. Next, the forward of RNN based model will processes these word vectors $v_t$ in the forward directions, updating corresponding hidden states at each time step $t$. 
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Word} & \textbf{Index} & \textbf{Embedding Vector} \\ \hline
+        \texttt{<UNK>} & 0 & $\begin{bmatrix} 0.01 & -0.02 \cdots 0.03 & 0.04 \end{bmatrix}$ \\ \hline
+        acting & 1 & $\begin{bmatrix} 0.12 & 0.23 \cdots -0.11 & 0.05 \end{bmatrix}$ \\ \hline
+        good & 2 & $\begin{bmatrix} 0.03 & -0.15 \cdots 0.08 & 0.07 \end{bmatrix}$ \\ \hline
+        movie & 3 & $\begin{bmatrix} 0.10 & 0.05 \cdots -0.09 & -0.01 \end{bmatrix}$ \\ \hline
+        amazing & 4 & $\begin{bmatrix} 0.25 & -0.12 \cdots 0.18 & 0.30 \end{bmatrix}$ \\ \hline
+        performance & 5 & $\begin{bmatrix} -0.10 & -0.20 \cdots 0.15 & -0.05 \end{bmatrix}$ \\ \hline
+        bad & 6 & $\begin{bmatrix} 0.40 & 0.35 \cdots -0.10 & 0.50 \end{bmatrix}$ \\ \hline
+        terrible & 7 & $\begin{bmatrix} 0.30 & 0.25 \cdots -0.11 & 0.40 \end{bmatrix}$ \\ \hline
+        excellent & 8 & $\begin{bmatrix} 0.32 & 0.38 \cdots -0.90 & 0.70 \end{bmatrix}$ \\ \hline
+    \end{tabular}
+    \caption{Word to Index Matching with Lookup Table Embeddings}
+    \label{tab:word_lookup}
+\end{table}
 
 \subsubsection{Model 1 (Vanilla RNN)}
 This is the vanilla RNN model, with 1 layer. We just use the last output to calculate the loss function and do the backpropagation.
+\begin{center} % Center the graph on the page
+    \begin{tikzpicture}[
+        node distance=1.5cm and 2cm, % Distance between nodes
+        every node/.style={draw, minimum size=1cm, font=\small, align=center}, % Node style
+        arrow/.style={-Latex, thick} % Arrow style
+    ]
+
+    % Input nodes
+    \node (x1) [circle, fill=blue!10] {$x_1$};
+    \node (x2) [circle, fill=blue!10, right=of x1] {$x_2$};
+    \node (x3) [circle, fill=blue!10, right=of x2] {$x_3$};
+
+    % Hidden nodes
+    \node (h1) [circle, fill=green!10, above=of x1] {$h_1$};
+    \node (h2) [circle, fill=green!10, above=of x2] {$h_2$};
+    \node (h3) [circle, fill=green!10, above=of x3] {$h_3$};
+
+    % Output nodes
+    \node (y1) [circle, fill=red!10, above=of h1] {$y_1$};
+    \node (y2) [circle, fill=red!10, above=of h2] {$y_2$};
+    \node (y3) [circle, fill=red!10, above=of h3] {$y_3$};
+
+    % Horizontal connections (input to hidden)
+    \draw[arrow] (x1) -- (h1);
+    \draw[arrow] (x2) -- (h2);
+    \draw[arrow] (x3) -- (h3);
+
+    % Horizontal connections (hidden to output)
+    \draw[arrow] (h1) -- (y1);
+    \draw[arrow] (h2) -- (y2);
+    \draw[arrow] (h3) -- (y3);
+
+    % Recurrent connections
+    \draw[arrow] (h1.east) to[out=30, in=150] (h2.west);
+    \draw[arrow] (h2.east) to[out=30, in=150] (h3.west);
+
+    % Labels
+    \node[above=0.3cm of y2, font=\bfseries] {Recurrent Neural Network (Unfolded)};
+    \node[below=0.5cm of x2, font=\itshape] {Time Steps};
+
+    \end{tikzpicture}
+\end{center}
+
+
 \begin{equation}
     h_t = f(W_{ih}^Tv_t+W_{hh}h_{t-1}+b_h)
 \end{equation}
