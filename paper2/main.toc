@@ -25,6 +25,22 @@
 \contentsline {subsection}{\numberline {4.3}Model Architecture}{20}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Model 1 (Vanilla RNN)}{21}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Model 2 (Long short-term memory)}{22}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}Model 3 (Gated recurrent unit)}{22}{subsubsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.4}Training}{22}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Training Protocol}{22}{subsubsection.4.4.1}%
+\contentsline {paragraph}{Step 1: Initialize Hidden and Cell States}{22}{section*.2}%
+\contentsline {paragraph}{Step 2: Process Each Input Vector}{22}{section*.3}%
+\contentsline {paragraph}{Step 3: Compute Forget Gate}{23}{section*.4}%
+\contentsline {paragraph}{Step 4: Compute Input Gate}{23}{section*.5}%
+\contentsline {paragraph}{Step 5: Compute Cell Candidate}{23}{section*.6}%
+\contentsline {paragraph}{Step 6: Update Cell State}{23}{section*.7}%
+\contentsline {paragraph}{Step 7: Compute Output Gate}{23}{section*.8}%
+\contentsline {paragraph}{Step 8: Compute Hidden State}{24}{section*.9}%
+\contentsline {paragraph}{Step 9: Use Final Hidden State for Output}{24}{section*.10}%
+\contentsline {subsubsection}{\numberline {4.3.3}Model 3 (Gated recurrent unit)}{24}{subsubsection.4.3.3}%
+\contentsline {paragraph}{Step 1: Initialize Hidden State}{24}{section*.11}%
+\contentsline {paragraph}{Step 2: Process Each Input Vector}{24}{section*.12}%
+\contentsline {paragraph}{Step 3: Compute Reset Gate}{24}{section*.13}%
+\contentsline {paragraph}{Step 4: Compute Update Gate}{25}{section*.14}%
+\contentsline {paragraph}{Step 5: Compute Candidate Hidden State}{25}{section*.15}%
+\contentsline {paragraph}{Step 6: Update Hidden State}{25}{section*.16}%
+\contentsline {paragraph}{Step 7: Use Final Hidden State for Output}{25}{section*.17}%
+\contentsline {subsection}{\numberline {4.4}Training}{26}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Training Protocol}{26}{subsubsection.4.4.1}%

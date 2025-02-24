@@ -772,14 +772,14 @@ This is the vanilla RNN model, with 1 layer. We just use the last output to calc
     ]
 
     % Input nodes
-    \node (x1) [circle, fill=blue!10] {$x_1$};
-    \node (x2) [circle, fill=blue!10, right=of x1] {$x_2$};
-    \node (x3) [circle, fill=blue!10, right=of x2] {$x_3$};
+    \node (v1) [circle, fill=blue!10] {$v_1$};
+    \node (v2) [circle, fill=blue!10, right=of v1] {$v_2$};
+    \node (v3) [circle, fill=blue!10, right=of v2] {$v_3$};
 
     % Hidden nodes
-    \node (h1) [circle, fill=green!10, above=of x1] {$h_1$};
-    \node (h2) [circle, fill=green!10, above=of x2] {$h_2$};
-    \node (h3) [circle, fill=green!10, above=of x3] {$h_3$};
+    \node (h1) [circle, fill=green!10, above=of v1] {$h_1$};
+    \node (h2) [circle, fill=green!10, above=of v2] {$h_2$};
+    \node (h3) [circle, fill=green!10, above=of v3] {$h_3$};
 
     % Output nodes
     \node (y1) [circle, fill=red!10, above=of h1] {$y_1$};
@@ -787,9 +787,9 @@ This is the vanilla RNN model, with 1 layer. We just use the last output to calc
     \node (y3) [circle, fill=red!10, above=of h3] {$y_3$};
 
     % Horizontal connections (input to hidden)
-    \draw[arrow] (x1) -- (h1);
-    \draw[arrow] (x2) -- (h2);
-    \draw[arrow] (x3) -- (h3);
+    \draw[arrow] (v1) -- (h1);
+    \draw[arrow] (v2) -- (h2);
+    \draw[arrow] (v3) -- (h3);
 
     % Horizontal connections (hidden to output)
     \draw[arrow] (h1) -- (y1);
@@ -802,11 +802,10 @@ This is the vanilla RNN model, with 1 layer. We just use the last output to calc
 
     % Labels
     \node[above=0.3cm of y2, font=\bfseries] {Recurrent Neural Network (Unfolded)};
-    \node[below=0.5cm of x2, font=\itshape] {Time Steps};
+    \node[below=0.5cm of v2, font=\itshape] {Time Steps};
 
     \end{tikzpicture}
 \end{center}
-
 
 \begin{equation}
     h_t = f(W_{ih}^Tv_t+W_{hh}h_{t-1}+b_h)
@@ -821,10 +820,394 @@ where $y_t$ is the output at time step $t$ and $W_{ho}$ is the hidden to output 
 \end{equation}
 
 \subsubsection{Model 2 (Long short-term memory)}
-For the LSTM model, I use 1 layer, and the calculation step was already discuss. 
+For the LSTM model, I use 1 layer:
+\begin{figure}[H]
+    \centering
+    \fbox{
+    \resizebox{0.95\textwidth}{!}{
+    \begin{tikzpicture}[
+    font=\large,
+        >=LaTeX,
+        cell/.style={% For the main box
+        rectangle, 
+        rounded corners=5mm, 
+        draw,
+        very thick,
+        },
+        operator/.style={
+        circle,
+        draw,
+        inner sep=-0.5pt,
+        minimum width =.3cm,
+        minimum height =.3cm,
+        },
+        function/.style={
+        ellipse,
+        draw,
+        inner sep=1pt
+        },
+        ct/.style={
+        circle,
+        draw,
+        line width = .75pt,
+        minimum width=1cm,
+        inner sep=1pt,
+        },
+        gt1/.style={
+        rectangle,
+        draw,
+        fill=green, 
+        minimum width=4mm,
+        minimum height=3mm,
+        inner sep=1pt
+        },
+        gt2/.style={
+        rectangle,
+        draw,
+        fill=red, 
+        minimum width=4mm,
+        minimum height=3mm,
+        inner sep=1pt
+        },
+        gt3/.style={
+        rectangle,
+        draw,
+        fill=yellow, 
+        minimum width=4mm,
+        minimum height=3mm,
+        inner sep=1pt
+        },
+        ArrowC1/.style={% Arrows with rounded corners
+        rounded corners=.25cm,
+        thick,
+        },
+        ArrowC2/.style={% Arrows with big rounded corners
+        rounded corners=.5cm,
+        thick,
+        },
+        cella/.pic={
+            \node [cell, minimum height =4cm, minimum width=6cm] at (0,0){};
+            \node [gt1] (ibox1a) at (-2,-0.75) {$\sigma$};
+            \node [gt2] (ibox2a) at (-1.5,-0.75) {$\sigma$};
+            \node [gt2, minimum width=1cm] (ibox3a) at (-0.5,-0.75) {Tanh};
+            \node [gt3] (ibox4a) at (0.5,-0.75) {$\sigma$};
+            \node [operator] (mux1a) at (-2,1.5) {$\times$};
+            \node [operator] (adda) at (-0.5,1.5) {+};
+            \node [operator] (mux2a) at (-0.5,0) {$\times$};
+            \node [gt3] (mux3a) at (1.5,0) {$\times$};
+            \node [gt3] (funca) at (1.5,0.75) {Tanh};
+            \node[] (ca) at (-4,1.5) {$C_{t-2}$};
+            \node[] (ha) at (-4,-1.5) {$y_{t-2}$};
+            \node[] (xa) at (-2.5,-3) {$x_{t-1}$};
+            \node[] (c2a) at (4,1.5) {};
+            \node[] () at (3.5, 2) {$C_{t-1}$};
+            \node[] (h2a) at (4,-1.5) {};
+            \node[] (x2a) at (2.5,3) {$y_{t-1}$};
+            \node[] () at (3.5, -2) {$y_{t-1}$};
+            % \draw [->, ArrowC1] (c) -- (mux1) -- (add1) -- (c2);
+            \draw [->, ArrowC1] (ca) -- (mux1a);
+            \draw [->, ArrowC1] (mux1a) -- (adda);
+            \draw [->, ArrowC1] (adda) -- (c2a);
+            \draw [ArrowC2] (ha) -| (ibox4a);
+            \draw [ArrowC1] (ha -| ibox1a)++(-0.5,0) -| (ibox1a); 
+            \draw [ArrowC1] (ha -| ibox2a)++(-0.5,0) -| (ibox2a);
+            \draw [ArrowC1] (ha -| ibox3a)++(-0.5,0) -| (ibox3a);
+            \draw [ArrowC1] (xa) -- (xa |- ha)-| (ibox3a);
+            \draw [->, ArrowC2] (ibox1a) -- (mux1a);
+            \draw [->, ArrowC2] (ibox2a) |- (mux2a);
+            \draw [->, ArrowC2] (ibox3a) -- (mux2a);
+            \draw [->, ArrowC2] (ibox4a) |- (mux3a);
+            \draw [->, ArrowC2] (mux2a) -- (adda);
+            \draw [->, ArrowC1] (adda -| funca)++(-0.5,0) -| (funca);
+            \draw [->, ArrowC2] (funca) -- (mux3a);
+            \draw [->, ArrowC2] (mux3a) |- (h2a);
+            \draw (c2a -| x2a) ++(0,-0.1) coordinate (i1a);
+            \draw [-, ArrowC2] (h2a -| x2a)++(-0.5,0) -| (i1a);
+            \draw [->, ArrowC2] (i1a)++(0,0.2) -- (x2a);
+        },
+        cellb/.pic={
+            \node [cell, minimum height =4cm, minimum width=6cm] at (0,0){};
+            \node [gt1] (ibox1b) at (-2,-0.75) {$\sigma$};
+            \node [gt2] (ibox2b) at (-1.5,-0.75) {$\sigma$};
+            \node [gt2, minimum width=1cm] (ibox3b) at (-0.5,-0.75) {Tanh};
+            \node [gt3] (ibox4b) at (0.5,-0.75) {$\sigma$};
+            \node [operator] (mux1b) at (-2,1.5) {$\times$};
+            \node [operator] (add1b) at (-0.5,1.5) {+};
+            \node [operator] (mux2b) at (-0.5,0) {$\times$};
+            \node [gt3] (mux3b) at (1.5,0) {$\times$};
+            \node [gt3] (func1b) at (1.5,0.75) {Tanh};
+            \node[] (cb) at (-4,1.5) {};
+            \node[] (hb) at (-4,-1.5) {};
+            \node[] (xb) at (-2.5,-3) {$x_{t}$};
+            \node[] (c2b) at (4,1.5) {};
+            \node[] () at (3.5,2) {$C_{t}$};
+            \node[] (h2b) at (4,-1.5) {};
+            \node[] (x2b) at (2.5,3) {$y_{t}$};
+            \node[] () at (3.5, -2) {$y_{t}$};
+            % \draw [->, ArrowC1] (c) -- (mux1) -- (add1) -- (c2);
+            \draw [->, ArrowC1] (cb) -- (mux1b);
+            \draw [->, ArrowC1] (mux1b) -- (add1b);
+            \draw [->, ArrowC1] (add1b) -- (c2b);
+            \draw [ArrowC2] (hb) -| (ibox4b);
+            \draw [ArrowC1] (hb -| ibox1b)++(-0.5,0) -| (ibox1b); 
+            \draw [ArrowC1] (hb -| ibox2b)++(-0.5,0) -| (ibox2b);
+            % \draw [ArrowC1] (h -| ibox3)++(-0.5,0) -| (ibox3);
+            \draw [ArrowC1] (xb) -- (xb |- hb)-| (ibox3b);
+            \draw [->, ArrowC2] (ibox1b) -- (mux1b);
+            \draw [->, ArrowC2] (ibox2b) |- (mux2b);
+            \draw [->, ArrowC2] (ibox3b) -- (mux2b);
+            \draw [->, ArrowC2] (ibox4b) |- (mux3b);
+            \draw [->, ArrowC2] (mux2b) -- (add1b);
+            \draw [->, ArrowC1] (add1b -| func1b)++(-0.5,0) -| (func1b);
+            \draw [->, ArrowC2] (func1b) -- (mux3b);
+            \draw [->, ArrowC2] (mux3b) |- (h2b);
+            \draw (c2b -| x2b) ++(0,-0.1) coordinate (i1b);
+            \draw [-, ArrowC2] (h2b -| x2b)++(-0.5,0) -| (i1b);
+            \draw [->, ArrowC2] (i1b)++(0,0.2) -- (x2b);
+        },
+        cellc/.pic={
+            \node [cell, minimum height =4cm, minimum width=6cm] at (0,0){};
+            \node [gt1] (ibox1c) at (-2,-0.75) {$\sigma$};
+            \node [gt2] (ibox2c) at (-1.5,-0.75) {$\sigma$};
+            \node [gt2, minimum width=1cm] (ibox3c) at (-0.5,-0.75) {Tanh};
+            \node [gt3] (ibox4c) at (0.5,-0.75) {$\sigma$};
+            \node [operator] (mux1c) at (-2,1.5) {$\times$};
+            \node [operator] (add1c) at (-0.5,1.5) {+};
+            \node [operator] (mux2c) at (-0.5,0) {$\times$};
+            \node [gt3] (mux3c) at (1.5,0) {$\times$};
+            \node [gt3] (func1c) at (1.5,0.75) {Tanh};
+            \node[] (cc) at (-4,1.5) {};
+            \node[] (hc) at (-4,-1.5) {};
+            \node[] (xc) at (-2.5,-3) {$x_{t+1}$};
+            \node[] (c2c) at (4,1.5) {};
+            \node[] () at (3.5,2) {$C_{t+1}$};
+            \node[] (h2c) at (4,-1.5) {};
+            \node[] (x2c) at (2.5,3) {$y_{t+1}$};
+            \node[] () at (3.5, -2) {$y_{t+1}$};
+            % \draw [->, ArrowC1] (c) -- (mux1) -- (add1) -- (c2);
+            \draw [->, ArrowC1] (cc) -- (mux1c);
+            \draw [->, ArrowC1] (mux1c) -- (add1c);
+            \draw [->, ArrowC1] (add1c) -- (c2c);
+            \draw [ArrowC2] (hc) -| (ibox4c);
+            \draw [ArrowC1] (hc -| ibox1c)++(-0.5,0) -| (ibox1c); 
+            \draw [ArrowC1] (hc -| ibox2c)++(-0.5,0) -| (ibox2c);
+            \draw [ArrowC1] (hc -| ibox3c)++(-0.5,0) -| (ibox3c);
+            \draw [ArrowC1] (xc) -- (xc |- hc)-| (ibox3c);
+            \draw [->, ArrowC2] (ibox1c) -- (mux1c);
+            \draw [->, ArrowC2] (ibox2c) |- (mux2c);
+            \draw [->, ArrowC2] (ibox3c) -- (mux2c);
+            \draw [->, ArrowC2] (ibox4c) |- (mux3c);
+            \draw [->, ArrowC2] (mux2c) -- (add1c);
+            \draw [->, ArrowC1] (add1c -| func1c)++(-0.5,0) -| (func1c);
+            \draw [->, ArrowC2] (func1c) -- (mux3c);
+            \draw [->, ArrowC2] (mux3c) |- (h2c);
+            \draw (c2c -| x2c) ++(0,-0.1) coordinate (i1c);
+            \draw [-, ArrowC2] (h2c -| x2c)++(-0.5,0) -| (i1c);
+            \draw [->, ArrowC2] (i1c)++(0,0.2) -- (x2c);
+        }, 
+        very thick,
+    ]
+    \begin{scope}[xshift=-7cm]
+    \pic {cella};
+    \draw[rounded corners=0.5cm, fill=green!40, opacity=0.8] (-3,-2) rectangle +(6,4);
+    \node[scale=3] {$t-1$};
+    \end{scope}
+    \begin{scope}[xshift=0cm]
+    \draw[rounded corners=0.5cm, fill=green!40, opacity=0.8] (-3,-2) rectangle +(6,4);
+    \pic {cellb};
+    \end{scope}
+    \begin{scope}[xshift=7cm]
+    \pic {cellc};
+    \draw[rounded corners=0.5cm, fill=green!40, opacity=0.8] (-3,-2) rectangle +(6,4);
+    \node[scale=3] {$t+1$};
+    \end{scope}
+    \end{tikzpicture}
+    }
+    }
+\end{figure}
+
+For an LSTM, the overall structure is similar to the Vanilla RNN shown in the diagram, but the hidden state computation is replaced by the LSTM's more complex gating mechanism. Using its gating mechanisms to control how information flows through time. Let us consider an input sequence $\{v_1, v_2, \dots, v_T\}$, where $v_t$ represents the input vector at time step $t$. Here’s how the LSTM processes the input:
+
+\paragraph{Step 1: Initialize Hidden and Cell States}
+At the beginning of the sequence, the LSTM initializes the hidden state $h_0$ and cell state $C_0$. For our model, we use 0 matrix as $h_0$ and $C_0$:
+\begin{eqnarray}
+    h_0 = \mathbf{0}, \quad C_0 = \mathbf{0}
+\end{eqnarray}
+
+\paragraph{Step 2: Process Each Input Vector}
+For each time step $t$, LSTM processes the current input $v_t$ along with the previous hidden state $h_{t-1}$ and cell state $C_{t-1}$ to compute:
+\begin{itemize}
+    \item The \textbf{forget gate} $f_t$, determine which information should be retained in memory cell $C_{t-1}$.
+    \item The \textbf{input gate} $i_t$, controls how much new information from the current time step is allowed to enter the cell.
+    \item The \textbf{cell candidate} $\tilde{C}_t$, represents the new information to be added to the cell state.
+    \item The updated \textbf{cell state} $C_t$, which combines the retained information from $C_{t-1}$ and the new candidate $\tilde{C}_t$.
+    \item The \textbf{output gate} $o_t$, control how much or what information from the cell state should be passed to the next layer or used in predictions.
+    \item The updated \textbf{hidden state} $h_t$, summarizes the information at time $t$.
+\end{itemize}
+
+\paragraph{Step 3: Compute Forget Gate}
+The forget gate $f_t$ is computed as:
+\begin{equation}
+    f_t = \sigma(W_f v_t + U_f h_{t-1} + b_f)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\sigma$ is the sigmoid activation function.
+    \item $W_f$ is the input to hidden weight matrix for the forget gate.
+    \item $U_f$ is the hidden to hidden weight matrix for the forget gate.
+    \item $b_f$ is the bias term for the forget gate.
+\end{itemize}
+The forget gate determines which parts of the previous cell state $C_{t-1}$ to retain.
+
+\paragraph{Step 4: Compute Input Gate}
+The input gate $i_t$ is computed as:
+\begin{eqnarray}
+    i_t = \sigma(W_i v_t + U_i h_{t-1} + b_i)
+\end{eqnarray}
+
+where:
+\begin{itemize}
+    \item $W_i$, $U_i$, and $b_i$ are the weight matrices and bias for the input gate.
+\end{itemize}
+The input gate determines how much new information to add to the cell state.
+
+\paragraph{Step 5: Compute Cell Candidate}
+The cell candidate $\tilde{C}_t$ is computed as:
+\begin{equation}
+    \tilde{C}_t = \tanh(W_c v_t + U_c h_{t-1} + b_c)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\tanh$ is the hyperbolic tangent activation function.
+    \item $W_c$, $U_c$, and $b_c$ are the weight matrices and bias for the cell candidate.
+\end{itemize}
+The cell candidate represents potential new information to add to the cell state.
+
+\paragraph{Step 6: Update Cell State}
+The cell state $C_t$ is updated as:
+\begin{equation}
+    C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t
+\end{equation}
+
+where $\odot$ represents element-wise multiplication. The updated cell state combines retained information from $C_{t-1}$ (via $f_t$) and new information from $\tilde{C}_t$ (via $i_t$).
+
+\paragraph{Step 7: Compute Output Gate}
+The output gate $o_t$ is computed as:
+\begin{equation}
+    o_t = \sigma(W_o v_t + U_o h_{t-1} + b_o)
+\end{equation}
+
+where $W_o$, $U_o$, and $b_o$ are the weight matrices and bias for the output gate.
+
+\paragraph{Step 8: Compute Hidden State}
+The hidden state $h_t$ is computed as:
+\begin{equation}
+    h_t = o_t \odot \tanh(C_t)
+\end{equation}
+
+The hidden state summarizes the information at time $t$ and is passed to the next time step.
+
+\paragraph{Step 9: Use Final Hidden State for Output}
+After processing all time steps, the final hidden state $h_T$ is used as the input to a fully connected layer for classification:
+\begin{equation}
+    \hat{y} = f(W_{ho}^T h_T + b_y)    
+\end{equation}
+
+where $W_{ho}$ and $b_y$ are the weight matrix and bias for the output layer, and $f$ is the activation function. Then we calculate the loss function by the last output.
+\begin{equation}
+    Loss = \mathcal{L}(\hat{y}, y)
+\end{equation}
+
 
 \subsubsection{Model 3 (Gated recurrent unit)}
-For the GRU model, I use 1 layer, and the calculation step was already discuss. 
+For the GRU model, I use 1 layer. This architecture is similar with LSTM but reduce the among of parameters. Let us consider an input sequence $\{v_1, v_2, \dots, v_T\}$, where $v_t$ represents the input vector at time step $t$. Here's how the GRU processes the input:
+\paragraph{Step 1: Initialize Hidden State}
+At the beginning of the sequence, the GRU initializes the hidden state $h_0$ to zero:
+\begin{equation}
+    h_0 = \mathbf{0}
+\end{equation}
+
+\paragraph{Step 2: Process Each Input Vector}
+For each time step $t$, the GRU processes the current input $v_t$ along with the previous hidden state $h_{t-1}$ to compute:
+\begin{itemize}
+    \item The \textbf{reset gate} $r_t$, which determines how much of the previous hidden state $h_{t-1}$ to forget.
+    \item The \textbf{update gate} $z_t$, which determines how much of the previous hidden state $h_{t-1}$ to retain.
+    \item The \textbf{candidate hidden state} $\tilde{h}_t$, which represents the new information to be combined with the previous hidden state.
+    \item The updated \textbf{hidden state} $h_t$, which summarizes the information at time $t$.
+\end{itemize}
+
+\paragraph{Step 3: Compute Reset Gate}
+The reset gate $r_t$ is computed as:
+\begin{equation}
+    r_t = \sigma(W_r v_t + U_r h_{t-1} + b_r)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\sigma$ is the sigmoid activation function.
+    \item $W_r$ is the input to hidden weight matrix for the reset gate.
+    \item $U_r$ is the hidden to hidden weight matrix for the reset gate.
+    \item $b_r$ is the bias term for the reset gate.
+\end{itemize}
+The reset gate determines how much of the previous hidden state $h_{t-1}$ to use when computing the candidate hidden state.
+
+\paragraph{Step 4: Compute Update Gate}
+The update gate $z_t$ is computed as:
+\begin{equation}
+    z_t = \sigma(W_z v_t + U_z h_{t-1} + b_z)
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $W_z$ is the input to hidden weight matrix for the update gate.
+    \item $U_z$ is the hidden to hidden weight matrix for the update gate.
+    \item $b_z$ is the bias term for the update gate.
+\end{itemize}
+The update gate determines how much of the previous hidden state $h_{t-1}$ to retain and how much of the new candidate hidden state to use.
+
+\paragraph{Step 5: Compute Candidate Hidden State}
+The candidate hidden state $\tilde{h}_t$ is computed as:
+\begin{equation}
+    \tilde{h}_t = \tanh(W_h v_t + U_h (r_t \odot h_{t-1}) + b_h)    
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\tanh$ is the hyperbolic tangent activation function.
+    \item $r_t \odot h_{t-1}$: The reset gate modulates the contribution of the previous hidden state $h_{t-1}$.
+    \item $W_h$, $U_h$, and $b_h$ are the weight matrices and bias for the candidate hidden state.
+\end{itemize}
+
+\paragraph{Step 6: Update Hidden State}
+The updated hidden state $h_t$ is computed as:
+\begin{equation}
+    h_t = z_t \odot h_{t-1} + (1 - z_t) \odot \tilde{h}_t    
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $z_t$: The update gate decides how much of the previous hidden state $h_{t-1}$ to retain.
+    \item $(1 - z_t)$: The complement of the update gate decides how much of the candidate hidden state $\tilde{h}_t$ to use.
+\end{itemize}
+
+\paragraph{Step 7: Use Final Hidden State for Output}
+After processing all time steps, the final hidden state $h_T$ is used as the input to a fully connected layer for classification:
+\begin{equation}
+    \hat{y} = f(W_{ho}^T h_T + b_y)    
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $W_{ho}$ and $b_y$ are the weight matrix and bias for the output layer.
+    \item $f$ is the activation function (e.g., sigmoid for binary classification).
+\end{itemize}
+
+Then we calculate the loss function by the last output.
+\begin{equation}
+    Loss = \mathcal{L}(\hat{y}, y)
+\end{equation}
 
 \subsection{Training}
 \subsubsection{Training Protocol}

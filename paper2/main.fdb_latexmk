@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1740063454.6209 "main.bcf" "main.bbl" "main" 1740064698.53994 0
-  "main.bcf" 1740064698.43735 134307 6a80e25839eb58cb2154adf1baa2608c "pdflatex"
+["biber main"] 1740063454.6209 "main.bcf" "main.bbl" "main" 1740393776.90785 0
+  "main.bcf" 1740393776.80375 134307 6a80e25839eb58cb2154adf1baa2608c "pdflatex"
   "references.bib" 1740063454.39938 5537 8e5daa1137a43e4e82cad8ef2c280c79 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1740064696.59735 "/Users/jack/FYP/paper2/main.tex" "main.pdf" "main" 1740064698.54023 0
+["pdflatex"] 1740393774.75985 "/Users/jack/FYP/paper2/main.tex" "main.pdf" "main" 1740393776.9082 0
   "../Pic/drnn.png" 1738504812.31877 162499 da4aef552dde2eda990492585ee2b82e ""
   "../Pic/exponential_growth.png" 1739037100.20845 92537 aa0b85e3d95da0aabee2ae3322886447 ""
   "../Pic/gru.png" 1739037100.20958 78251 a59b557fc01f4ead56f2392b749096f9 ""
@@ -16,7 +16,7 @@
   "../Pic/sigmoid.png" 1737471853.28225 32660 b126ee814eaa402ca6ae4fff0fad1eff ""
   "../Pic/tanh.png" 1737471853.28288 33618 4e1216e52580b1c43810514dda676632 ""
   "../Pic/word_representation.png" 1737898306.83419 112438 cfe0a9a053ce1a82c7b8e8f1c666de96 ""
-  "/Users/jack/FYP/paper2/main.tex" 1740064696.38971 54523 5efc8b9ce142db33c81520f934e95a7f ""
+  "/Users/jack/FYP/paper2/main.tex" 1740393774.5254 70968 5b080136b8af2187be9e2cd18d668a76 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -27,6 +27,8 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm" 1136768653 1344 8a0be4fe4d376203000810ad4dc81558 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm" 1136768653 1332 1fde11373e221473104d6cc5993f046e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -217,12 +219,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1735559772.28632 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1735559764 8221433 1b995ee7db319a09dc443f05856d6189 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1740064698.43467 11184 3d3f7cf59580c068623bc936fdd63c6b "pdflatex"
+  "main.aux" 1740393776.80075 13069 34c3705307db3c02f453b4bc4216a7c1 "pdflatex"
   "main.bbl" 1740063457.02954 55324 10f21a56d22777569ac0c389ad3d6209 "biber main"
-  "main.out" 1740064698.43645 5988 654dafb283cb07b64363fef887039c62 "pdflatex"
-  "main.run.xml" 1740064698.43968 2427 d1bfcd6d722f5bf4e724fdcb22d9bbf2 "pdflatex"
-  "main.tex" 1740064696.38971 54523 5efc8b9ce142db33c81520f934e95a7f ""
-  "main.toc" 1740064698.43974 2917 6e67febd2514ae127e8c7732f8ffd8d9 "pdflatex"
+  "main.out" 1740393776.80285 5988 654dafb283cb07b64363fef887039c62 "pdflatex"
+  "main.run.xml" 1740393776.80461 2427 d1bfcd6d722f5bf4e724fdcb22d9bbf2 "pdflatex"
+  "main.tex" 1740393774.5254 70968 5b080136b8af2187be9e2cd18d668a76 ""
+  "main.toc" 1740393776.80466 4146 056867242fef49431c0382cd987e7a46 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
