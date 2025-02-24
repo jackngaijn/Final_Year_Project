@@ -12,6 +12,11 @@
 \usepackage{listings} % For python code 
 \usepackage{tikz} 
 \usetikzlibrary{positioning, arrows.meta}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+
+\tikzstyle{block} = [rectangle, draw, text centered, rounded corners, minimum height=2em, minimum width=4em]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \usepackage[style=apa, sorting=nyt, backend=biber]{biblatex} % Use biber as the backend
 \addbibresource{references.bib}
 
@@ -1123,6 +1128,116 @@ where $W_{ho}$ and $b_y$ are the weight matrix and bias for the output layer, an
 
 \subsubsection{Model 3 (Gated recurrent unit)}
 For the GRU model, I use 1 layer. This architecture is similar with LSTM but reduce the among of parameters. Let us consider an input sequence $\{v_1, v_2, \dots, v_T\}$, where $v_t$ represents the input vector at time step $t$. Here's how the GRU processes the input:
+
+\begin{figure}[tbh!]
+    \centering   
+    \begin{tikzpicture}[
+        font=\sf \tiny,
+        >=LaTeX,
+        % Styles
+        cell/.style={% For the main box
+            rectangle, 
+            rounded corners=5mm, 
+            draw,
+            very thick,
+            },
+        cell2/.style={% For the main box
+        rectangle, 
+        rounded corners=2mm, 
+        draw,
+        thin,
+        },
+        operator/.style={% For operators like +  and  x
+            circle,
+            draw,
+            inner sep=-0.5pt,
+            minimum height =.2cm,
+            },
+        function/.style={% For functions
+            ellipse,
+            draw,
+            inner sep=1pt
+            },
+        ct/.style={% For external inputs and outputs
+            circle,
+            draw,
+            line width = .75pt,
+            minimum width=1cm,
+            inner sep=0pt,
+            },
+        gt/.style={% For internal inputs
+            rectangle,
+            draw,
+            minimum width=3mm,
+            minimum height=3mm,
+            inner sep=1pt
+            },
+        mylabel/.style={% something new that I have learned
+            font=\tiny\sffamily
+            },
+        ArrowC1/.style={% Arrows with rounded corners
+            rounded corners=.25cm,
+            thick,
+            },
+        ArrowC2/.style={% Arrows with big rounded corners
+            rounded corners=.5cm,
+            thick,
+            },
+        ]
+    
+    % Nodes    
+        % Draw the cell boundary: 
+        \node [cell, minimum height=3.5cm, minimum width=3.5cm] at (0,0){} ;
+        \node [dashed, red, cell2, minimum height=3cm, minimum width=0.6cm] at (0.05,0.175){} ;
+        \node [dashed, blue, cell2, minimum height=3cm, minimum width=0.85cm] at (-0.75,0.15){} ;
+    
+        % Draw inputs named ibox#
+        \node [gt] (sigma1) at (-0.5,-0.75) {$\sigma$};
+        \node [gt] (sigma2) at (0,-0.75) {$\sigma$};
+        \node [gt, minimum width=0.5cm] (tanh) at (1,-0.75) {Tanh};
+        \node [gt] (oneminus) at (0,0.25) {$1-$};
+    
+       % Draw operators named mux# , add# and func#
+        \node [operator] (mux1) at (-1,0.5) {$\times$};
+        \node [operator] (add1) at (1,1.5) {+};
+        \node [operator] (mux2) at (1,0) {$\times$};
+        \node [operator] (mux3) at (0,1.5) {$\times$};
+    
+        % Draw External inputs named as basis h,x
+        \node[ct, label={[mylabel]Previous hidden state}, align=center, inner sep=0pt, minimum size=4mm] (h) at (-2.5,1.5) {$h^{t-1}$};
+        \node[ct, label={[mylabel]left:Input}, align=center, inner sep=0pt, minimum size=4mm] (x) at (-1,-2.5) {$x^{t}$};
+    
+        % Draw External outputs named as basis h2,y2
+        \node[ct, label={[mylabel]Current hidden state}, align=center, inner sep=0pt, minimum size=4mm] (h2) at (2.25,1.5) {$h^{t}$};
+        \node[ct, label={[mylabel]}, align=center, inner sep=0pt, minimum size=4mm] (y2) [below of= h2] {$y^{t}$};
+    
+    % Start connecting all.
+        % Intersections and displacements are used. 
+        % Drawing arrows    
+        \draw [ArrowC1] (h) -- (mux3) -- (add1) -- (h2);
+        \draw [ArrowC1] (add1) coordinate[auto] -|(y2.west);
+    
+        % Inputs
+        \draw [ArrowC1] (x) -- coordinate[auto] (link1) (mux1); 
+        \draw [ArrowC1] (x -| sigma2)++(-1,1.25) -| (sigma2);
+        \draw [ArrowC1] (x -| tanh)++(-2,1) -| (tanh);
+        \draw [ArrowC1] (x.north)++(0,1.04) -| (sigma1.south); 
+        \draw [->, ArrowC1] (mux1) ++(0,0.1) |- (mux3) ;
+        \draw [->,ArrowC1] (h.east)++(0.6,0) |- (mux1.west);
+        \draw [->, ArrowC1] (sigma1.north) |- coordinate[auto]  node[pos=0.5] {$r_t$} (mux1.east);
+    
+        % Internal
+        \draw [->, ArrowC2] (sigma2) |- (mux2);
+        \draw [->, ArrowC2] (tanh) -- node[pos=0.4, right] {$\widetilde{h}_t$}(mux2);
+        \draw [->, ArrowC2] (oneminus) -- coordinate[auto] node[pos=0.75, right] {$u_t$} (mux3);
+        \draw [->, ArrowC2] (sigma2)++(0,0.25) -| node[pos=0.4, right] {$z_t$} (oneminus);
+        \draw [->, ArrowC2] (mux2) -- (add1);
+        % \draw [ArrowC2] (h.east)++(0.6,0) |- ($(x.north)!0.775!(link1)$);  
+        % \draw[->, ArrowC2] (h.east)++(0.25,0) to [out=0,in=100, looseness=0.85] ($(x.north)!0.2!(h.east)$);
+    
+    \end{tikzpicture}
+\end{figure} 
+
 \paragraph{Step 1: Initialize Hidden State}
 At the beginning of the sequence, the GRU initializes the hidden state $h_0$ to zero:
 \begin{equation}
@@ -1209,84 +1324,124 @@ Then we calculate the loss function by the last output.
     Loss = \mathcal{L}(\hat{y}, y)
 \end{equation}
 
-\subsection{Training}
-\subsubsection{Training Protocol}
-In order to ensure a fair comparison, i will use the similar training configurations (e.g., optimizer choice, learning rate schedule, batch size). 
-
-
-
-4. **Training, Hyperparameter Tuning, and Evaluation:**
-   - **Training Protocol:**  
-     Use similar training configurations (e.g., optimizer choice, learning rate schedule, batch size) for all models to ensure a fair comparison.
-   - **Hyperparameter Optimization:**  
-     Conduct grid search or Bayesian optimization for parameters such as hidden unit size, dropout rates, and learning rates.
-   - **Evaluation Metrics:**  
-     Define metrics based on the nature of the task (e.g., classification accuracy, F1 score, perplexity). Monitor convergence behavior and computational resource usage.
-   - **Cross-Validation and Benchmarking:**  
-     Use cross-validation and hold-out test sets to ensure robustness of performance assessments.
-
-
-
-% ######################## Research Plan / Methodology ######################################
 \newpage
-To achieve the project goals and objectives, the research will follow a structured approach combining theoretical understanding with empirical evaluation:
+\subsection{Training, Hyperparameter Tuning, and Evaluation}
+In my experiments, I implemented the training loop using PyTorch. The following details describe the key components of my training code, which are designed to ensure robust model optimization and fair evaluation:
+    
+\subsubsection{Model Hyperparameters and Setup}
+The following hyperparameters were chosen based on preliminary experiments and standard practices for sentiment classification tasks:
+\begin{itemize}
+    \item \textbf{Architecture Hyperparameters:}
+    \begin{itemize}
+        \item Number of layers: \texttt{no\_layers = 1}
+        \item Vocabulary size: \(\mathtt{vocab\_size = len(vocab) + 1}\) (the extra one is for unknown word)
+        \item Embedding dimension: \texttt{embedding\_dim = 100}
+        \item Hidden dimension: \texttt{hidden\_dim = 50}
+        \item Output dimension: \texttt{output\_dim = 1}
+        \item Dropout probability: \texttt{drop\_prob = 0.5}
+        \item Batch size: \texttt{batch\_size = 50}
+    \end{itemize}
+    \item \textbf{Optimization Hyperparameters:}
+    \begin{itemize}
+        \item Learning rate: \texttt{lr = 0.001}
+        \item Loss Function: Binary Cross Entropy Loss
+        \item Optimizer: Adam with predefined learning rate.
+    \end{itemize}
+\end{itemize}
+In order to keep the fair experiment. I train 3 RNN model with the same hyperparameters
 
-1. **Literature Review:**
-   - **Background Study:**  
-     Conduct a detailed review of seminal and recent works on RNNs, LSTMs, GRUs, and RNN encoder-decoder architectures in NLP. Key references include:
-     - Hochreiter \& Schmidhuber (1997) on LSTM.
-     - Cho et al. (2014) and Chung et al. (2014) on GRU.
-     - Recent surveys on the application of RNNs in NLP.
-   - **Problem Context:**  
-     Understand current best practices, challenges (e.g., vanishing/exploding gradients, sequence length handling), and evaluation standards in NLP.
+\subsubsection{Training Loop Overview}
+\begin{itemize}
+    \item \textbf{Mini-Batch Training with Hidden State Initialization:}  
+    At the start of each epoch, the model is set to training mode using \texttt{model.train()}. For each mini-batch from the training data:
+    \begin{enumerate}
+        \item The model’s hidden state is initialized with zero matrix.
+        \item Before the forward pass, gradients are zeroed via \texttt{model.zero\_grad()} and \texttt{optimizer.zero\_grad()}.
+        \item The forward pass is executed, producing outputs and an updated hidden state.
+        \item The hidden state is detached from the computation graph using \texttt{h.detach()} to avoid backpropagating through all previous batches.
+        \item The loss is computed using binary cross entropy.
+        \item Backpropagation is performed via \texttt{loss.backward()}.
+        \item The gradients are clipped using \texttt{nn.utils.clip\_grad\_norm\_} with the specified clip value to mitigate exploding gradients.
+        \item Finally, the optimizer updates the model parameters using \texttt{optimizer.step()}.
+    \end{enumerate}
+    
+    \item \textbf{Validation Stage:}  
+    After each epoch, the model is switched to evaluation mode using \texttt{model.eval()} and evaluated on the validation set. Similar to training, the hidden state is updated parameters and the model will use that parameters to make the prediction. And the accuracy is computed and recorded.
+    
+    \item \textbf{Performance Monitoring and Checkpointing:}  
+    At the end of each epoch, the mean training and validation losses, as well as accuracy, are calculated. The validation loss is compared against the best loss seen so far. If the current validation loss is lower than the lowerest one, then the model's state dictionary is saved as the best model in .pth format. 
+\end{itemize}
 
-2. **Data Collection and Preprocessing:**
-   - **Dataset Selection:**  
-     Choose a benchmark NLP dataset appropriate to the target task (e.g., language modeling, text classification, or machine translation).
-   - **Preprocessing Steps:**  
-     Perform text normalization, tokenization, vocabulary building, and sequence padding. Optional steps may include initializing word embeddings (either pre-trained or learned from scratch).
+\subsubsection{Pseudocode Description}
+The following Python pseudocode summarizes the training procedure implemented in my experiment:
 
-3. **Model Development and Experimental Implementation:**
-   - **Model Architecture Design:**  
-     Implement the different RNN-based models:
-     - **Vanilla RNN:**  
-       Define the recurrence as  
-       \[
-       h_t = \sigma(W_{hx} x_t + W_{hh} h_{t-1} + b_h), \quad y_t = f(W_{yh} h_t + b_y),
-       \]
-       where \(x_t\) is the input vector at time \(t\), \(h_t\) is the hidden state, and \(y_t\) is the output.
-     - **LSTM:**  
-       Set up the LSTM cell with input, forget, and output gates to control information flow.
-     - **GRU:**  
-       Implement the GRU cell, which uses update and reset gates as a simplified alternative.
-     - **RNN Encoder-Decoder:**  
-       Develop an encoder to summarize the input sequence and a decoder to generate the target sequence.
-   - **Framework and Tools:**  
-     Develop the models using PyTorch or TensorFlow. Leverage available libraries for reproducibility and efficiency.
+\begin{lstlisting}[language=Python, caption={Training Loop Pseudocode}]
+clip = 5
+epochs = 5 
+valid_loss_min = np.inf
+epoch_tr_loss, epoch_vl_loss = [], []
+epoch_tr_acc, epoch_vl_acc = [], []
 
-4. **Training, Hyperparameter Tuning, and Evaluation:**
-   - **Training Protocol:**  
-     Use similar training configurations (e.g., optimizer choice, learning rate schedule, batch size) for all models to ensure a fair comparison.
-   - **Hyperparameter Optimization:**  
-     Conduct grid search or Bayesian optimization for parameters such as hidden unit size, dropout rates, and learning rates.
-   - **Evaluation Metrics:**  
-     Define metrics based on the nature of the task (e.g., classification accuracy, F1 score, perplexity). Monitor convergence behavior and computational resource usage.
-   - **Cross-Validation and Benchmarking:**  
-     Use cross-validation and hold-out test sets to ensure robustness of performance assessments.
+for epoch in range(epochs):
+    train_losses = []
+    train_acc = 0.0
+    model.train()
+    # Initialize the hidden state for the first mini-batch
+    h = model.init_hidden(batch_size)
+    for inputs, labels in train_loader:
+        inputs, labels = inputs.to(device), labels.to(device)
+        model.zero_grad()
+        optimizer.zero_grad()
+        
+        output, h = model(inputs, h)
+        h = h.detach()
+        
+        loss = criterion(output, labels.float())
+        loss.backward()
+        train_losses.append(loss.item())
+        
+        accuracy = acc(output, labels)
+        train_acc += accuracy
+        
+        nn.utils.clip_grad_norm_(model.parameters(), clip)
+        optimizer.step()
+    
+    val_h = model.init_hidden(batch_size)
+    val_losses = []
+    val_acc = 0.0
+    model.eval()
+    for inputs, labels in valid_loader:
+        inputs, labels = inputs.to(device), labels.to(device)
+        output, val_h = model(inputs, val_h)
+        val_loss = criterion(output.squeeze(), labels.float())
+        val_losses.append(val_loss.item())
+        
+        accuracy = acc(output, labels)
+        val_acc += accuracy
+    
+    epoch_train_loss = np.mean(train_losses)
+    epoch_val_loss = np.mean(val_losses)
+    epoch_train_acc = train_acc / len(train_loader.dataset)
+    epoch_val_acc = val_acc / len(valid_loader.dataset)
+    
+    epoch_tr_loss.append(epoch_train_loss)
+    epoch_vl_loss.append(epoch_val_loss)
+    epoch_tr_acc.append(epoch_train_acc)
+    epoch_vl_acc.append(epoch_val_acc)
+    
+    print(f'Epoch {epoch+1}')
+    print(f'train_loss : {epoch_train_loss}  val_loss : {epoch_val_loss}')
+    print(f'train_accuracy : {epoch_train_acc*100}  val_accuracy : {epoch_val_acc*100}')
+    
+    if epoch_val_loss <= valid_loss_min:
+        torch.save(model.state_dict(), './working/state_dict.pt')
+        print('Validation loss decreased ({:.6f} --> {:.6f}). Saving model...'
+              .format(valid_loss_min, epoch_val_loss))
+        valid_loss_min = epoch_val_loss
+    print(25 * '==')
+\end{lstlisting}
+\newpage
 
-5. **Result Analysis and Reporting:**
-   - **Comparative Analysis:**  
-     Analyze and interpret the performance differences among the RNN, LSTM, GRU, and RNN encoder-decoder models. Assess the trade-offs in terms of processing speed, accuracy, and stability.
-   - **Discussion of Findings:**  
-     Provide a discussion relative to theoretical expectations (e.g., how and why LSTMs may outperform vanilla RNNs in handling long-term dependencies).
-   - **Documentation:**  
-     Compile the findings into a detailed technical report, including visualizations of loss curves, performance metrics over training epochs, and error analysis.
-
-6. **Dissemination:**
-   - **Presentation and Peer Review:**  
-     Present the results at seminars and workshops to receive feedback.
-   - **Final Reporting:**  
-     Prepare a final research report and, if applicable, a manuscript for publication in a relevant conference or journal.
 
 
 

@@ -37,10 +37,12 @@
 \contentsline {subsubsection}{\numberline {4.3.3}Model 3 (Gated recurrent unit)}{24}{subsubsection.4.3.3}%
 \contentsline {paragraph}{Step 1: Initialize Hidden State}{24}{section*.11}%
 \contentsline {paragraph}{Step 2: Process Each Input Vector}{24}{section*.12}%
-\contentsline {paragraph}{Step 3: Compute Reset Gate}{24}{section*.13}%
+\contentsline {paragraph}{Step 3: Compute Reset Gate}{25}{section*.13}%
 \contentsline {paragraph}{Step 4: Compute Update Gate}{25}{section*.14}%
 \contentsline {paragraph}{Step 5: Compute Candidate Hidden State}{25}{section*.15}%
 \contentsline {paragraph}{Step 6: Update Hidden State}{25}{section*.16}%
-\contentsline {paragraph}{Step 7: Use Final Hidden State for Output}{25}{section*.17}%
-\contentsline {subsection}{\numberline {4.4}Training}{26}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Training Protocol}{26}{subsubsection.4.4.1}%
+\contentsline {paragraph}{Step 7: Use Final Hidden State for Output}{26}{section*.17}%
+\contentsline {subsection}{\numberline {4.4}Training, Hyperparameter Tuning, and Evaluation}{27}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Model Hyperparameters and Setup}{27}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Training Loop Overview}{27}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Pseudocode Description}{28}{subsubsection.4.4.3}%
