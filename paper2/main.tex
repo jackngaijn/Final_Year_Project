@@ -1442,6 +1442,41 @@ for epoch in range(epochs):
 \end{lstlisting}
 \newpage
 
+% ######################## Results and Analysis ######################################
+\section{Results and Analysis}
+\subsection{Results}
+In this section, I report the classification accuracy of three model on the testing set. And I will show the performance of RNN, GRU and LSTM on IMDB dataset respectively. 
+\\[1ex]
+For the Figure 2, RNN performance on IMDB dataset. Here is the deeply interpretation. For the left hand side is the accuracy. We can see that the training accuracy improves steadly over the 5 epochs and starting around 50\% and reaching roughly 70\%. And the validation accuracy also increase and follow the similar trend to the training accuracy. Starting at around 50\% and reaching around 60\% at the end of the validation. 
+\\[1ex]
+For the training loss, it decreases steadily over 5 epochs, starting around 0.7 and dropping to approximately 0.56, the validation loss initially decreases but begins to raise after $4^{th}$ epoch. This suggests that the model's performance on unseen data is not improving as much after the $4^{th}$ epoch and may even start to degrade due to overfitting or some gradient problem.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/rnn_performance.png} 
+    \caption{RNN performance on IMDB dataset}
+\end{figure}
+\\[1ex]
+And next is the performance of GRU, we can see that the training accuracy improves significantly, starting around 60\% and reaching over 95\% by the end of training. This indicates that the GRU model is fitting the training data very well. On the contrast, the validation accuracy starts at around 80\% and improves slightly in the first 2 epochs but then remain on the same value around 85\% for the rest of the training. The widening gap between training and validation accuracy after the $2^{nd}$ epoch suggests overfitting. 
+\\[1ex]
+Then for the training loss and the validation loss for the GRU model. The training loss decreases steadily and starting at over 0.6 and dropping to around 0.1 by the $5^{th}$ epoch. The gap between training and validation accuracy after the second epoch suggests overfitting.
+\\[1ex]
+For the loss, the training loss decreases steadily, starting at over 0.6 and dropping to around 0.1 by the epoch. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/gru_performance.png} 
+    \caption{GRU performance on IMDB dataset}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/lstm_performance.png}
+    \caption{LSTM performance on IMDB dataset}
+\end{figure}
+
+\newpage
+% ######################## Results and Analysis ######################################
+
+
 
 
 

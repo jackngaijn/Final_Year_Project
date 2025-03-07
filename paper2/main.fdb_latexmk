@@ -1,22 +1,25 @@
 # Fdb version 4
-["biber main"] 1740063454.6209 "main.bcf" "main.bbl" "main" 1740407581.09058 0
-  "main.bcf" 1740407580.97773 134307 6a80e25839eb58cb2154adf1baa2608c "pdflatex"
+["biber main"] 1740063454.6209 "main.bcf" "main.bbl" "main" 1741332756.65351 0
+  "main.bcf" 1741332756.52595 134307 6a80e25839eb58cb2154adf1baa2608c "pdflatex"
   "references.bib" 1740063454.39938 5537 8e5daa1137a43e4e82cad8ef2c280c79 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1740407578.884 "/Users/jack/FYP/paper2/main.tex" "main.pdf" "main" 1740407581.09091 0
+["pdflatex"] 1741332754.01835 "/Users/jack/FYP/paper2/main.tex" "main.pdf" "main" 1741332756.65382 0
   "../Pic/drnn.png" 1738504812.31877 162499 da4aef552dde2eda990492585ee2b82e ""
   "../Pic/exponential_growth.png" 1739037100.20845 92537 aa0b85e3d95da0aabee2ae3322886447 ""
   "../Pic/gru.png" 1739037100.20958 78251 a59b557fc01f4ead56f2392b749096f9 ""
+  "../Pic/gru_performance.png" 1741314114.91613 61598 045c89b9ba2134028ab0841086c85b33 ""
   "../Pic/lstm1.png" 1737473531.44294 150153 4f0c9d381040ced680181138219149f3 ""
   "../Pic/lstm2.png" 1737473537.54856 29050 3285ceaafe67a1a4a5127674978d49c5 ""
+  "../Pic/lstm_performance.png" 1741314129.54904 66153 2bc34429dc0e96141b00333d2c5fbd01 ""
   "../Pic/pic1.png" 1736607606.6387 51463 916fdaa44749d7d22387bc301e4f0c9a ""
+  "../Pic/rnn_performance.png" 1741313790.80872 63517 c846eedb4da20f54bbc9817a1e5fb829 ""
   "../Pic/sigmoid.png" 1737471853.28225 32660 b126ee814eaa402ca6ae4fff0fad1eff ""
   "../Pic/tanh.png" 1737471853.28288 33618 4e1216e52580b1c43810514dda676632 ""
   "../Pic/word_representation.png" 1737898306.83419 112438 cfe0a9a053ce1a82c7b8e8f1c666de96 ""
-  "/Users/jack/FYP/paper2/main.tex" 1740407576.33424 76279 d7fa44a4e820e72b3b4c5019f4221dda ""
+  "/Users/jack/FYP/paper2/main.tex" 1741332753.74683 78947 9c6a7303330e16e82313ff64b9297eb9 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -237,12 +240,12 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1735559772.28632 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1735559764 8221433 1b995ee7db319a09dc443f05856d6189 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1740407580.97482 13530 0cd6c8c0681a18c58b40b89c00051d7d "pdflatex"
+  "main.aux" 1741332756.52306 14193 70dc5629ebb5db380473a48d030da1d6 "pdflatex"
   "main.bbl" 1740063457.02954 55324 10f21a56d22777569ac0c389ad3d6209 "biber main"
-  "main.out" 1740407580.97685 6636 394b87d5179e9ff110895e0ec8d96c20 "pdflatex"
-  "main.run.xml" 1740407580.97832 2427 d1bfcd6d722f5bf4e724fdcb22d9bbf2 "pdflatex"
-  "main.tex" 1740407576.33424 76279 d7fa44a4e820e72b3b4c5019f4221dda ""
-  "main.toc" 1740407580.97838 4397 b346ead50d4c30dbfa49cb97a52bbedd "pdflatex"
+  "main.out" 1741332756.52499 6879 11ad9ec830fa2d354e0c96be6cca4805 "pdflatex"
+  "main.run.xml" 1741332756.52655 2427 d1bfcd6d722f5bf4e724fdcb22d9bbf2 "pdflatex"
+  "main.tex" 1741332753.74683 78947 9c6a7303330e16e82313ff64b9297eb9 ""
+  "main.toc" 1741332756.52662 4548 235151fb9dc66f6fdd0b83f32a9c2bec "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
