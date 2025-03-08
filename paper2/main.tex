@@ -82,9 +82,10 @@ BPTT is one of the most important algorithms used for training RNNs. Dating back
 BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period \parencite{werbos1990bptt}.
 
 This unfolds the RNN to construct a traditional Feedforward Neural Network where we can apply backpropagation through time. Below is the conceptual idea of BPTT in RNN.
+\newpage
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{../Pic/pic1.png} % Replace "example-image" with your image file
+    \includegraphics[width=0.8\textwidth]{../Pic/pic1.png} % Replace "example-image" with your image file
     \caption{Unfolded RNN}
 \end{figure}
 
@@ -209,6 +210,7 @@ Where
     b_y \leftarrow b_y - \alpha\dfrac{\partial\mathcal{L}}{\partial b_y}
 \end{equation}
 
+\newpage
 \textbf{Pseudocode of BPTT} \parencite{wikipedia2023bptt}
 \begin{algorithm}[H]
     \caption{Backpropagation Through Time (BPTT)}
@@ -260,15 +262,15 @@ The main role of the sigmoid activation function is to normalize candidate value
     Sigmoid'(x) = Sigmoid(x)(1-Sigmoid(x))
 \end{equation}
 Below is the sigmoid function and its derivative.
-\begin{figure}[!htb]
+\newpage
+\begin{figure}[!h]
     \centering
-    \includegraphics[width=1\textwidth]{../Pic/sigmoid.png} % Replace "example-image" with your image file
-    % \caption{An example image.}
-    \label{fig:sigmoid}
+    \includegraphics[width=0.8\textwidth]{../Pic/sigmoid.png} % Replace "example-image" with your image file
 \end{figure}
-\newline
+
 $Domain(Sigmoid(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid(x))=(0,1)$\\
 $Domain(Sigmoid'(x))=\mathbb{R},\hspace{1em} Codomain(Sigmoid'(x))=[0,0.5]$
+\newline
 
 % Hyperbolic tangent activation function
 \textbf{Hyperbolic tangent activation function}
@@ -281,14 +283,12 @@ The main role of the hyperbolic tangent (tanh) activation function is to normali
 \begin{equation}
     tanh'(x) = 1 - tanh^{2}(x)
 \end{equation}
-Below is the Hyperbolic tangent activation function and its derivative.\\
+Below is the Hyperbolic tangent activation function and its derivative.
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1\textwidth]{../Pic/tanh.png} % Replace "example-image" with your image file
-    % \caption{An example image.}
-    \label{fig:tanh}
+    \includegraphics[width=0.8\textwidth]{../Pic/tanh.png} % Replace "example-image" with your image file
 \end{figure}
-\newline
+
 $Domain(tanh(x))=\mathbb{R},\hspace{1em} Codomain(tanh(x))=[-1,1]$\\
 $Domain(tanh'(x))=\mathbb{R},\hspace{1em} Codomain(tanh'(x))=[0,1]$
 
@@ -307,7 +307,7 @@ Generally, sigmoid activation function is used commonly in RNNs, has a maximum d
 When we are doing the feedforward and get super large value computed by loss function. Then when updating the parameters. The updates to the weights will also be large. Resulting in higher loss and larger gradients in the next iterations. This will lead to exploding gradients.
 \\[1ex]
 We have introduce the backpropagation through time. This is the method to update the parameters in RNNs. When calculating, for example, the partial derivative of loss function with respect to W. Assume the time $t$ go to infinity large. We will get this term. $ \prod_{j=i+1}^{t} \dfrac{\partial h_j}{\partial h_{j-1}} $, and it will lead to exponential problem. if $ \dfrac{\partial h_j}{\partial h_{j-1}} > 1 $. Then the product of all term will increase exponentially, then exploding gradients occur. On the contrary, if $\dfrac{\partial h_j}{\partial h_{j-1}} < 1$. Then the result will decrease exponentially, then vanishing gradients occur.
-\begin{figure}[!htb]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=1\textwidth]{../Pic/exponential_growth.png} % Replace "example-image" with your image file
 \end{figure}
@@ -1446,7 +1446,7 @@ for epoch in range(epochs):
 \section{Results and Analysis}
 \subsection{Results}
 In this section, I report the classification accuracy of three model on the testing set. And I will show the performance of RNN, GRU and LSTM on IMDB dataset respectively. 
-\\[1ex]
+\subsubsection{Vanilla RNN}
 For the Figure 2, RNN performance on IMDB dataset. Here is the deeply interpretation. For the left hand side is the accuracy. We can see that the training accuracy improves steadly over the 5 epochs and starting around 50\% and reaching roughly 70\%. And the validation accuracy also increase and follow the similar trend to the training accuracy. Starting at around 50\% and reaching around 60\% at the end of the validation. 
 \\[1ex]
 For the training loss, it decreases steadily over 5 epochs, starting around 0.7 and dropping to approximately 0.56, the validation loss initially decreases but begins to raise after $4^{th}$ epoch. This suggests that the model's performance on unseen data is not improving as much after the $4^{th}$ epoch and may even start to degrade due to overfitting or some gradient problem.
@@ -1455,23 +1455,34 @@ For the training loss, it decreases steadily over 5 epochs, starting around 0.7 
     \includegraphics[width=1\textwidth]{../Pic/rnn_performance.png} 
     \caption{RNN performance on IMDB dataset}
 \end{figure}
-\\[1ex]
+\subsubsection{GRU}
 And next is the performance of GRU, we can see that the training accuracy improves significantly, starting around 60\% and reaching over 95\% by the end of training. This indicates that the GRU model is fitting the training data very well. On the contrast, the validation accuracy starts at around 80\% and improves slightly in the first 2 epochs but then remain on the same value around 85\% for the rest of the training. The widening gap between training and validation accuracy after the $2^{nd}$ epoch suggests overfitting. 
 \\[1ex]
 Then for the training loss and the validation loss for the GRU model. The training loss decreases steadily and starting at over 0.6 and dropping to around 0.1 by the $5^{th}$ epoch. The gap between training and validation accuracy after the second epoch suggests overfitting.
 \\[1ex]
-For the loss, the training loss decreases steadily, starting at over 0.6 and dropping to around 0.1 by the epoch. 
-
+For the loss, the training loss decreases steadily, starting at over 0.6 and dropping to around 0.1 by the $5^{th}$ epoch. For the validation loss decreases initially and reaching the lowest and then the loss raise over 0.5. Which indicate that overfitting.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{../Pic/gru_performance.png} 
     \caption{GRU performance on IMDB dataset}
 \end{figure}
+
+\subsubsection{LSTM}
+The third one is the performance of LSTM, the training accuracy improves steadily over the epochs and starting at around 55\% and reaching about 90\% at the end of the training. And for the validation accuracy starting at approximately 65\% and reaching about 82.5\%. And the loss of the training dataset decreases steadily from about 0.7 to around 0.2. And the validation loss show that the model did learn something from the data. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{../Pic/lstm_performance.png}
     \caption{LSTM performance on IMDB dataset}
 \end{figure}
+
+\newpage
+\section{Analysis}
+\subsection{Learning Behavior}
+All models show the effective learning during the initial epochs, roughtly 55\%, as both training and validation accuracy improve, and loss decrease. But the common problem is overfitting occure in 3 models. The possible reasons is dataset. Since every sentence in dataset was truncated. I just use the first 100 token to training the model. So the existing tokens might not be fully represent the sentence. The second reason is the embedding layers, I used the built-in function in Pytorch to create the embedding layer by randomise the matrix. 
+\\[1ex]
+Among the 3 models, LSTM and GRU have the better performance compare with vanilla RNN. The reason of GRU and LSTM perform better than RNN is the vanilla RNN struggles with long term dependencies because of the vanishing gradient problem when processing long sequences. In this experience is 100 time step. And this limits its ability to learn the meaningful patterns from data. On the contrast, GRU and LSTM use gate mechanisms to retain the relevant information and discard irrelevant information, allowing them to capture the long term dependencies more effectively.
+\\[1ex]
+And for the overfitting problem, we can see that overfitting problem occur in three models. 
 
 \newpage
 % ######################## Results and Analysis ######################################
