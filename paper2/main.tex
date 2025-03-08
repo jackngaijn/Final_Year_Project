@@ -1324,6 +1324,13 @@ Then we calculate the loss function by the last output.
     Loss = \mathcal{L}(\hat{y}, y)
 \end{equation}
 
+\subsubsection{Model 4 (vanilla RNN with 2 layer)}
+Same setting with model 1, but I stack 2 RNN block. In the other word, this is deep recurrent neural networks. 
+\subsubsection{Model 5 (GRU with 2 layer)}
+Same setting with model 1, but I stack 2 GRU block. In the other word, this is deep recurrent neural networks. 
+\subsubsection{Model 6 (LSTM RNN with 2 layer)}
+Same setting with model 1, but I stack 2 LSTM block. In the other word, this is deep recurrent neural networks. 
+
 \newpage
 \subsection{Training, Hyperparameter Tuning, and Evaluation}
 In my experiments, I implemented the training loop using PyTorch. The following details describe the key components of my training code, which are designed to ensure robust model optimization and fair evaluation:
@@ -1482,10 +1489,13 @@ All models show the effective learning during the initial epochs, roughtly 55\%,
 \\[1ex]
 Among the 3 models, LSTM and GRU have the better performance compare with vanilla RNN. The reason of GRU and LSTM perform better than RNN is the vanilla RNN struggles with long term dependencies because of the vanishing gradient problem when processing long sequences. In this experience is 100 time step. And this limits its ability to learn the meaningful patterns from data. On the contrast, GRU and LSTM use gate mechanisms to retain the relevant information and discard irrelevant information, allowing them to capture the long term dependencies more effectively.
 \\[1ex]
-And for the overfitting problem, we can see that overfitting problem occur in three models. 
-
+And for the overfitting problem, we can see that overfitting problem occur in three models. For the vanilla RNN, since this is the basic and simple architecture to handle sequential data, it lacks mechanisms to retain or forget information selectively. As a result, it relying on the memorizing the training data rather than learning the meaningful patterns. This causes it to overfit. And for the GRU and LSTM, although gating mechanisms provide a more sophisticated architecture to learning from data, they aggressively optimizes the training loss, which can result in overfitting when the model continues to learn unnecessary information from the dataset. 
+\\[1ex] 
+The above result and analyse shown that GRU and LSTM perform better than vanilla RNN, which show that the graident vanishing and graident exploding problem were improved by the gating mechanism. And there is so many way will affect the experiment result for example, the embedding layer, tokenization.
 \newpage
+
 % ######################## Results and Analysis ######################################
+
 
 
 

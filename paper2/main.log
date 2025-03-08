@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.30)  8 MAR 2025 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.30)  9 MAR 2025 00:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -925,7 +925,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout6 = `main.toc'.
 
  [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3]
-<../Pic/pic1.png, id=232, 910.40125pt x 540.0175pt>
+<../Pic/pic1.png, id=247, 910.40125pt x 540.0175pt>
 File: ../Pic/pic1.png Graphic file (type png)
 <use ../Pic/pic1.png>
 Package pdftex.def Info: ../Pic/pic1.png  used on input line 88.
@@ -968,7 +968,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 253--258
  []
 
 [7]
-<../Pic/sigmoid.png, id=316, 445.9059pt x 267.399pt>
+<../Pic/sigmoid.png, id=331, 445.9059pt x 267.399pt>
 File: ../Pic/sigmoid.png Graphic file (type png)
 <use ../Pic/sigmoid.png>
 Package pdftex.def Info: ../Pic/sigmoid.png  used on input line 268.
@@ -983,23 +983,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 276--280
 
  []
 
-<../Pic/tanh.png, id=318, 452.4102pt x 271.0125pt>
+<../Pic/tanh.png, id=333, 452.4102pt x 271.0125pt>
 File: ../Pic/tanh.png Graphic file (type png)
 <use ../Pic/tanh.png>
 Package pdftex.def Info: ../Pic/tanh.png  used on input line 289.
 (pdftex.def)             Requested size: 362.37569pt x 217.07907pt.
-<../Pic/exponential_growth.png, id=320, 578.16pt x 289.08pt>
+<../Pic/exponential_growth.png, id=335, 578.16pt x 289.08pt>
 File: ../Pic/exponential_growth.png Graphic file (type png)
 <use ../Pic/exponential_growth.png>
 Package pdftex.def Info: ../Pic/exponential_growth.png  used on input line 312.
 (pdftex.def)             Requested size: 452.9679pt x 226.48277pt.
 [8 <../Pic/sigmoid.png> <../Pic/tanh.png>]
-<../Pic/lstm1.png, id=331, 453.6585pt x 171.477pt>
+<../Pic/lstm1.png, id=346, 453.6585pt x 171.477pt>
 File: ../Pic/lstm1.png Graphic file (type png)
 <use ../Pic/lstm1.png>
 Package pdftex.def Info: ../Pic/lstm1.png  used on input line 325.
 (pdftex.def)             Requested size: 452.9679pt x 171.21492pt.
-<../Pic/lstm2.png, id=332, 452.69125pt x 84.315pt>
+<../Pic/lstm2.png, id=347, 452.69125pt x 84.315pt>
 File: ../Pic/lstm2.png Graphic file (type png)
 <use ../Pic/lstm2.png>
 Package pdftex.def Info: ../Pic/lstm2.png  used on input line 329.
@@ -1015,7 +1015,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 396--397
  []
 
 [11]
-<../Pic/gru.png, id=359, 349.305pt x 258.9675pt>
+<../Pic/gru.png, id=374, 349.305pt x 258.9675pt>
 File: ../Pic/gru.png Graphic file (type png)
 <use ../Pic/gru.png>
 Package pdftex.def Info: ../Pic/gru.png  used on input line 433.
@@ -1025,7 +1025,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 478--479
 
  []
 
-<../Pic/drnn.png, id=373, 608.2725pt x 689.57625pt>
+<../Pic/drnn.png, id=388, 608.2725pt x 689.57625pt>
 File: ../Pic/drnn.png Graphic file (type png)
 <use ../Pic/drnn.png>
 Package pdftex.def Info: ../Pic/drnn.png  used on input line 514.
@@ -1040,7 +1040,7 @@ Overfull \hbox (3.16977pt too wide) in paragraph at lines 634--636
 \OT1/cmr/m/n/12 quence $\OML/cmm/m/it/12 X$ \OT1/cmr/m/n/12 (Equa-tion 39), are de-ter-mined us-ing the Baum-Welch al-go-rithm, an expectation-
  []
 
-<../Pic/word_representation.png, id=434, 469.755pt x 281.853pt>
+<../Pic/word_representation.png, id=450, 469.755pt x 281.853pt>
 File: ../Pic/word_representation.png Graphic file (type png)
 <use ../Pic/word_representation.png>
 Package pdftex.def Info: ../Pic/word_representation.png  used on input line 658.
@@ -1072,83 +1072,83 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has 
                                                   \__shipout_drop_firstpage_...
 l.823 \begin{equation}
                       ] [22] [23] [24] [25] [26] [27]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 1378.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 1385.
  [28]
-Overfull \hbox (68.7312pt too wide) in paragraph at lines 1433--1434
+Overfull \hbox (68.7312pt too wide) in paragraph at lines 1440--1441
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (167.43103pt too wide) in paragraph at lines 1434--1436
+Overfull \hbox (167.43103pt too wide) in paragraph at lines 1441--1443
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (5.28131pt too wide) in paragraph at lines 1437--1438
+Overfull \hbox (5.28131pt too wide) in paragraph at lines 1444--1445
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (96.93115pt too wide) in paragraph at lines 1438--1439
+Overfull \hbox (96.93115pt too wide) in paragraph at lines 1445--1446
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [29]
-<../Pic/rnn_performance.png, id=632, 1163.547pt x 380.1402pt>
+<../Pic/rnn_performance.png, id=647, 1163.547pt x 380.1402pt>
 File: ../Pic/rnn_performance.png Graphic file (type png)
 <use ../Pic/rnn_performance.png>
-Package pdftex.def Info: ../Pic/rnn_performance.png  used on input line 1455.
+Package pdftex.def Info: ../Pic/rnn_performance.png  used on input line 1462.
 (pdftex.def)             Requested size: 452.9679pt x 147.98724pt.
-<../Pic/gru_performance.png, id=633, 1163.547pt x 380.1402pt>
+<../Pic/gru_performance.png, id=648, 1163.547pt x 380.1402pt>
 File: ../Pic/gru_performance.png Graphic file (type png)
 <use ../Pic/gru_performance.png>
-Package pdftex.def Info: ../Pic/gru_performance.png  used on input line 1466.
+Package pdftex.def Info: ../Pic/gru_performance.png  used on input line 1473.
 (pdftex.def)             Requested size: 452.9679pt x 147.98724pt.
  [30
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1469 
+l.1476 
         <../Pic/rnn_performance.png>]
-<../Pic/lstm_performance.png, id=640, 1163.547pt x 380.1402pt>
+<../Pic/lstm_performance.png, id=656, 1163.547pt x 380.1402pt>
 File: ../Pic/lstm_performance.png Graphic file (type png)
 <use ../Pic/lstm_performance.png>
-Package pdftex.def Info: ../Pic/lstm_performance.png  used on input line 1474.
+Package pdftex.def Info: ../Pic/lstm_performance.png  used on input line 1481.
 (pdftex.def)             Requested size: 452.9679pt x 147.98724pt.
  [31
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1478 \newpage
+l.1485 \newpage
                
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1478 \newpage
+l.1485 \newpage
                 <../Pic/gru_performance.png> <../Pic/lstm_performance.png>] [32] [33] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A1DE2959E1A587D30F9B039274F6B015;7406.
+(rerunfilecheck)             Checksum: E5DC005C75B595340BCA7DDF19CB940F;8134.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33807 strings out of 474116
- 640450 string characters out of 5743681
+ 33813 strings out of 474116
+ 640570 string characters out of 5743681
  1973187 words of memory out of 5000000
- 55374 multiletter control sequences out of 15000+600000
+ 55377 multiletter control sequences out of 15000+600000
  572128 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,16n,93p,1510b,5052s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on main.pdf (33 pages, 1056799 bytes).
+Output written on main.pdf (33 pages, 1058335 bytes).
 PDF statistics:
- 853 PDF objects out of 1000 (max. 8388607)
- 738 compressed objects within 8 object streams
- 315 named destinations out of 1000 (max. 500000)
- 385 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 868 PDF objects out of 1000 (max. 8388607)
+ 753 compressed objects within 8 object streams
+ 318 named destinations out of 1000 (max. 500000)
+ 409 words of extra memory for PDF output out of 10000 (max. 10000000)
 
