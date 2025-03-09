@@ -1453,33 +1453,59 @@ for epoch in range(epochs):
 \section{Results and Analysis}
 \subsection{Results}
 In this section, I report the classification accuracy of three model on the testing set. And I will show the performance of RNN, GRU and LSTM on IMDB dataset respectively. 
-\subsubsection{Vanilla RNN}
-For the Figure 2, RNN performance on IMDB dataset. Here is the deeply interpretation. For the left hand side is the accuracy. We can see that the training accuracy improves steadly over the 5 epochs and starting around 50\% and reaching roughly 70\%. And the validation accuracy also increase and follow the similar trend to the training accuracy. Starting at around 50\% and reaching around 60\% at the end of the validation. 
+\subsubsection{Vanilla RNN (1 layer)}
+For the figure 2, RNN with 1 layer performance on IMDB dataset. Here is the deeply interpretation. For the left hand side is the accuracy. We can see that the training accuracy increasing steadily from 50\% to roughly 65\%. And the validation accuracy shows a more erratic behavior. It starts from 50\% and increases to a peak around epoch 3, drops slightly at epoch 4 and the rises to 65\% by the end of the training. 
 \\[1ex]
-For the training loss, it decreases steadily over 5 epochs, starting around 0.7 and dropping to approximately 0.56, the validation loss initially decreases but begins to raise after $4^{th}$ epoch. This suggests that the model's performance on unseen data is not improving as much after the $4^{th}$ epoch and may even start to degrade due to overfitting or some gradient problem.
+For the training loss, it decreases steadily over 5 epochs from 0.7 to 0.6, showing that the model is learning. On the contrary, the validation loss decreases initially and stabilizes around epoch 4 and then rises sharply in later epochs. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{../Pic/rnn_performance.png} 
-    \caption{RNN performance on IMDB dataset}
+    \includegraphics[width=1\textwidth]{../Pic/rnn1.png} 
+    \caption{RNN with 1 layer performance on IMDB dataset}
 \end{figure}
-\subsubsection{GRU}
-And next is the performance of GRU, we can see that the training accuracy improves significantly, starting around 60\% and reaching over 95\% by the end of training. This indicates that the GRU model is fitting the training data very well. On the contrast, the validation accuracy starts at around 80\% and improves slightly in the first 2 epochs but then remain on the same value around 85\% for the rest of the training. The widening gap between training and validation accuracy after the $2^{nd}$ epoch suggests overfitting. 
+\subsubsection{Vanilla RNN (2 layer)}
+The training accuracy improves over the eopchs, increasing steadily from 50\% to 75\%. For the validation accuracy also improves, although at a slower pace than training accuracy. Starts at around 50\% and reaching approximately 67\% by epoch 5.
+\\[1ex]
+Then for the tarining loss, it decreases steadily from 0.7 to 0.54, showing that the model is learning effectively and optimizing the training objective. Next for the validation loss, decreases initially, but plateaus and slightly increases after epoch 4. 
+\newpage
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/rnn2.png} 
+    \caption{RNN with 2 layer performance on IMDB dataset}
+\end{figure}
+\subsubsection{GRU (1 layer)}
+For the figure 4, GRU with 1 layer, we can see that the training accuracy improves steadily and reaching around 95\%, but the validation accuracy remain the same value after epoch 2. Which mean that the model did not learning any new information from the training dataset. 
+\\[1ex]
+Then for the training loss, the performance is relatively good and drop from 0.7 to 0.15. But for the validation loss, it drop from 0.55 to 0.4 and then rises to 0.45. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/gru1.png} 
+    \caption{GRU with 1 layer performance on IMDB dataset}
+\end{figure}
+\subsubsection{GRU (2 layer)}
+And next is the performance of GRU with 1 layer, we can see that the training accuracy improves significantly, starting around 60\% and reaching over 95\% by the end of training. This indicates that the GRU model is fitting the training data very well. On the contrast, the validation accuracy starts at around 80\% and improves slightly in the first 2 epochs but then remain on the same value around 85\% for the rest of the training. The widening gap between training and validation accuracy after the $2^{nd}$ epoch suggests overfitting. 
 \\[1ex]
 Then for the training loss and the validation loss for the GRU model. The training loss decreases steadily and starting at over 0.6 and dropping to around 0.1 by the $5^{th}$ epoch. The gap between training and validation accuracy after the second epoch suggests overfitting.
 \\[1ex]
 For the loss, the training loss decreases steadily, starting at over 0.6 and dropping to around 0.1 by the $5^{th}$ epoch. For the validation loss decreases initially and reaching the lowest and then the loss raise over 0.5. Which indicate that overfitting.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{../Pic/gru_performance.png} 
-    \caption{GRU performance on IMDB dataset}
+    \includegraphics[width=1\textwidth]{../Pic/gru2.png} 
+    \caption{GRU with 2 layer performance on IMDB dataset}
 \end{figure}
 
-\subsubsection{LSTM}
-The third one is the performance of LSTM, the training accuracy improves steadily over the epochs and starting at around 55\% and reaching about 90\% at the end of the training. And for the validation accuracy starting at approximately 65\% and reaching about 82.5\%. And the loss of the training dataset decreases steadily from about 0.7 to around 0.2. And the validation loss show that the model did learn something from the data. 
+\subsubsection{LSTM (1 layer)}
+And then for the training accuracy of LSTM with 1 layer, the train and validation accuracy increase steadily, for the training accuracy increase from 55\% to 90\%, for the validation loss is increase from 63\% to 83\%. For the training loss also decrease steadily, from 0.7 to 0.3. And the validation loss decrease from 0.7 to 0.43.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{../Pic/lstm_performance.png}
-    \caption{LSTM performance on IMDB dataset}
+    \includegraphics[width=1\textwidth]{../Pic/lstm1performance.png} 
+    \caption{LSTM with 1 layer performance on IMDB dataset}
+\end{figure}
+\subsubsection{LSTM (2 layer)}
+Next is the performance of LSTM with 1 layer, the training accuracy improves steadily over the epochs and starting at around 55\% and reaching about 90\% at the end of the training. And for the validation accuracy starting at approximately 65\% and reaching about 82.5\%. And the loss of the training dataset decreases steadily from about 0.7 to around 0.2. And the validation loss show that the model did learn something from the data. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/lstm2performance.png}
+    \caption{LSTM with 2 layer performance on IMDB dataset}
 \end{figure}
 
 \newpage
