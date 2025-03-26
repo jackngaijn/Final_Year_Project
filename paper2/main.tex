@@ -1331,7 +1331,6 @@ Same setting with model 1, but I stack 2 GRU block. In the other word, this is d
 \subsubsection{Model 6 (LSTM RNN with 2 layer)}
 Same setting with model 1, but I stack 2 LSTM block. In the other word, this is deep recurrent neural networks. 
 
-\subsubsection{Model 7 (distilbert-base-uncased-finetuned-sst-2-english)}
 
 
 \newpage
@@ -1524,6 +1523,54 @@ The above result and analyse shown that GRU and LSTM perform better than vanilla
 \newpage
 
 % ######################## Results and Analysis ######################################
+
+
+% ######################## Discussion and Conclusion ######################################
+\section{Discussion and Conclusion}
+
+\subsection{Discussion}
+Throughout the project, several unexpected results and limitations were encountered that shed light on both the robustness and challenges of using RNN-based models for sentiment classification.
+
+\begin{itemize}
+    \item \textbf{Unexpected Results:}  
+    \begin{itemize}
+        \item The vanilla RNN model showed signs of overfitting relatively quickly in comparison to the LSTM and GRU models. This behavior was attributed to its vulnerability to vanishing and exploding gradient issues, despite the application of gradient clipping.
+        \item Although gradient clipping (with a threshold value of 5) generally stabilized training, occasional oscillations in the validation loss were observed. Such fluctuations suggest that even with robust gradient management, the training dynamics of sequential models can be highly sensitive to hyperparameter settings.
+    \end{itemize}
+    
+    \item \textbf{Limitations:}  
+    \begin{itemize}
+        \item The pre-processing pipeline, while extensive, was sometimes insufficient to handle complex or ambiguous tokens (e.g., domain-specific abbreviations). This highlights the need for more advanced pre-processing—such as incorporating contextualized word embeddings—to handle semantic variations effectively.
+        \item The scope of hyperparameter tuning was limited to grid or random search methods. A more comprehensive hyperparameter optimization (e.g., Bayesian optimization) might yield further improvements.
+        \item Resource constraints (such as batch size and training epochs) influenced the convergence behavior and model performance. Future experiments could benefit from increased computational resources to explore deeper architectures or longer sequences.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Conclusion}
+In summary, this project conducted a detailed comparative analysis of three RNN-based architectures (vanilla RNN, LSTM, and GRU) for binary sentiment classification on the ACL-IMDB dataset. The main findings, contributions, and implications of the project are as follows:
+
+\begin{itemize}
+    \item \textbf{Main Findings:}
+    \begin{itemize}
+        \item Gated architectures (LSTM and GRU) outperformed the vanilla RNN in managing long-term dependencies and reducing vanishing/exploding gradient issues.
+        \item The structured training approach—incorporating hidden state management, gradient clipping, and periodic validation—proved critical to achieving stable convergence.
+    \end{itemize}
+    
+    \item \textbf{Contributions:}
+    \begin{itemize}
+        \item The project establishes a robust training framework and experimental methodology, which includes comprehensive data pre-processing, model initialization, and performance evaluation.
+        \item It provides a systematic comparison of RNN variants, offering insights that can guide future research on neural network architectures for natural language processing.
+    \end{itemize}
+    
+    \item \textbf{Implications:}
+    \begin{itemize}
+        \item The results suggest that practitioners working on sentiment analysis or related NLP tasks should consider employing gated architectures like LSTM or GRU to achieve better performance.
+        \item Future work may build on these findings by exploring more advanced architectures (e.g., Transformer models or hybrid models incorporating convolutional layers) as well as more sophisticated hyperparameter optimization techniques.
+    \end{itemize}
+\end{itemize}
+
+In conclusion, while the project revealed certain limitations, it nevertheless contributes valuable insights into the training and evaluation of RNN-based models for sentiment classification, thereby setting the stage for further research in the domain of efficient and scalable NLP methodologies.
+% ######################## Discussion and Conclusion ######################################
 
 
 
