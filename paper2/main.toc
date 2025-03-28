@@ -1,64 +1,68 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \contentsline {section}{\numberline {2}Background and Literature Review}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Evolution of Deep Learning and Recurrent Neural Networks}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Literature Review}{3}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Backpropagation Through Time}{3}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2}Literature Review}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Backpropagation Through Time}{4}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Activation Function}{8}{subsubsection.2.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.3}Gradient vanishing and gradient exploring}{10}{subsubsection.2.2.3}%
 \contentsline {subsubsection}{\numberline {2.2.4}Long short-term memory (LSTM)}{10}{subsubsection.2.2.4}%
 \contentsline {subsubsection}{\numberline {2.2.5}Gated Recurrent Unit (GRU)}{13}{subsubsection.2.2.5}%
 \contentsline {subsubsection}{\numberline {2.2.6}Deep recurrent neural networks (DRNNs)}{15}{subsubsection.2.2.6}%
-\contentsline {subsubsection}{\numberline {2.2.7}Hidden Markov Model}{16}{subsubsection.2.2.7}%
-\contentsline {subsubsection}{\numberline {2.2.8}Word representation}{18}{subsubsection.2.2.8}%
+\contentsline {subsubsection}{\numberline {2.2.7}RNN encoder decoder model}{16}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Hidden Markov Model}{16}{subsubsection.2.2.8}%
+\contentsline {subsubsection}{\numberline {2.2.9}Word representation}{19}{subsubsection.2.2.9}%
 \contentsline {section}{\numberline {3}Project Goals and Objectives}{19}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Project Goals}{19}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Objectives}{19}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Implement Existing RNN Architectures}{19}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Apply the Models on a Benchmark NLP Dataset}{19}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2}Objectives}{20}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Implement Existing RNN Architectures}{20}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Apply the Models on a Benchmark NLP Dataset}{20}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Compare Model Performances}{20}{subsubsection.3.2.3}%
 \contentsline {subsubsection}{\numberline {3.2.4}Analyze the Impact of Architectural Differences}{20}{subsubsection.3.2.4}%
-\contentsline {section}{\numberline {4}Research Plan / Methodology}{20}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Literature Review}{20}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Data Collection and Preprocessing}{20}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Data Collection}{20}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Data Preprocessing}{20}{subsubsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.3}Model Architecture}{21}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Model 1 (Vanilla RNN)}{22}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}Model 2 (Long short-term memory)}{23}{subsubsection.4.3.2}%
-\contentsline {paragraph}{Step 1: Initialize Hidden and Cell States}{23}{section*.2}%
-\contentsline {paragraph}{Step 2: Process Each Input Vector}{23}{section*.3}%
+\contentsline {section}{\numberline {4}Research Plan / Methodology}{21}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Literature Review}{21}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Data Collection and Preprocessing}{21}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Data Collection}{21}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Data Preprocessing}{21}{subsubsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3}Model Architecture}{22}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Model 1 (Vanilla RNN)}{23}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Model 2 (Long short-term memory)}{24}{subsubsection.4.3.2}%
+\contentsline {paragraph}{Step 1: Initialize Hidden and Cell States}{24}{section*.2}%
+\contentsline {paragraph}{Step 2: Process Each Input Vector}{24}{section*.3}%
 \contentsline {paragraph}{Step 3: Compute Forget Gate}{24}{section*.4}%
-\contentsline {paragraph}{Step 4: Compute Input Gate}{24}{section*.5}%
-\contentsline {paragraph}{Step 5: Compute Cell Candidate}{24}{section*.6}%
-\contentsline {paragraph}{Step 6: Update Cell State}{24}{section*.7}%
-\contentsline {paragraph}{Step 7: Compute Output Gate}{24}{section*.8}%
+\contentsline {paragraph}{Step 4: Compute Input Gate}{25}{section*.5}%
+\contentsline {paragraph}{Step 5: Compute Cell Candidate}{25}{section*.6}%
+\contentsline {paragraph}{Step 6: Update Cell State}{25}{section*.7}%
+\contentsline {paragraph}{Step 7: Compute Output Gate}{25}{section*.8}%
 \contentsline {paragraph}{Step 8: Compute Hidden State}{25}{section*.9}%
-\contentsline {paragraph}{Step 9: Use Final Hidden State for Output}{25}{section*.10}%
-\contentsline {subsubsection}{\numberline {4.3.3}Model 3 (Gated recurrent unit)}{25}{subsubsection.4.3.3}%
-\contentsline {paragraph}{Step 1: Initialize Hidden State}{25}{section*.11}%
-\contentsline {paragraph}{Step 2: Process Each Input Vector}{25}{section*.12}%
-\contentsline {paragraph}{Step 3: Compute Reset Gate}{26}{section*.13}%
-\contentsline {paragraph}{Step 4: Compute Update Gate}{26}{section*.14}%
-\contentsline {paragraph}{Step 5: Compute Candidate Hidden State}{26}{section*.15}%
-\contentsline {paragraph}{Step 6: Update Hidden State}{26}{section*.16}%
-\contentsline {paragraph}{Step 7: Use Final Hidden State for Output}{27}{section*.17}%
-\contentsline {subsubsection}{\numberline {4.3.4}Model 4 (Vanilla RNN with 2 layer)}{27}{subsubsection.4.3.4}%
-\contentsline {subsubsection}{\numberline {4.3.5}Model 5 (GRU with 2 layer)}{27}{subsubsection.4.3.5}%
-\contentsline {subsubsection}{\numberline {4.3.6}Model 6 (LSTM RNN with 2 layer)}{27}{subsubsection.4.3.6}%
-\contentsline {subsection}{\numberline {4.4}Training, Hyperparameter Tuning, and Evaluation}{28}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Model Hyperparameters and Setup}{28}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Training Loop Overview}{28}{subsubsection.4.4.2}%
-\contentsline {subsubsection}{\numberline {4.4.3}Pseudocode Description}{29}{subsubsection.4.4.3}%
-\contentsline {section}{\numberline {5}Results and Analysis}{31}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Results}{31}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Vanilla RNN (1 layer)}{31}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Vanilla RNN (2 layer)}{31}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}GRU (1 layer)}{32}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}GRU (2 layer)}{32}{subsubsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.5}LSTM (1 layer)}{33}{subsubsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.6}LSTM (2 layer)}{33}{subsubsection.5.1.6}%
-\contentsline {section}{\numberline {6}Analysis}{35}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Learning Behavior}{35}{subsection.6.1}%
-\contentsline {section}{\numberline {7}Discussion and Conclusion}{36}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Discussion}{36}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Conclusion}{36}{subsection.7.2}%
+\contentsline {paragraph}{Step 9: Use Final Hidden State for Output}{26}{section*.10}%
+\contentsline {subsubsection}{\numberline {4.3.3}Model 3 (Gated recurrent unit)}{26}{subsubsection.4.3.3}%
+\contentsline {paragraph}{Step 1: Initialize Hidden State}{26}{section*.11}%
+\contentsline {paragraph}{Step 2: Process Each Input Vector}{26}{section*.12}%
+\contentsline {paragraph}{Step 3: Compute Reset Gate}{27}{section*.13}%
+\contentsline {paragraph}{Step 4: Compute Update Gate}{27}{section*.14}%
+\contentsline {paragraph}{Step 5: Compute Candidate Hidden State}{27}{section*.15}%
+\contentsline {paragraph}{Step 6: Update Hidden State}{27}{section*.16}%
+\contentsline {paragraph}{Step 7: Use Final Hidden State for Output}{28}{section*.17}%
+\contentsline {subsubsection}{\numberline {4.3.4}Model 4 (Vanilla RNN with 2 layer)}{28}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.5}Model 5 (GRU with 2 layer)}{28}{subsubsection.4.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.6}Model 6 (LSTM RNN with 2 layer)}{28}{subsubsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.4}Training, Hyperparameter Tuning, and Evaluation}{29}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Model Hyperparameters and Setup}{29}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Training Loop Overview}{29}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Pseudocode Description}{30}{subsubsection.4.4.3}%
+\contentsline {section}{\numberline {5}Results and Analysis}{32}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Results}{32}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Vanilla RNN (1 layer)}{32}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Vanilla RNN (2 layer)}{32}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}GRU (1 layer)}{33}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}GRU (2 layer)}{33}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}LSTM (1 layer)}{34}{subsubsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.6}LSTM (2 layer)}{34}{subsubsection.5.1.6}%
+\contentsline {section}{\numberline {6}Analysis}{36}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Learning Behavior}{36}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Vanilla RNN (Red line)}{37}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}LSTM (Blue line)}{37}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}GRU (Green line)}{38}{subsubsection.6.1.3}%
+\contentsline {section}{\numberline {7}Discussion and Conclusion}{39}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Discussion}{39}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Conclusion}{39}{subsection.7.2}%

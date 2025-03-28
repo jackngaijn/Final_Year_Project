@@ -46,7 +46,8 @@
 % ######################## Title  Page ####################################
 
 % ######################## table of content ###############################
-\tableofcontents % Generate a table of contents                        
+\tableofcontents % Generate a table of contents       
+\newpage                 
 % ######################## table of content ###############################
 
 
@@ -82,7 +83,6 @@ BPTT is one of the most important algorithms used for training RNNs. Dating back
 BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period \parencite{werbos1990bptt}.
 
 This unfolds the RNN to construct a traditional Feedforward Neural Network where we can apply backpropagation through time. Below is the conceptual idea of BPTT in RNN.
-\newpage
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{../Pic/pic1.png} % Replace "example-image" with your image file
@@ -531,8 +531,42 @@ The architecture of DRNNs are similar with conventional RNNs. We simply stack th
 \end{equation}
 Where $x_t$ is the input at time $t$. $h^{(l)}_{t}$ is the hidden state for the $l$ layer at time t. $W^{(l)}_{xh}, W^{(l)}_{hh}$ are the weight matrices for the input to hidden and hidden to hidden connections in layer $l$, respectively. $W_{hy}$ is weight matrix for the output layer. $b^{(l)}_h$ is the bias vector for the $l$ layer (except output layer), $b_y$ is the bias vector for output layer. $g(\cdot)$ and $f(\cdot)$ are an activation function. 
 
+\subsubsection{RNN encoder decoder model}
+RNN Encoder-Decoderis a RNN based architecture which commonly used for handle sequence to sequence problem, for example machine translation, summarization, and question answering. The designed of this architecture is good for handle the input sequence and the output sequence is not the same length, leveraging the sequential nature of data. 
+\\[1ex]
+In this architecture, there are two main components, the first component is rnn encoder, the usage of the encoder is to encode the input sequence into a fixed length vector. And the decoder is to decode the vector into the target sequence. 
+\\[1ex]
+\textbf{Encoder}
+\\[1ex]
+The encoder is a RNN based block, which processes the input sequence step by step and calculate the hidden state representation for each input token. Let the input sequence be $X = [x_1, x_2, \cdots, x_T]$ where $T$ is the length of the input sequence, and $x_t$ is the input at time step $t$. We use the below formula to computes the hidden states $h_t$.
+\\[1ex]
+For the Vanilla RNN encoder
+\begin{equation}
+    h_t = f_{enc}(x_t, h_{t-1})
+\end{equation}
+
+where the $f_{enc}$ is the recurrent transition function, (e.g. LSTM, GRU or Vanilla RNN cell), and $h_t$ is the hidden state at time step $t$. And then the final hidden state of the encoder, $h_T$ will act as the context vector.
+\begin{equation}
+    c = h_T
+\end{equation}
+\textbf{Decoder}
+\\[1ex]
+The decoder is the second component of RNN encoder decoder, the usage of the decoder is to generates the output sequence step by step, conditioned on the context vector $c$ and its previous hidden state. 
+\begin{equation}
+    s_t = f_{dec}(y_{t-1}, s_{t-1}, c)
+\end{equation}
+where $f_{dec}$ is the recurrent function of the decoder, and it is just like the encoder part, $y_{t-1}$ is the embedding of the previous output token, $s_{t-1}$ is the decoder's hidden state. And $c$ is the context vector from the encdoer, which remains constant throughout decoding. 
+\\[1ex]
+After the model computed the $s_t$, the model will compute the output probability distribution.
+\begin{equation}
+    P(y_t|y_1, c) = softmax(W_os_t+b_o)
+\end{equation}
+And the predicted token $y_t = arg maxP(y_t)$, the process will repeat until the decoder predicts the end of sequence token $(<EOS>)$.
+
+
+
 \subsubsection{Hidden Markov Model}
-Before reviewing Hidden Markov Model (HMM), it is essential to understand what Markov models is, or Markov chains. Markov chains are fundamental models in probability theory and statistic, and it is a stochastic process describing a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. This property known as the Markov property \parencite{roberts2004general, rabiner1986anintroduction}. In rigorous terms. Let the state space be defined as:
+Before reviewing Hidden Markov Model (HMM), it is essential to understand what Markov models is, or Markov chains. Markov chains are fundamental models in probability theory and statistic, and it is a stochastic process, which describe a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. This property known as the Markov property \parencite{roberts2004general, rabiner1986anintroduction}. In rigorous terms. Let the state space be defined as:
 \begin{equation}
     S = \{ s_1, s_2, \dots, s_N \}.
 \end{equation}
@@ -694,7 +728,7 @@ To achieve the project goals and objectives, this report will follow the step as
 Since this report require some knowledge related on RNN and NLP. So it is necessary to review the foundemental of those area. Different architecture of RNNs-based model for instance, vanilla RNN, LSTM, GRU. And understand the limitation of RNN, vanishing/exploding gradients. Also, it is essential to understand natural language processing (NLP).  
 \subsection{Data Collection and Preprocessing}
 \subsubsection{Data Collection}
-In this report, ACL-IMDB \parencite{maas-EtAl:2011:ACL-HLT2011} was experiment. This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. This dataset provide a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. I preporcess the dataset by text cleaning and tokenization.
+In this report, ACL-IMDB \parencite{maas-EtAl:2011:ACL-HLT2011} was use and for this dataset is a binary sentiment classification containing the substantially more data than the last version benchmark datasets. This dataset provide a set of 25,000 highly polar movie reviews for training, and 25,000 for validation. I preporcess the dataset by text cleaning and tokenization.
 \subsubsection{Data Preprocessing}
 \begin{enumerate}
     \item Lowercasing:\\
@@ -1520,6 +1554,22 @@ Among the 3 models, LSTM and GRU have the better performance compare with vanill
 And for the overfitting problem, we can see that overfitting problem occur in three models. For the vanilla RNN, since this is the basic and simple architecture to handle sequential data, it lacks mechanisms to retain or forget information selectively. As a result, it relying on the memorizing the training data rather than learning the meaningful patterns. This causes it to overfit. And for the GRU and LSTM, although gating mechanisms provide a more sophisticated architecture to learning from data, they aggressively optimizes the training loss, which can result in overfitting when the model continues to learn unnecessary information from the dataset. 
 \\[1ex] 
 The above result and analyse shown that GRU and LSTM perform better than vanilla RNN, which show that the graident vanishing and graident exploding problem were improved by the gating mechanism. And there is so many way will affect the experiment result for example, the embedding layer, tokenization.
+
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/gradient.png}
+\end{figure}
+\subsubsection{Vanilla RNN (Red line)}
+The gradients in the Vanilla RNN is unstable, as shown by the oscillations and spikes in the early timesteps. Over time, the gradients decay rapidly and go to 0, indicating that the presence of the vanishing gradient problem. This problem occurs because the Vanilla RNNs do not have the gating mechanisms in which this architecture is not perform well in long time dependencies. In other words, as the sequence length increases, repeated matrix multiplications lead to the gradients to shrink exponentially, making it difficult for the model to update the weighting matrix effectively during the BPTT. 
+\\[1ex]
+\subsubsection{LSTM (Blue line)}
+The gradients of the LSTM are much more stable compared to the simple vanilla RNN. The gradient magnitudes remain consistent across timesteps and do not decay to zero. This stability is achieved through the use of gating machanisms that regulate the flow of information. These gates allow the LSTM to keep the relevant information form the input data while remove some irrelevant information from the data. As a result, LSTM is highly effective at learning long term dependencies in sequences.
+\\[1ex]
+\subsubsection{GRU (Green line)}
+The gradients in the GRU are also stable, similar to the LSTM, but the performance is more smoother. GRU achieves this stability using its gate mechanism, which control the degree of information through the network. Compared to the LSTM, the GRU has a simpler architecture, which makes it more computationally efficient while still addressing the vanishing gradient problem. 
+
 \newpage
 
 % ######################## Results and Analysis ######################################
@@ -1529,45 +1579,28 @@ The above result and analyse shown that GRU and LSTM perform better than vanilla
 \section{Discussion and Conclusion}
 
 \subsection{Discussion}
-Throughout the project, several unexpected results and limitations were encountered that shed light on both the robustness and challenges of using RNN-based models for sentiment classification.
+During the experimental phase, several insights and challenges emerged, which are discussed below:
 
 \begin{itemize}
     \item \textbf{Unexpected Results:}  
-    \begin{itemize}
-        \item The vanilla RNN model showed signs of overfitting relatively quickly in comparison to the LSTM and GRU models. This behavior was attributed to its vulnerability to vanishing and exploding gradient issues, despite the application of gradient clipping.
-        \item Although gradient clipping (with a threshold value of 5) generally stabilized training, occasional oscillations in the validation loss were observed. Such fluctuations suggest that even with robust gradient management, the training dynamics of sequential models can be highly sensitive to hyperparameter settings.
-    \end{itemize}
+    It was observed that the loss of a two-layer LSTM model was higher compared to that of a one-layer LSTM. This was unexpected because additional layers are generally presumed to capture more complex patterns and improve performance. One possible explanation for this anomaly is the inherent randomness during model initialization and training. Since the performance difference can vary from run to run, it is possible that in some exceptions the two-layer model does not outperform the one-layer configuration.
     
     \item \textbf{Limitations:}  
-    \begin{itemize}
-        \item The pre-processing pipeline, while extensive, was sometimes insufficient to handle complex or ambiguous tokens (e.g., domain-specific abbreviations). This highlights the need for more advanced pre-processing—such as incorporating contextualized word embeddings—to handle semantic variations effectively.
-        \item The scope of hyperparameter tuning was limited to grid or random search methods. A more comprehensive hyperparameter optimization (e.g., Bayesian optimization) might yield further improvements.
-        \item Resource constraints (such as batch size and training epochs) influenced the convergence behavior and model performance. Future experiments could benefit from increased computational resources to explore deeper architectures or longer sequences.
-    \end{itemize}
+    Due to limited computing resources, the experiments were constrained to training the models from scratch with relatively simpler architectures. This restricted the exploration of more complex or state-of-the-art models, such as Transformer-based architectures, which might offer further performance improvements but require substantially more computational power.
 \end{itemize}
 
 \subsection{Conclusion}
-In summary, this project conducted a detailed comparative analysis of three RNN-based architectures (vanilla RNN, LSTM, and GRU) for binary sentiment classification on the ACL-IMDB dataset. The main findings, contributions, and implications of the project are as follows:
+The primary objective of this report was to employ various RNN-based models and compare their performance on a sentiment classification task. The main findings of the project are:
 
 \begin{itemize}
-    \item \textbf{Main Findings:}
-    \begin{itemize}
-        \item Gated architectures (LSTM and GRU) outperformed the vanilla RNN in managing long-term dependencies and reducing vanishing/exploding gradient issues.
-        \item The structured training approach—incorporating hidden state management, gradient clipping, and periodic validation—proved critical to achieving stable convergence.
-    \end{itemize}
+    \item \textbf{Comparative Analysis:}  
+    Different RNN-based models, including vanilla RNN, LSTM, and GRU, were implemented and evaluated. The experiments show that LSTM and GRU models effectively address the long-term dependency problem inherent in sequential data. Their internal gating mechanisms allow them to control and preserve information over longer sequences.
     
-    \item \textbf{Contributions:}
-    \begin{itemize}
-        \item The project establishes a robust training framework and experimental methodology, which includes comprehensive data pre-processing, model initialization, and performance evaluation.
-        \item It provides a systematic comparison of RNN variants, offering insights that can guide future research on neural network architectures for natural language processing.
-    \end{itemize}
-    
-    \item \textbf{Implications:}
-    \begin{itemize}
-        \item The results suggest that practitioners working on sentiment analysis or related NLP tasks should consider employing gated architectures like LSTM or GRU to achieve better performance.
-        \item Future work may build on these findings by exploring more advanced architectures (e.g., Transformer models or hybrid models incorporating convolutional layers) as well as more sophisticated hyperparameter optimization techniques.
-    \end{itemize}
+    \item \textbf{Efficacy of Gated Architectures:}  
+    The results indicate that the gated architectures (LSTM and GRU) significantly outperform the vanilla RNN in terms of handling vanishing and exploding gradient issues, thereby offering more stable and reliable performance.
 \end{itemize}
+
+In conclusion, while some unexpected results were observed—such as the higher loss in the two-layer LSTM model—the overall findings strongly advocate for the use of gated RNN architectures in tasks requiring modeling of long-term dependencies. Despite limitations due to computational resources, this report provides a valuable comparative study and lays the groundwork for future research on more complex models like Transformers in natural language processing tasks.
 
 In conclusion, while the project revealed certain limitations, it nevertheless contributes valuable insights into the training and evaluation of RNN-based models for sentiment classification, thereby setting the stage for further research in the domain of efficient and scalable NLP methodologies.
 % ######################## Discussion and Conclusion ######################################
@@ -1580,6 +1613,7 @@ In conclusion, while the project revealed certain limitations, it nevertheless c
 
 
 % ######################## Reference ######################################
+\newpage
 \printbibliography
 % ######################## Reference ######################################
 
