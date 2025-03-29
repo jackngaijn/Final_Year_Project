@@ -81,31 +81,14 @@ BPTT is one of the most important algorithms used for training RNNs. Dating back
 \textbf{Conceptual Framework of BPTT}
 \\[1ex]
 BPTT works based on the technique of treating an RNN as a deep feedforward network for across multiple time steps. In the forward pass, the RNN, like other artificial neuronal network, applies operation over the data input in sequence, bringing changes in its own state variables at every time step, depending on the input and the previous state of its general working state or hidden state. This sequential processing produces outputs and stores the internal states of the network in any period \parencite{werbos1990bptt}.
-
+\\[1ex]
 This unfolds the RNN to construct a traditional Feedforward Neural Network where we can apply backpropagation through time. Below is the conceptual idea of BPTT in RNN.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{../Pic/pic1.png} % Replace "example-image" with your image file
+    \includegraphics[width=0.65\textwidth]{../Pic/pic1.png} % Replace "example-image" with your image file
     \caption{Unfolded RNN}
 \end{figure}
 
-\begin{longtable}{|c|c|c|}
-    \hline
-    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
-    \hline
-    $U$          & Weight matrix for input to hidden state       & $input\ size\times hidden\ unites$\\
-    $W$          & Weight matrix for hidden to hidden state      & $hidden\ units\times hidden\ unites$\\
-    $V$          & Weight matrix for hidden state to output state& $hidden\ units\times number\ of\ class$\\
-    $x_t$        & Input vector at time t                        & $input\ size\times 1$\\
-    $h_t$        & Hidden state output at time t                 & $hidden\ units\times 1$\\
-    $b_h$        & Bias term for hidden state                    & $hidden\ units\times 1$\\
-    $b_y$        & Bias term for output state                    & $number\ of\ class\times 1$\\
-    $\hat{o}_y$  & Output at time t                              & $number\ of\ class\times 1$\\
-    $\hat{y}_t$  & Output at time t                              & $hidden\ units\times 1$\\
-    $\mathcal{L}$& Loss at time t                                & $scalar$\\
-    \hline
-    \caption{Unfolded RNN}
-\end{longtable}
 % Forward pass
 \noindent \textbf{Forward Pass}
 \\[1ex]
@@ -209,6 +192,24 @@ Where
 \begin{equation}
     b_y \leftarrow b_y - \alpha\dfrac{\partial\mathcal{L}}{\partial b_y}
 \end{equation}
+
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $U$          & Weight matrix for input to hidden state       & $input\ size\times hidden\ units$\\
+    $W$          & Weight matrix for hidden to hidden state      & $hidden\ units\times hidden\ units$\\
+    $V$          & Weight matrix for hidden state to output state& $hidden\ units\times number\ of\ class$\\
+    $x_t$        & Input vector at time t                        & $input\ size\times 1$\\
+    $h_t$        & Hidden state output at time t                 & $hidden\ units\times 1$\\
+    $b_h$        & Bias term for hidden state                    & $hidden\ units\times 1$\\
+    $b_y$        & Bias term for output state                    & $number\ of\ class\times 1$\\
+    $\hat{o}_y$  & Output at time t                              & $number\ of\ class\times 1$\\
+    $\hat{y}_t$  & Output at time t                              & $hidden\ units\times 1$\\
+    $\mathcal{L}$& Loss at time t                                & $scalar$\\
+    \hline
+    \caption{Unfolded RNN}
+\end{longtable}
 
 \newpage
 \textbf{Pseudocode of BPTT} \parencite{wikipedia2023bptt}
@@ -548,45 +549,74 @@ The encoder is a RNN based block, which processes the input sequence step by ste
 \\[1ex]
 For the Vanilla RNN encoder
 \begin{equation}
-    h_t = f_{enc}(x_t, h_{t-1})
+    h^{enc}_t = tanh(W^{enc}_{ih}x_t + W^{enc}_{hh}h_{t-1}+b^{enc}_h)
 \end{equation}
 
-where the $f_{enc}$ is the recurrent transition function, (e.g. LSTM, GRU or Vanilla RNN cell), and $h_t$ is the hidden state at time step $t$. And then the final hidden state of the encoder, $h_T$ will act as the context vector.
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $W^{enc}_{ih}$          & Weight matrix for input to hidden state in encoder      & $hidden\ units\times input\ size$\\
+    $W^{enc}_{hh}$          & Weight matrix for hidden to hidden state in encoder     & $hidden\ units\times hidden\ units$\\
+    $b^{enc}_{h}$           & Bias vector for the hidden state in encoder             & $hidden\ units\times hidden\ units$\\
+    $h^{enc}_{t}$           & Hidden state at timestep t in encoder                   & $hidden\ units\times hidden\ units$\\
+    \hline
+    \caption{Encoder}
+\end{longtable}
+After the model processed the entire input sequence from $t=1$ to $t=T$, the last hidden state $h^{enc}_T$ treat as the context vector $c$. 
 \begin{equation}
-    c = h_T
+    c = h^{enc}_T
 \end{equation}
 \textbf{Decoder}
 \\[1ex]
-The decoder is the second component of RNN encoder decoder, the usage of the decoder is to generates the output sequence step by step, conditioned on the context vector $c$ and its previous hidden state. 
+The decoder is the second component of RNN encoder decoder, the usage of the decoder is to generates the output sequence step by step, conditioned on the context vector $c$ and its previous hidden state. At each timestep $t$, the decoder updates its hidden state $s_t'$ based on the previous hidden state $s_{t'-1}$ and the embedding of the previous output $y_{t'-1}$. And we will define the $s_0 = c$ first.
 \begin{equation}
-    s_t = f_{dec}(y_{t-1}, s_{t-1}, c)
+    h^{dec}_t = tanh(W^{dec}_{ih}y_{t-1}+W^{dec}_{hh}+b^{dec}_h)
 \end{equation}
-where $f_{dec}$ is the recurrent function of the decoder, and it is just like the encoder part, $y_{t-1}$ is the embedding of the previous output token, $s_{t-1}$ is the decoder's hidden state. And $c$ is the context vector from the encdoer, which remains constant throughout decoding. 
-\\[1ex]
-After the model computed the $s_t$, the model will compute the output probability distribution.
+After the model computed the $h^{dec}_t$, the model will compute the output probability distribution.
 \begin{equation}
-    P(y_t|y_1, c) = softmax(W_os_t+b_o)
+    P(y_t|y_{t-1}, c) = softmax(W_oh^{dec}_t+b^{dec}_o)
 \end{equation}
 And the predicted token $y_t = arg maxP(y_t)$, the process will repeat until the decoder predicts the end of sequence token $(<EOS>)$.
+\begin{longtable}{|c|c|c|}
+    \hline
+    \textbf{Notation} & \textbf{Meaning} & \textbf{Dimension}\\
+    \hline
+    $W^{dec}_{ih}$          & Weight matrix for input to hidden      & $hidden\ units\times input\ size$\\
+    $W^{dec}_{hh}$          & Weight matrix for hidden to hidden     & $hidden\ units\times hidden\ units$\\
+    $b^{dec}_{h}$           & Bias vector for the hidden              & $hidden\ units\times hidden\ units$\\
+    $h^{dec}_{t}$           & Hidden state at timestep t                    & $hidden\ units\times hidden\ units$\\
+    $b^{dec}_{o}$           & Bias vector for the output layer             & $hidden\ units\times hidden\ units$\\
+    $W^{dec}_{o}$           & Weight matrix for hidden to output     & $output\ feature\ space\times hidden\ units$\\
+    \hline
+    \caption{Decoder}
+\end{longtable}
+
 
 \subsubsection{Attention Mechanism}
 % Vaswani et al. introduces the Transformer architecture, which replaces RNN model with self attention. In this section, I want to review the attention machanism. \parencite{vaswani2023attentionneed}. Attention machanism is good for handle the sequence-to-sequence tasks such as machine translation, text summarization and image captioning. Bahdanau et al. \parencite{bahdanau2016neuralmachinetranslationjointly} introduces the attention mechanism in the machine translation task. At each decoding step $t'$, the model model will compute the attention scores $\alpha_{t',t}$ that represent how important of the current hidden state $h_t$ to the current decoder state $s_{t'}$. We have different attention formula. 
 
 \textbf{Bahdanau (Additive) Attention}
 \\[1ex]
-% This method proposed by \parencite{bahdanau2016neuralmachinetranslationjointly}, in which this attention uses a feedforward network to compute the attention scores. 
+This method proposed by \parencite{bahdanau2016neuralmachinetranslationjointly}, in which this attention uses a feedforward network to compute the attention scores. 
 \\[1ex]
 \begin{equation}
-    e_{t',t} = v_a^Ttanh(W_as_{t'-1}+U_ah_t)
+    e_{t',t} = v_a^Ttanh(W_ah^{dec}_{t'-1}+U_ah^{enc}_t+b_a)
 \end{equation}                    
 \textbf{Luong (Multiplicative) Attention}
 \\[1ex]
-% This method is introduced by Luong et al \parencite{luong2015effectiveapproachesattentionbasedneural}. This method uses the dot product to compute the attention scores.
+This method is introduced by Luong et al \parencite{luong2015effectiveapproachesattentionbasedneural}. This method uses the dot product to compute the attention scores.
 \begin{equation}
-    e_{t',t} = s_{t'-1}^Th_t
+    e_{t',t} = h^{dec}_{t'-1} \cdot h^{enc}_t
 \end{equation}
 \textbf{Scaled Dot-Product Attention}
 \\[1ex]
+The scaled dot-product attention was introduced by \parencite{vaswani2017attentionneed}, this is the key component in Transformer architecture. It improves from the Luong's dot-product attention \parencite{luong2015effectiveapproachesattentionbasedneural} by addressing he numerical stability issues when working with the high dimensional vectors and making attention computation more efficient for parallelization. Below is the formula of attention scores.
+\begin{equation}
+    S = \dfrac{QK^T}{\sqrt{d_k}}
+\end{equation}
+Where $S \in \mathbb{R}^{n \times n}$ is pairwise similarity scores between all tokens. 
+
 
 \subsubsection{Hidden Markov Model}
 Before reviewing Hidden Markov Model (HMM), it is essential to understand what Markov models is, or Markov chains. Markov chains are fundamental models in probability theory and statistic, and it is a stochastic process, which describe a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. This property known as the Markov property \parencite{roberts2004general, rabiner1986anintroduction}. In rigorous terms. Let the state space be defined as:

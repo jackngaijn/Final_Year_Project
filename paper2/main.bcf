@@ -3075,15 +3075,19 @@
     <bcf:citekey order="14" intorder="1">le2010deep</bcf:citekey>
     <bcf:citekey order="14" intorder="2">delalleau2011shallow</bcf:citekey>
     <bcf:citekey order="14" intorder="3">pascanu2013on</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">roberts2004general</bcf:citekey>
-    <bcf:citekey order="15" intorder="2">rabiner1986anintroduction</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">rabiner1989atutorial</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">rabiner1993fundamentals</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">sengupta2023hybrid</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">rabiner1993fundamentals</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">mikolov2013efficient</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">maas-EtAl:2011:ACL-HLT2011</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">mikolov2013efficient</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">bahdanau2016neuralmachinetranslationjointly</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">luong2015effectiveapproachesattentionbasedneural</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">vaswani2017attentionneed</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">luong2015effectiveapproachesattentionbasedneural</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">roberts2004general</bcf:citekey>
+    <bcf:citekey order="19" intorder="2">rabiner1986anintroduction</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">rabiner1989atutorial</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">rabiner1993fundamentals</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">sengupta2023hybrid</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">rabiner1993fundamentals</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">mikolov2013efficient</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">maas-EtAl:2011:ACL-HLT2011</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">mikolov2013efficient</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
