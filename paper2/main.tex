@@ -531,7 +531,13 @@ The architecture of DRNNs are similar with conventional RNNs. We simply stack th
 \end{equation}
 Where $x_t$ is the input at time $t$. $h^{(l)}_{t}$ is the hidden state for the $l$ layer at time t. $W^{(l)}_{xh}, W^{(l)}_{hh}$ are the weight matrices for the input to hidden and hidden to hidden connections in layer $l$, respectively. $W_{hy}$ is weight matrix for the output layer. $b^{(l)}_h$ is the bias vector for the $l$ layer (except output layer), $b_y$ is the bias vector for output layer. $g(\cdot)$ and $f(\cdot)$ are an activation function. 
 
+\newpage
+
 \subsubsection{RNN encoder decoder model}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/RNN_encoder_decoder.jpg} % Replace "example-image" with your image file
+\end{figure}
 RNN Encoder-Decoderis a RNN based architecture which commonly used for handle sequence to sequence problem, for example machine translation, summarization, and question answering. The designed of this architecture is good for handle the input sequence and the output sequence is not the same length, leveraging the sequential nature of data. 
 \\[1ex]
 In this architecture, there are two main components, the first component is rnn encoder, the usage of the encoder is to encode the input sequence into a fixed length vector. And the decoder is to decode the vector into the target sequence. 
@@ -563,7 +569,24 @@ After the model computed the $s_t$, the model will compute the output probabilit
 \end{equation}
 And the predicted token $y_t = arg maxP(y_t)$, the process will repeat until the decoder predicts the end of sequence token $(<EOS>)$.
 
+\subsubsection{Attention Mechanism}
+% Vaswani et al. introduces the Transformer architecture, which replaces RNN model with self attention. In this section, I want to review the attention machanism. \parencite{vaswani2023attentionneed}. Attention machanism is good for handle the sequence-to-sequence tasks such as machine translation, text summarization and image captioning. Bahdanau et al. \parencite{bahdanau2016neuralmachinetranslationjointly} introduces the attention mechanism in the machine translation task. At each decoding step $t'$, the model model will compute the attention scores $\alpha_{t',t}$ that represent how important of the current hidden state $h_t$ to the current decoder state $s_{t'}$. We have different attention formula. 
 
+\textbf{Bahdanau (Additive) Attention}
+\\[1ex]
+% This method proposed by \parencite{bahdanau2016neuralmachinetranslationjointly}, in which this attention uses a feedforward network to compute the attention scores. 
+\\[1ex]
+\begin{equation}
+    e_{t',t} = v_a^Ttanh(W_as_{t'-1}+U_ah_t)
+\end{equation}                    
+\textbf{Luong (Multiplicative) Attention}
+\\[1ex]
+% This method is introduced by Luong et al \parencite{luong2015effectiveapproachesattentionbasedneural}. This method uses the dot product to compute the attention scores.
+\begin{equation}
+    e_{t',t} = s_{t'-1}^Th_t
+\end{equation}
+\textbf{Scaled Dot-Product Attention}
+\\[1ex]
 
 \subsubsection{Hidden Markov Model}
 Before reviewing Hidden Markov Model (HMM), it is essential to understand what Markov models is, or Markov chains. Markov chains are fundamental models in probability theory and statistic, and it is a stochastic process, which describe a sequence of possible events in which the probability of each event depends only on the state attained in the previous event. This property known as the Markov property \parencite{roberts2004general, rabiner1986anintroduction}. In rigorous terms. Let the state space be defined as:
