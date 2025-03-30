@@ -1650,6 +1650,67 @@ Next is the performance of LSTM with 1 layer, the training accuracy improves ste
     \caption{LSTM with 2 layer performance on IMDB dataset}
 \end{figure}
 
+\newpage
+
+\subsubsection{Model 7 (RNN encoder-decoder)}
+\textbf{Loss over epochs (left plot)}
+\begin{enumerate}
+    \item Training Loss:
+    \begin{itemize}
+        \item The training loss consistently decreases over the epochs, which mean that the model is leaning and fitting the training data better as training progresses.
+        \item By the end of the epoch, which mean 10th epoch, the training loss drops significantly from roughtly 0.63 to 0.55.
+    \end{itemize}
+    \item Test Loss:
+    \begin{itemize}
+        \item The test loss shows more fluctuation compared to the training loss, initially, the test loss is greater that the training loss, and this is expected. After that, it decreases slightly in the first few epochs but then starts to fluctuate significantly, with a noticeable spike around epoch 6 and another drop by epoch 9. At the end of the test loss is around 0.725.
+    \end{itemize}
+\end{enumerate}
+\textbf{Accuracy Over Epochs (Right plot)}
+\begin{enumerate}
+    \item Training Accuracy:
+    \begin{itemize}
+        \item The training accuracy steadily increases from roungthly 60\% in the first epoch to above 72.5\% by the 10th epoch. 
+    \end{itemize}
+    \item Test Accuracy:
+    \begin{itemize}
+        \item Test accuracy initially improves, peaking at epoch 4 at approximately 70\%, after epoch 4, the test accuracy drop dramatically to below 60\%.
+    \end{itemize}
+\end{enumerate}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/RNN_encoder_decoder_1_layer_performance.png}
+    \caption{LSTM with 2 layer performance on IMDB dataset}
+\end{figure}
+
+\subsubsection{Model 8 (RNN encoder-decoder with attention mechanism)}
+\textbf{Loss over epochs (Left plot)}
+\begin{enumerate}
+    \item Training Loss:
+    \begin{itemize}
+        \item The training loss cansistently decreases throughout the eopchs, starting from around 0.65 and dropping to below 0.3 by the 10th eopch. Which mean that the model is leaning effectively and improving its performance on the training data as training progresses.
+    \end{itemize}
+    \item Test Loss:
+    \begin{itemize}
+        \item The test loss fluctuates more than the training loss, it increases slightly in the first few epochs and peaking at around epoch 4 with a value near 0.8. At the end of the epoch, the loss drop back to around 0.6.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Accuracy Over Epochs (Right plot)}
+\begin{enumerate}
+    \item Training Accuracy:
+    \begin{itemize}
+        \item The training accuracy steadily increases over the epochs, starting from around 60\% and peaking at epoch 5 at 73\%. After that the accuracy drop to around 63\% dramatically. 
+    \end{itemize}
+    \item Test Accuracy:
+    \begin{itemize}
+        \item The test accuracy increases rapidly during the inital epochs, peaking at around apoch 4 with a value close to 70\%. After epoch 3, it drop dramatically, the shape is similar with the training accuracy. 
+    \end{itemize}
+\end{enumerate}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/RNN_encoder_decoder_with_attention_1_layer_performance.png}
+    \caption{LSTM with 2 layer performance on IMDB dataset}
+\end{figure}
 
 
 \newpage
