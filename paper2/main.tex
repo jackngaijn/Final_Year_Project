@@ -11,6 +11,7 @@
 \usepackage{algorithmic}
 \usepackage{listings} % For python code 
 \usepackage{tikz} 
+\usepackage{amsmath}
 \usetikzlibrary{positioning, arrows.meta}
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 
@@ -753,11 +754,13 @@ The continuous skip gram model operates in opposite direction compare with CBOW.
 
 % Project Goals
 \subsection{Project Goals}
-The primary goal of this report is to deeply review on RNN and how it can apply in natural language processing (NLP) tasks. And by comparing the performance of different models. this report aims to provide a detailed comparative analysis of the following RNN-based models:
+The primary goal of this report is to deeply review on RNN and how it can apply in natural language processing (NLP) tasks. And by comparing the performance of different models. this report aims to provide a detailed comparative analysis of the following RNN-based models by evaluating their performance on the IMDb dataset.
 \begin{itemize}
     \item Vanilla RNN
     \item Long Short-Term Memory (LSTM)
     \item Gated Recurrent Unit (GRU)
+    \item RNN Encoder-Decoder
+    \item RNN Encoder-Decoder with Attention Mechanism
 \end{itemize}
 
 % Objectives
@@ -767,7 +770,7 @@ Develop models using state-of-the-art deep learning framework, PyTorch, to imple
 \subsubsection{Apply the Models on a Benchmark NLP Dataset}
 Utilize a selected NLP dataset to train and evaluate the performance of each RNN-based model. The dataset will be preprocessed (e.g., tokenization, padding, embedding initialization) to suit sequential data modeling.
 \subsubsection{Compare Model Performances}
-Compare different RNN-based models on metrics relevant to the target NLP taskquantitatively and qualitatively. Accuracy, F1, training time scores be used.
+Compare different RNN-based models on metrics relevant to the target NLP taskquantitatively and qualitatively. For example accuracy.
 \subsubsection{Analyze the Impact of Architectural Differences}
 Identify and discuss the strengths and limitations of each model architecture through both experimental results and theoretical insights. For example, compare how LSTM and GRU architectures mitigate vanishing gradients and exploding gradients using gating mechanisms relative to a vanilla RNN.
 
@@ -1413,12 +1416,34 @@ Then we calculate the loss function by the last output.
 
 \subsubsection{Model 4 (Vanilla RNN with 2 layer)}
 Same setting with model 1, but I stack 2 RNN block. In the other word, this is deep recurrent neural networks. 
-\subsubsection{Model 5 (GRU with 2 layer)}
+\subsubsection{Model 5 (Gated recurrent unit with 2 layer)}
 Same setting with model 1, but I stack 2 GRU block. In the other word, this is deep recurrent neural networks. 
-\subsubsection{Model 6 (LSTM RNN with 2 layer)}
+\subsubsection{Model 6 (Long short-term memory with 2 layer)}
 Same setting with model 1, but I stack 2 LSTM block. In the other word, this is deep recurrent neural networks. 
 
+\subsubsection{Model 7 (RNN Encoder-Decoder)}
+For the RNN encoder-decoder architecture, I will explain how to data be processes and I will show the mathmatical transformations for each time step. We first assume the input $X = [x_1, x_2, \cdots, x_T]$ be the input sequence and the $T$ is the sequence length. $x$ is word index in the vocabulary. 
+\\[1ex]
+Then the embedding layer maps each word index $x_t$ to a high dimensional space. 
+\begin{equation}
+    e_t = Embedding(x_t)
+\end{equation}
+For each time step, the model will train the parameters $h_t$ by using the current input and the previous hidden state.
+\begin{equation}
+    h_t = tanh(W_{ih}e_t+W_{hh}h_{t-1}+b_h)
+\end{equation}
+Where $W_{ih} \in \mathbb{R}^{hidden\ dim \times embedding\ dim}$, $W_{hh} \in \mathbb{R}^{hidden\ dim \times hidden\ dim}$. $b_h \in \mathbb{R}^{hidden\ dim}$.
+\\[1ex]
+For the decoder part is do the fully connected layer.
+\begin{equation}
+    z = W_oh_T+b_o
+\end{equation}
+And the apply sigmoid activation function to find the highest probability output.
+\begin{eqnarray}
+    \hat{y} = \sigma(z) = \dfrac{1}{1+e^{-z}}
+\end{eqnarray}
 
+\subsubsection{Model 8 (RNN Encoder-Decoder with attention mechanism)}
 
 \newpage
 \subsection{Training, Hyperparameter Tuning, and Evaluation}
@@ -1426,6 +1451,8 @@ In my experiments, I implemented the training loop using PyTorch. The following 
     
 \subsubsection{Model Hyperparameters and Setup}
 The following hyperparameters were chosen based on preliminary experiments and standard practices for sentiment classification tasks:
+\\[1ex]
+For model 1 (Vanilla RNN), model 2 (Long short-term memory), model 3 (Gated recurrent unit), model 7 (RNN encoder-decoder), model 8 (RNN encoder-decoder with attention mechanism). 
 \begin{itemize}
     \item \textbf{Architecture Hyperparameters:}
     \begin{itemize}
@@ -1444,7 +1471,26 @@ The following hyperparameters were chosen based on preliminary experiments and s
         \item Optimizer: Adam with predefined learning rate.
     \end{itemize}
 \end{itemize}
-In order to keep the fair experiment. I train 3 RNN model with the same hyperparameters
+
+For model 4 (Vanilla RNN with 2 layer), model (GRU with 2 layer), model 6 (Long short-term memory with 2 layer)
+\begin{itemize}
+    \item \textbf{Architecture Hyperparameters:}
+    \begin{itemize}
+        \item Number of layers: \texttt{no\_layers = 2}
+        \item Vocabulary size: \(\mathtt{vocab\_size = len(vocab) + 1}\) (the extra one is for unknown word)
+        \item Embedding dimension: \texttt{embedding\_dim = 100}
+        \item Hidden dimension: \texttt{hidden\_dim = 50}
+        \item Output dimension: \texttt{output\_dim = 1}
+        \item Dropout probability: \texttt{drop\_prob = 0.5}
+        \item Batch size: \texttt{batch\_size = 50}
+    \end{itemize}
+    \item \textbf{Optimization Hyperparameters:}
+    \begin{itemize}
+        \item Learning rate: \texttt{lr = 0.001}
+        \item Loss Function: Binary Cross Entropy Loss
+        \item Optimizer: Adam with predefined learning rate.
+    \end{itemize}
+\end{itemize}
 
 \subsubsection{Training Loop Overview}
 \begin{itemize}
@@ -1460,7 +1506,14 @@ In order to keep the fair experiment. I train 3 RNN model with the same hyperpar
         \item The gradients are clipped using \texttt{nn.utils.clip\_grad\_norm\_} with the specified clip value to mitigate exploding gradients.
         \item Finally, the optimizer updates the model parameters using \texttt{optimizer.step()}.
     \end{enumerate}
-    
+
+    \item \textbf{Cross Validation:}
+    In this project, a stratified k-fold cross validation was applied as part of the training loop to evaluate and compare the performance of various RNN-based model. And I will use the better performance of the best combination which has the highest mean accuracy. And this method was designed to ensure that each model was trained and validated on all data splits, providing a more comprehencive evaluation of model performance.
+    \\[1ex]
+    First the IMDB dataset was split into 5 folds (k=5) for stratified cross-validation, ensuring that each fold maintained the same proportion of positive and negative sentiment labels. For each fold, there is only one subset was used as the validation set, in the mean time, the rest of the subsets were combined to form as the training set. 
+    \\[1ex]
+    For each fold,the model will train on the trainin set using the predefined batch size and validated on the validation set after each epoch. Once all the folds were completed, the performance metris were averaged to obtain the final evaluation scores for each model. In the other word, the average accuracy were used to compare the models and determine their overall effectiveness.
+
     \item \textbf{Validation Stage:}  
     After each epoch, the model is switched to evaluation mode using \texttt{model.eval()} and evaluated on the validation set. Similar to training, the hidden state is updated parameters and the model will use that parameters to make the prediction. And the accuracy is computed and recorded.
     
@@ -1542,7 +1595,7 @@ for epoch in range(epochs):
 \section{Results and Analysis}
 \subsection{Results}
 In this section, I report the classification accuracy of three model on the testing set. And I will show the performance of RNN, GRU and LSTM on IMDB dataset respectively. 
-\subsubsection{Vanilla RNN (1 layer)}
+\subsubsection{Model 1 (Vanilla RNN)}
 For the figure 2, RNN with 1 layer performance on IMDB dataset. Here is the deeply interpretation. For the left hand side is the accuracy. We can see that the training accuracy increasing steadily from 50\% to roughly 65\%. And the validation accuracy shows a more erratic behavior. It starts from 50\% and increases to a peak around epoch 3, drops slightly at epoch 4 and the rises to 65\% by the end of the training. 
 \\[1ex]
 For the training loss, it decreases steadily over 5 epochs from 0.7 to 0.6, showing that the model is learning. On the contrary, the validation loss decreases initially and stabilizes around epoch 4 and then rises sharply in later epochs. 
@@ -1551,7 +1604,7 @@ For the training loss, it decreases steadily over 5 epochs from 0.7 to 0.6, show
     \includegraphics[width=1\textwidth]{../Pic/rnn1.png} 
     \caption{RNN with 1 layer performance on IMDB dataset}
 \end{figure}
-\subsubsection{Vanilla RNN (2 layer)}
+\subsubsection{Model 4 (Vanilla RNN with 2 layer)}
 The training accuracy improves over the eopchs, increasing steadily from 50\% to 75\%. For the validation accuracy also improves, although at a slower pace than training accuracy. Starts at around 50\% and reaching approximately 67\% by epoch 5.
 \\[1ex]
 Then for the tarining loss, it decreases steadily from 0.7 to 0.54, showing that the model is learning effectively and optimizing the training objective. Next for the validation loss, decreases initially, but plateaus and slightly increases after epoch 4. 
@@ -1561,7 +1614,7 @@ Then for the tarining loss, it decreases steadily from 0.7 to 0.54, showing that
     \includegraphics[width=1\textwidth]{../Pic/rnn2.png} 
     \caption{RNN with 2 layer performance on IMDB dataset}
 \end{figure}
-\subsubsection{GRU (1 layer)}
+\subsubsection{Model 3 (Gated recurrent unit)}
 For the figure 4, GRU with 1 layer, we can see that the training accuracy improves steadily and reaching around 95\%, but the validation accuracy remain the same value after epoch 2. Which mean that the model did not learning any new information from the training dataset. 
 \\[1ex]
 Then for the training loss, the performance is relatively good and drop from 0.7 to 0.15. But for the validation loss, it drop from 0.55 to 0.4 and then rises to 0.45. 
@@ -1570,7 +1623,7 @@ Then for the training loss, the performance is relatively good and drop from 0.7
     \includegraphics[width=1\textwidth]{../Pic/gru1.png} 
     \caption{GRU with 1 layer performance on IMDB dataset}
 \end{figure}
-\subsubsection{GRU (2 layer)}
+\subsubsection{Model 5 (Gated recurrent unit with 2 layer)}
 And next is the performance of GRU with 1 layer, we can see that the training accuracy improves significantly, starting around 60\% and reaching over 95\% by the end of training. This indicates that the GRU model is fitting the training data very well. On the contrast, the validation accuracy starts at around 80\% and improves slightly in the first 2 epochs but then remain on the same value around 85\% for the rest of the training. The widening gap between training and validation accuracy after the $2^{nd}$ epoch suggests overfitting. 
 \\[1ex]
 Then for the training loss and the validation loss for the GRU model. The training loss decreases steadily and starting at over 0.6 and dropping to around 0.1 by the $5^{th}$ epoch. The gap between training and validation accuracy after the second epoch suggests overfitting.
@@ -1582,20 +1635,22 @@ For the loss, the training loss decreases steadily, starting at over 0.6 and dro
     \caption{GRU with 2 layer performance on IMDB dataset}
 \end{figure}
 
-\subsubsection{LSTM (1 layer)}
+\subsubsection{Model 2 (Long short-term memory)}
 And then for the training accuracy of LSTM with 1 layer, the train and validation accuracy increase steadily, for the training accuracy increase from 55\% to 90\%, for the validation loss is increase from 63\% to 83\%. For the training loss also decrease steadily, from 0.7 to 0.3. And the validation loss decrease from 0.7 to 0.43.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{../Pic/lstm1performance.png} 
     \caption{LSTM with 1 layer performance on IMDB dataset}
 \end{figure}
-\subsubsection{LSTM (2 layer)}
+\subsubsection{Model 6 (Long short-term memory with 2 layer)}
 Next is the performance of LSTM with 1 layer, the training accuracy improves steadily over the epochs and starting at around 55\% and reaching about 90\% at the end of the training. And for the validation accuracy starting at approximately 65\% and reaching about 82.5\%. And the loss of the training dataset decreases steadily from about 0.7 to around 0.2. And the validation loss show that the model did learn something from the data. 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{../Pic/lstm2performance.png}
     \caption{LSTM with 2 layer performance on IMDB dataset}
 \end{figure}
+
+
 
 \newpage
 \section{Analysis}
