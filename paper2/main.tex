@@ -1699,11 +1699,11 @@ Next is the performance of LSTM with 1 layer, the training accuracy improves ste
 \begin{enumerate}
     \item Training Accuracy:
     \begin{itemize}
-        \item The training accuracy steadily increases over the epochs, starting from around 60\% and peaking at epoch 5 at 73\%. After that the accuracy drop to around 63\% dramatically. 
+        \item The training accuracy steadily increases over the epochs, starting from around 60\% and raise to 90\% by the end of epoch. This demonstrates that the model becomes increaseingly proficient at predicting the correct labels for the training data.
     \end{itemize}
     \item Test Accuracy:
     \begin{itemize}
-        \item The test accuracy increases rapidly during the inital epochs, peaking at around apoch 4 with a value close to 70\%. After epoch 3, it drop dramatically, the shape is similar with the training accuracy. 
+        \item The test accuracy steadily increase from 72\% to 85\%. 
     \end{itemize}
 \end{enumerate}
 \begin{figure}[!htb]
@@ -1711,21 +1711,52 @@ Next is the performance of LSTM with 1 layer, the training accuracy improves ste
     \includegraphics[width=1\textwidth]{../Pic/RNN_encoder_decoder_with_attention_1_layer_performance.png}
     \caption{LSTM with 2 layer performance on IMDB dataset}
 \end{figure}
+\newpage
+
+\subsubsection{Word Importancy}
+\textbf{Heatmap}
+\\[1ex]
+This heatmap is from rnn encoder decoder with attention mechanism, I extract the embedding layer and the hidden state from the encoder, and calculate the dot product between the weight matrix and the sentence vector. In this heatmap, each row corresponds to a hidden state dimension, and each column represents a word. 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/hidden_state.png}
+    \caption{Heatmap of hidden state}
+\end{figure}
+\newline
+Different dimensions in the hidden state activate for different words. For example, the words "highly" and "recommend" have bright activations in specific dimensions, indicating that these dimensinos are capturing the positive sentiment or recommendation context, the words like "is", "a" and "that" show weaker, less distinct activations, as they carry less information in the sentence. The word "must-watch" show the unique parttern, the most possible reason is that it is a compound word with significant semantic importance in the sentence. 
+
+\newpage
+\textbf{T-SNE visualization of hidden state}
+\\[1ex]
+This graph visualizaes the hidden states of the RNN encoder-decoder with attention after processing the sentence. The words are plotted in a 2 dimensional space by using t-SNE, which reduces the high dimensional hidden states to 2 dimensions while preserving their information.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth]{../Pic/hidden_state_2.png}
+    \caption{t-SNE}
+\end{figure}
+\newline
+This plot is similar with the heatmap, is to show the relationship of how the words can be cluster together. The words like "highly", "recommend" and "great" are positioned close to each other, it is because they are all refer to the sentence's positive sentiment or recommendation context. Overall, the t-SNE plot shows how the model encodes the semantic and syntactic relationship between words. Words with similar meanings or roles in the sentence are encoded in similar regions of the hidden state space. 
 
 
 \newpage
-\section{Analysis}
-\subsection{Learning Behavior}
-All models show the effective learning during the initial epochs, roughtly 55\%, as both training and validation accuracy improve, and loss decrease. But the common problem is overfitting occure in 3 models. The possible reasons is dataset. Since every sentence in dataset was truncated. I just use the first 100 token to training the model. So the existing tokens might not be fully represent the sentence. The second reason is the embedding layers, I used the built-in function in Pytorch to create the embedding layer by randomise the matrix. 
-\\[1ex]
-Among the 3 models, LSTM and GRU have the better performance compare with vanilla RNN. The reason of GRU and LSTM perform better than RNN is the vanilla RNN struggles with long term dependencies because of the vanishing gradient problem when processing long sequences. In this experience is 100 time step. And this limits its ability to learn the meaningful patterns from data. On the contrast, GRU and LSTM use gate mechanisms to retain the relevant information and discard irrelevant information, allowing them to capture the long term dependencies more effectively.
-\\[1ex]
-And for the overfitting problem, we can see that overfitting problem occur in three models. For the vanilla RNN, since this is the basic and simple architecture to handle sequential data, it lacks mechanisms to retain or forget information selectively. As a result, it relying on the memorizing the training data rather than learning the meaningful patterns. This causes it to overfit. And for the GRU and LSTM, although gating mechanisms provide a more sophisticated architecture to learning from data, they aggressively optimizes the training loss, which can result in overfitting when the model continues to learn unnecessary information from the dataset. 
-\\[1ex] 
-The above result and analyse shown that GRU and LSTM perform better than vanilla RNN, which show that the graident vanishing and graident exploding problem were improved by the gating mechanism. And there is so many way will affect the experiment result for example, the embedding layer, tokenization.
+\section{Discussion and Conclusion}
+\subsection{Results and Analysis}
+The initial epochs are all models that started effective learning shown with approximately 55\% training and validation accuracy and the loss decreased consistently. A major problem that always arose across all models was overfitting. The primary reason behind the emergence of this phenomenon can be attributed to most of the dataset’s characteristics, especially truncation of sentences. The input to the models is restricted to the first 100 tokens and therefore, the models adjust to this input and may not fully capture the important context of each sentence. Furthermore the failure to generalize might be further loudened by the fact that the embedding matrix is defined using a built in layer in PyTorch with its values initialized to be randomly.
 
-\newpage
+\subsection{Model Comparisons}
+The three models analysed - vanilla RNN, LSTM and GRU, showed a superior performance of GRU and LSTM models. The underlying cause for this improvement however, is due to the limitation of the vanilla RNN at propagating long term dependencies (vanishing gradient problem) using 100 time steps of sequence processing. Its ability to effectively learn meaningful patterns of data allowed for this limitation. LSTM and GRU, on the other hand, utilize gating mechanism to retain relevant information and discard irrelevant information so that long term dependency can be captured more effectively.
 
+\subsection{Overfitting Issues}
+All of the three models were susceptible to the overfitting problem. However, as simple as the vanilla RNN is, it lacks advanced mechanisms of information retention and selective forgetting, and so instead of extracting the meaningful patterns embedded in the training data, it relies on memorizing it. Consequently, this results in overfitting. GRU and LSTM introduce gating mechanisms for data learning and are able to well learn from data, however, they do better optimization of training loss which can result to over fitting when they continue to learn unnecessary information from dataset.
+
+\subsection{Deep Recurrent Neural Networks (DRNN)}
+The performance of each model shows that the deep recurrent neural networks (DRNNs) is outperforms with the single layer models. When we stack more layer, then the model will become DRNNs and this architecture allows it to learn more complex and abstract representations of the data, in other word, the model able to capture or extract more useful information from the data. Thereby reducing the impact of overfitting.
+
+\subsection{Attention Mechanism}
+For the RNN encoder-decoder, I have applied attention mechanism, and among all of the models I have evaluated, the attention mechanism stood out as the most effective and the highest accuracy. The attention mechanism enhances the performance by allowing the model to focus on relevant parts of the input sequence, effectively retaining and utilizing crucial contextual information. 
+
+
+\subsection{Gradient Problem}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{../Pic/gradient.png}
@@ -1739,7 +1770,6 @@ The gradients of the LSTM are much more stable compared to the simple vanilla RN
 \subsubsection{GRU (Green line)}
 The gradients in the GRU are also stable, similar to the LSTM, but the performance is more smoother. GRU achieves this stability using its gate mechanism, which control the degree of information through the network. Compared to the LSTM, the GRU has a simpler architecture, which makes it more computationally efficient while still addressing the vanishing gradient problem. 
 
-\newpage
 
 % ######################## Results and Analysis ######################################
 
@@ -1748,12 +1778,15 @@ The gradients in the GRU are also stable, similar to the LSTM, but the performan
 \section{Discussion and Conclusion}
 
 \subsection{Discussion}
-During the experimental phase, several insights and challenges emerged, which are discussed below:
+After I run all the model and compare their performance, serveral insights and challenges appear, which are discussed below.
 
 \begin{itemize}
     \item \textbf{Unexpected Results:}  
     It was observed that the loss of a two-layer LSTM model was higher compared to that of a one-layer LSTM. This was unexpected because additional layers are generally presumed to capture more complex patterns and improve performance. One possible explanation for this anomaly is the inherent randomness during model initialization and training. Since the performance difference can vary from run to run, it is possible that in some exceptions the two-layer model does not outperform the one-layer configuration.
     
+    \item \textbf{Expected Results:}
+    It is expected that the attention mechanism is outperformance comparing with other model since the attention mechanism is designed for capture the information from long sentence. So this is the expected outcome. 
+
     \item \textbf{Limitations:}  
     Due to limited computing resources, the experiments were constrained to training the models from scratch with relatively simpler architectures. This restricted the exploration of more complex or state-of-the-art models, such as Transformer-based architectures, which might offer further performance improvements but require substantially more computational power.
 \end{itemize}
@@ -1763,15 +1796,19 @@ The primary objective of this report was to employ various RNN-based models and 
 
 \begin{itemize}
     \item \textbf{Comparative Analysis:}  
+    \\[1ex]
     Different RNN-based models, including vanilla RNN, LSTM, and GRU, were implemented and evaluated. The experiments show that LSTM and GRU models effectively address the long-term dependency problem inherent in sequential data. Their internal gating mechanisms allow them to control and preserve information over longer sequences.
     
     \item \textbf{Efficacy of Gated Architectures:}  
+    \\[1ex]
     The results indicate that the gated architectures (LSTM and GRU) significantly outperform the vanilla RNN in terms of handling vanishing and exploding gradient issues, thereby offering more stable and reliable performance.
+
+    \item \textbf{Importancy of attention mechanism}
+    \\[1ex]
+    We have plot the heatmap of the hidden state of the RNN encoder-decoder with attention mechanism, also i have plotted the t-SNE to show how the word be cluter together. And this 2 graph can illustrate how to attention mechanism train the model and train the parameter inside the model. 
 \end{itemize}
 
-In conclusion, while some unexpected results were observed—such as the higher loss in the two-layer LSTM model—the overall findings strongly advocate for the use of gated RNN architectures in tasks requiring modeling of long-term dependencies. Despite limitations due to computational resources, this report provides a valuable comparative study and lays the groundwork for future research on more complex models like Transformers in natural language processing tasks.
 
-In conclusion, while the project revealed certain limitations, it nevertheless contributes valuable insights into the training and evaluation of RNN-based models for sentiment classification, thereby setting the stage for further research in the domain of efficient and scalable NLP methodologies.
 % ######################## Discussion and Conclusion ######################################
 
 
